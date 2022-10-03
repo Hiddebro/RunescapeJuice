@@ -1,0 +1,292 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\WebShopAsp.net(MVC)\\UnitTests\\UnitTests.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\WebShopAsp.net(MVC)\\Business_logic_Layer\\Business_logic_Layer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\WebShopAsp.net(MVC)\\Business_logic_Layer\\Business_logic_Layer.csproj",
+        "projectName": "Business_logic_Layer",
+        "projectPath": "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\WebShopAsp.net(MVC)\\Business_logic_Layer\\Business_logic_Layer.csproj",
+        "packagesPath": "C:\\Users\\HOIDE\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\WebShopAsp.net(MVC)\\Business_logic_Layer\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\HOIDE\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\WebShopAsp.net(MVC)\\Data_Access_Layer\\Data_Access_Layer.csproj": {
+                "projectPath": "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\WebShopAsp.net(MVC)\\Data_Access_Layer\\Data_Access_Layer.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\WebShopAsp.net(MVC)\\Data_Access_Layer\\Data_Access_Layer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\WebShopAsp.net(MVC)\\Data_Access_Layer\\Data_Access_Layer.csproj",
+        "projectName": "Data_Access_Layer",
+        "projectPath": "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\WebShopAsp.net(MVC)\\Data_Access_Layer\\Data_Access_Layer.csproj",
+        "packagesPath": "C:\\Users\\HOIDE\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\WebShopAsp.net(MVC)\\Data_Access_Layer\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\HOIDE\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\WebShopAsp.net(MVC)\\UnitTests\\UnitTests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\WebShopAsp.net(MVC)\\UnitTests\\UnitTests.csproj",
+        "projectName": "UnitTests",
+        "projectPath": "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\WebShopAsp.net(MVC)\\UnitTests\\UnitTests.csproj",
+        "packagesPath": "C:\\Users\\HOIDE\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\WebShopAsp.net(MVC)\\UnitTests\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\HOIDE\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\WebShopAsp.net(MVC)\\Business_logic_Layer\\Business_logic_Layer.csproj": {
+                "projectPath": "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\WebShopAsp.net(MVC)\\Business_logic_Layer\\Business_logic_Layer.csproj"
+              },
+              "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\WebShopAsp.net(MVC)\\WebShopAsp.net(MVC)\\WebShopAsp.net(MVC).csproj": {
+                "projectPath": "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\WebShopAsp.net(MVC)\\WebShopAsp.net(MVC)\\WebShopAsp.net(MVC).csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MSTest.TestAdapter": {
+              "target": "Package",
+              "version": "[2.2.7, )"
+            },
+            "MSTest.TestFramework": {
+              "target": "Package",
+              "version": "[2.2.7, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.11.0, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\WebShopAsp.net(MVC)\\WebShopAsp.net(MVC)\\WebShopAsp.net(MVC).csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\WebShopAsp.net(MVC)\\WebShopAsp.net(MVC)\\WebShopAsp.net(MVC).csproj",
+        "projectName": "WebShopAsp.net(MVC)",
+        "projectPath": "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\WebShopAsp.net(MVC)\\WebShopAsp.net(MVC)\\WebShopAsp.net(MVC).csproj",
+        "packagesPath": "C:\\Users\\HOIDE\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\WebShopAsp.net(MVC)\\WebShopAsp.net(MVC)\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\HOIDE\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\WebShopAsp.net(MVC)\\Business_logic_Layer\\Business_logic_Layer.csproj": {
+                "projectPath": "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\WebShopAsp.net(MVC)\\Business_logic_Layer\\Business_logic_Layer.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "bootstrap": {
+              "target": "Package",
+              "version": "[5.2.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+﻿@model WebShopAsp.net_MVC_.ViewModels.AccUserDetail_ViewModel
+@*
+    //Layout = "_Layout";
+    }*@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/StyleSheet.css" />
+</head>
+<body>
+    <div class="offset-1">
+        <div class="col-lg-11 col-md-11  col-sm-11  col-xs-11">
+
+            <br />
+            <br />
+            <br />
+
+
+            <div class="d-flex">
+                <div><h2 class="font-weight-bold">Register</h2></div>
+            </div>
+
+        </div>
+    </div>
+
+    <div>
+        <form asp-controller="Account" asp-action="AddAccount" method="post">
+            <input asp-for="Username" placeholder="Username" />
+            <span asp-validation-for="Username"></span>
+
+            <input asp-for="Password" type="password" placeholder="Password" />
+            <span asp-validation-for="Password"></span>
+
+            @*<input asp-for="Role" placeholder="Role" />
+            <span asp-validation-for="Role"></span>*@
+            <input type="submit" value="Creëer" onclick="location.href='@Url.Action("Register", "Account")'" />
+        </form>
+        <div>
+
+        </div>
+    </div>
+</body>
+</html>
