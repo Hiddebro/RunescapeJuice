@@ -9,10 +9,10 @@ namespace Data_Access_Layer.DTOs
     public record User_DTO
     {
         public int User_ID { get; set; }
-        public int IsAdmin { get; set; }
-        public string Username { get; set; } = string.Empty;
-        public string Password { get; set; } = string.Empty;
-        public string Email { get; init; } = string.Empty;
+        public bool IsAdmin { get; set; }
+        public string Username { get; set; } 
+        public string Password { get; set; } 
+        public string Email { get; init; } 
 
         public User_DTO(string username, string password)
         {

@@ -3,8 +3,6 @@ using Data_Access_Layer.Context;
 using Business_logic_Layer.Models;
 using Data_Access_Layer.Interfaces;
 using Business_logic_Layer.Container;
-
-
 namespace UnitTests
 {
     [TestClass]
@@ -15,7 +13,6 @@ namespace UnitTests
        
 
         [TestMethod]
-        
         public void LoginTrue()
         {
             //Arrange
