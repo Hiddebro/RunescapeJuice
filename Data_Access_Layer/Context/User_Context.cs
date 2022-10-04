@@ -77,7 +77,7 @@ namespace Data_Access_Layer.Context
  //        }
  //    }
 
-    long I_User_Context.Insert(User_DTO user)
+    public long Insert(User_DTO user)
     {
             try
             {

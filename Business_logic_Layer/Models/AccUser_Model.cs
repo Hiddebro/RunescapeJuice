@@ -10,9 +10,9 @@ namespace Business_logic_Layer.Models
     {
         public int User_ID { get; set; }
         public int IsAdmin { get; set; }
-        public string Username { get; set; } 
-        public string Password { get; set; } 
-        public string Email { get; set; } 
+        public string Username { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
         public int Registrated { get; set; }
 
         public AccUser_Model(int user_ID, int isAdmin,string username, string password, string email, int registrated)
