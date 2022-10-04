@@ -19,32 +19,44 @@ namespace WebShopAsp.net_MVC_.Controllers
             this.user_Container = container;
         }
 
-        public IActionResult Login(Login_ViewModel accountVM)
+        
+
+        public IActionResult Login(Login_ViewModel login_ViewModel)
         {
             if (ModelState.IsValid)
             {
-                return RedirectToAction("Index", "Home" );
+                login_ViewModel = viewModelConverter.ModelToViewModel(user_Container.GetByName(viewModelConverter.ViewModelToModel(login_ViewModel)));
+
+                if (login_ViewModel.User_ID != 0)
+                {
+                    return RedirectToAction("Privacy", "Home");
+                }
+              
+                return View();
             }
             return View();
         }
 
-        public IActionResult Register(Login_ViewModel vm)
-        {
-            if (ModelState.IsValid)
-            {
-                User_Model account = viewModelConverter.ViewModelToModel(vm);
-                user_Container.Insert(account);
-                return View("Login");
-            }
-            return RedirectToAction("Login", "Account", vm);
-        }
+
+           public IActionResult Register(Login_ViewModel vm)
+           {
+               if (ModelState.IsValid)
+               {
+                   User_Model account = viewModelConverter.ViewModelToModel(vm);
+                   user_Container.Insert(account);
+                   return View("Login");
+               }
+               return RedirectToAction("Login", "Account", vm);
+           }
 
         public ActionResult SingUp()
         {
             return View();
         }
 
+#pragma warning disable CS0114 // Member hides inherited member; missing override keyword
         public ActionResult SignOut()
+#pragma warning restore CS0114 // Member hides inherited member; missing override keyword
         {
             return View();
         }
@@ -52,3 +64,4 @@ namespace WebShopAsp.net_MVC_.Controllers
 
     }
 }
+

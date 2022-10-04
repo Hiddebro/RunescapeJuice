@@ -81,38 +81,8 @@ namespace Data_Access_Layer.Context
         {
             throw new NotImplementedException();
         }
-        //    public bool Login(string username, string password)
-        //    {
-        //
-        //        using (SqlConnection con = new SqlConnection(connectionString))
-        //        {
-        //            try
-        //            {
-        //                con.Open();
-        //                SqlCommand comm = new SqlCommand("SELECT * FROM UserData WHERE Username = @username AND Password = @password", con);
-        //                SqlDataAdapter sda = new SqlDataAdapter(comm);
-        //
-        //                comm.Parameters.AddWithValue("@username", username.Trim());
-        //                comm.Parameters.AddWithValue("@password", password.Trim());
-        //
-        //                comm.ExecuteNonQuery();
-        //                DataTable dt = new DataTable();
-        //                sda.Fill(dt);
-        //
-        //
-        //                con.Close();
-        //
-        //                return dt.Rows.Count != 0;
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                Console.WriteLine(ex.Message);
-        //                return false;
-        //            }
-        //
-        //        }
-        //
-        //    }
+
+    
         //  public User_DTO getUser(string username)
         //  {
         //      using (SqlConnection con = new SqlConnection(connectionString))

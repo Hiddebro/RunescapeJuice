@@ -19,7 +19,7 @@ namespace Business_logic_Layer.Container
         {
             this.context = context;
         }
-        //Ophalen op id
+        
   //   public AccUser_Model GetById(int id)
   //   {
   //       AccUser_Model accuser = new AccUser_Model();
@@ -27,7 +27,7 @@ namespace Business_logic_Layer.Container
   //       accuser = converter.DtoToModel(dto);
   //       return accuser;
   //   }
-        //Insert
+        
         public long Insert(AccUser_Model accuser)
         {
             AccUser_DTO dto = new AccUser_DTO();
@@ -36,7 +36,7 @@ namespace Business_logic_Layer.Container
         }
       
       
-        //Updaten
+       
         public long Update(AccUser_Model accuser)
         {
            AccUser_DTO dto = new AccUser_DTO();

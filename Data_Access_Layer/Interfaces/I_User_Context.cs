@@ -10,7 +10,7 @@ using Data_Access_Layer.DTOs;
 
 namespace Data_Access_Layer.Interfaces
 {
-    public interface I_User_Context : IGenericQueries<User_DTO>
+    public interface I_User_Context 
     {
         
        long Insert(User_DTO user);

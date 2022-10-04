@@ -15,7 +15,8 @@ namespace Business_logic_Layer.Converters
             User_Model user_Model = new User_Model()
             {
                 Username = dto.Username,
-                Password = dto.Password
+                Password = dto.Password,
+                User_ID = dto.User_ID,
 
             };
             return user_Model;
@@ -26,7 +27,9 @@ namespace Business_logic_Layer.Converters
             User_DTO dto = new User_DTO()
             {
                 Username = model.Username,
-                Password = model.Password
+                Password = model.Password,
+                User_ID= model.User_ID,
+                
 
             };
             return dto;

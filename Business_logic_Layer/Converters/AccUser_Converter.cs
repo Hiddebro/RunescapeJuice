@@ -11,7 +11,7 @@ namespace Business_logic_Layer.Converters
 {
     public class AccUser_Converter : I_DTO_Converter<AccUser_DTO,AccUser_Model>
     {
-        //Converten van een DTO naar een Model
+       
         public AccUser_Model DtoToModel(AccUser_DTO dto)
         {
             AccUser_Model accuser = new AccUser_Model()
@@ -26,7 +26,7 @@ namespace Business_logic_Layer.Converters
             return accuser;
         }
 
-        //Converten van een Model naar een DTO
+       
         public AccUser_DTO ModelToDTO(AccUser_Model model)
         {
             AccUser_DTO dto = new AccUser_DTO()

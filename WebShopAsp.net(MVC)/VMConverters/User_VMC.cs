@@ -13,7 +13,8 @@ namespace WebShopAsp.net_MVC_.VMConverters
             {
                 
                 Username = model.Username,
-                Password = model.Password
+                Password = model.Password,
+                User_ID = model.User_ID,
             };
             return vm;
         }
@@ -22,7 +23,8 @@ namespace WebShopAsp.net_MVC_.VMConverters
             User_Model user_Model = new User_Model()
             {
                 Username = vm.Username,
-                Password = vm.Password
+                Password = vm.Password,
+                User_ID= vm.User_ID,
                 
             };
             return user_Model;

@@ -8,10 +8,11 @@ namespace Business_logic_Layer.Models
 {
     public class User_Model
     {
+        public int User_ID { get; set; }
         public bool IsAdmin { get; set; }
-        public string Username { get; set; } = string.Empty;
-        public string Password { get; set; } = string.Empty ;
-        public string Email { get; set; } = string.Empty;
+        public string Username { get; set; } 
+        public string Password { get; set; } 
+        public string Email { get; set; }
 
         public User_Model(bool isadmin, string username, string password, string email)
         {
@@ -28,10 +29,11 @@ namespace Business_logic_Layer.Models
             Email = email;
         }
 
-        public User_Model(string username, string password)
+        public User_Model(string username, string password, int user_ID)
         {
             Username = username;
             Password = password;
+            User_ID = user_ID;
             
         }
         public User_Model()
