@@ -29,11 +29,11 @@ namespace WebShopAsp.net_MVC_.Controllers
 
                 if (login_ViewModel.User_ID != 0)
                 {
-                    return RedirectToAction("Privacy", "Home");
+                    return View("UserInfo");
                 }
-              
-                return View();
+              return View();
             }
+                
             return View();
         }
 
@@ -43,7 +43,7 @@ namespace WebShopAsp.net_MVC_.Controllers
             { 
             return View();
             }
-            return RedirectToAction("Privacy", "Home");
+            return View("Register");
         }
 
            public IActionResult Register(Login_ViewModel vm)
