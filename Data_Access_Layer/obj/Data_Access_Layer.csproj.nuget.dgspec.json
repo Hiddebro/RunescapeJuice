@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\WebShopAsp.net(MVC)\\Data_Access_Layer\\Data_Access_Layer.csproj": {}
+    "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\RunescapeJuice\\Data_Access_Layer\\Data_Access_Layer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\WebShopAsp.net(MVC)\\Data_Access_Layer\\Data_Access_Layer.csproj": {
+    "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\RunescapeJuice\\Data_Access_Layer\\Data_Access_Layer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\WebShopAsp.net(MVC)\\Data_Access_Layer\\Data_Access_Layer.csproj",
+        "projectUniqueName": "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\RunescapeJuice\\Data_Access_Layer\\Data_Access_Layer.csproj",
         "projectName": "Data_Access_Layer",
-        "projectPath": "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\WebShopAsp.net(MVC)\\Data_Access_Layer\\Data_Access_Layer.csproj",
+        "projectPath": "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\RunescapeJuice\\Data_Access_Layer\\Data_Access_Layer.csproj",
         "packagesPath": "C:\\Users\\HOIDE\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\WebShopAsp.net(MVC)\\Data_Access_Layer\\obj\\",
+        "outputPath": "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\RunescapeJuice\\Data_Access_Layer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

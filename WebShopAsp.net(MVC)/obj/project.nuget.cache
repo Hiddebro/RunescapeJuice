@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sMkCE1vraljKc5nrX7kjuEWyvKkAd/G4Zm3YpckAxU+SIRW9s7fvT0X+BPaY/F1YUzNjPw7brBy9p8mIvu9/aw==",
+  "dgSpecHash": "52j8bCRu0nWgAXHPtfLYHI8aGlendsXRA1PF8+QdO3wL93LM+4oNKaKAZpyUzza+9cDXtIBgy8jW3IBdd8wWfg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\WebShopAsp.net(MVC)\\WebShopAsp.net(MVC)\\WebShopAsp.net(MVC).csproj",
+  "projectFilePath": "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\RunescapeJuice\\WebShopAsp.net(MVC)\\WebShopAsp.net(MVC).csproj",
   "expectedPackageFiles": [
     "C:\\Users\\HOIDE\\.nuget\\packages\\bootstrap\\5.2.1\\bootstrap.5.2.1.nupkg.sha512",
     "C:\\Users\\HOIDE\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9OexKvOqqMBu5vBFbt/hovOYoSKUEURPJY3uxbESjXWw8yzCcGPZf5fKF2QtPeo43Gqa+4qB58KVzDivn9FJxg==",
+  "dgSpecHash": "K/0jtUQtv3rMwpSJT8beuZoCj+V2ZZSuf7C5n+WKDTnswa0aykiLBwkVK8Gs7a7JuUMX2LvQDWobaX2YZeYd7Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\WebShopAsp.net(MVC)\\Business_logic_Layer\\Business_logic_Layer.csproj",
+  "projectFilePath": "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\RunescapeJuice\\Business_logic_Layer\\Business_logic_Layer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\HOIDE\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\HOIDE\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
