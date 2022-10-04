@@ -17,5 +17,6 @@ namespace Data_Access_Layer.Interfaces
 
         User_DTO GetByName(User_DTO user);
         void Registrated(int id);
+        
     }
 }

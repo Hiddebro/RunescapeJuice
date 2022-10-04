@@ -37,13 +37,21 @@ namespace WebShopAsp.net_MVC_.Controllers
             return View();
         }
 
+        public IActionResult GoToRegister(Login_ViewModel login_ViewModel)
+        {
+            if (ModelState.IsValid)
+            { 
+            return View();
+            }
+            return RedirectToAction("Privacy", "Home");
+        }
 
            public IActionResult Register(Login_ViewModel vm)
            {
                if (ModelState.IsValid)
                {
-                   User_Model account = viewModelConverter.ViewModelToModel(vm);
-                   user_Container.Insert(account);
+                   User_Model user = viewModelConverter.ViewModelToModel(vm);
+                   user_Container.Insert(user);
                    return View("Login");
                }
                return RedirectToAction("Login", "Account", vm);

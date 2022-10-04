@@ -29,7 +29,9 @@ namespace Business_logic_Layer.Models
             Email = email;
         }
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public User_Model(string username, string password, int user_ID)
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
             Username = username;
             Password = password;

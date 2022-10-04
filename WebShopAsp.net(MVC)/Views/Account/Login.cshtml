@@ -6,11 +6,18 @@
 }
 
 
+
+
 <head>
     <style>
         html,
         body {
             height: 100%;
+        }
+        
+        .modal-content{
+            height: 500px;
+            width: 700px;
         }
 
         .btn-primary {
@@ -96,13 +103,17 @@
 
         <div style="margin-left:80px" class="modal-footer">
             <input class="btn btn-lg btn-block btn-primary" type="submit" value="Log in" />
-        </div>
+        </div></form>
 
+         <form asp-controller="Account" asp-action="GoToRegister" method="post" class="form-signin">
+        <input class="btn btn-lg btn-block btn-primary" type="submit" value="Register" />
+        </form>
+    
 
-    </form>
+    
     </body>
 
-    <div class="offset-1">
+  @* <div class="offset-1">
     <div class="col-lg-11 col-md-11  col-sm-11  col-xs-11">
 
         <div class="modal" id="NieuweWerknemer">
@@ -161,5 +172,29 @@
  
 
     </div>
+*@ 
+@*
+<div class ="AddPopUp">
+    
+    @Html.Label("Add pop up")
+</div>
+<div class="modal fade" id="MyPopUp" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <input class="btn btn-lg btn-block btn-primary" type="submit" value="Register" />
+            </div>
+        </div>
+    </div>
+</div>
 
-   
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(funciton(){
+            $(".AddPopUp").click(funciton(e){
+                $('MyPopUp').modal('show');
+            });
+        });
+    </script>
+}
+   *@

@@ -21,7 +21,7 @@ namespace WebShopAsp.net_MVC_.Controllers
         {
 
            
-            return RedirectToAction("Login", "Account");
+            return RedirectToAction("Privacy", "Home");
 
         }
 

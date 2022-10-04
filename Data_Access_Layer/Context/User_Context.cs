@@ -43,7 +43,7 @@ namespace Data_Access_Layer.Context
         {
             try
             {
-                string sql = "Update Account Set Registrated = 1 WHERE User_ID = @User_ID";
+                string sql = "Update [User] Set Registrated = 1 WHERE User_ID = @User_ID";
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
                     new KeyValuePair<string, string>("User_ID", id.ToString()),
@@ -57,16 +57,37 @@ namespace Data_Access_Layer.Context
 
         }
             
-        public long Insert(AccUser_DTO account)
-        {
+ //    public long Insert(AccUser_DTO account)
+ //    {
+ //        try
+ //        {
+ //            string sql =
+ //                "INSERT INTO [User](Username, Password) OUTPUT INSERTED.Account_ID VALUES(@Username,@Password)";
+ //            List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+ //            {
+ //                new KeyValuePair<string, string>("Username", account.Username),
+ //                new KeyValuePair<string, string>("Password", account.Password),
+ //            };
+ //            int result = ExecuteInsert(sql, parameters);
+ //            return result;
+ //        }
+ //        catch (Exception e)
+ //        {
+ //            throw e;
+ //        }
+ //    }
+
+    long I_User_Context.Insert(User_DTO user)
+    {
             try
             {
                 string sql =
-                    "INSERT INTO Account(Username, Password) OUTPUT INSERTED.Account_ID VALUES(@Username,@Password)";
+                    "INSERT INTO [User](Username, Password) OUTPUT INSERTED.UserID VALUES (@Username, @Password)";
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>("Username", account.Username),
-                    new KeyValuePair<string, string>("Password", account.Password),
+                    new KeyValuePair<string, string>("Username", user.Username),
+                    new KeyValuePair<string, string>("Password", user.Password),
+                    
                 };
                 int result = ExecuteInsert(sql, parameters);
                 return result;
@@ -75,12 +96,8 @@ namespace Data_Access_Layer.Context
             {
                 throw e;
             }
-        }
-
-        long I_User_Context.Insert(User_DTO user)
-        {
             throw new NotImplementedException();
-        }
+    }
 
     
         //  public User_DTO getUser(string username)
