@@ -64,7 +64,24 @@ namespace WebShopAsp.net_MVC_.Controllers
                    return View("Login");
                }
             return View("Register");
-           }
+        }
+  //      public IActionResult Register(Login_ViewModel vm)
+  //      {
+  //          User_Model user = viewModelConverter.ViewModelToModel(vm);
+  //          if (ModelState.IsValid)
+  //          {
+  //
+  //              user_Container.DubbelName(user);
+  //              return View("Register");
+  //          }
+  //          if (user != null)
+  //          {
+  //
+  //              user_Container.Insert(user);
+  //              return View("Login");
+  //          }
+  //          return View("Register");
+  //      }
 
         public ActionResult SingUp()
         {

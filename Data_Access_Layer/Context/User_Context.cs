@@ -79,7 +79,8 @@ namespace Data_Access_Layer.Context
 
     long I_User_Context.Insert(User_DTO user)
     {
-            try
+            
+                try
             {
                 string sql =
                     "INSERT INTO [User](Username, Password) OUTPUT INSERTED.UserID VALUES (@Username, @Password)";
@@ -92,14 +93,53 @@ namespace Data_Access_Layer.Context
                 int result = ExecuteInsert(sql, parameters);
                 return result;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw e;
+                throw ex;
             }
             throw new NotImplementedException();
-    }
+        }
+        //                try { 
+        //        string sql =
+        //                "SELECT * FROM [User] WHERE username = @Username";
+        //    List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+        //                 {
+        //                     new KeyValuePair<string, string>("Username", user.Username)
+        //                 };
+        //    int value = ExecuteSql(sql, parameters);
+        //            return value;
+        //    }
+        //        catch (Exception e)
+        //        {
+        //            throw e;
+        //        }
+        //throw new NotImplementedException();
 
-    
+        
+        public object DubbelName(User_DTO user)
+        {
+            try
+            {
+                SqlConnection con;
+                _ConnectionString = "Server = mssqlstud.fhict.local; Database = dbi439802_webshophid; User Id = dbi439802_webshophid; Password = Hidde012";
+                con = new SqlConnection(_ConnectionString);
+                SqlCommand cmd = new SqlCommand("Select count(*) from [User] where Username = @Username", con);
+                cmd.Parameters.AddWithValue("@Username", user);
+                con.Open();
+                var result = cmd.ExecuteScalar();
+
+                return (result);
+            }
+           
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
+
         //  public User_DTO getUser(string username)
         //  {
         //      using (SqlConnection con = new SqlConnection(connectionString))

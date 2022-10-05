@@ -29,6 +29,12 @@ namespace Business_logic_Layer.Container
            return user_Context.Insert(dto);
        }
 
+        public long DubbelName(User_Model user_Model)
+        {
+            User_DTO dto = new User_DTO();
+            dto = converter.ModelToDTO(user_Model);
+            return (long)user_Context.DubbelName(dto);
+        }
         public User_Model GetByName(User_Model user_Model)
         {
             User_DTO dto = new User_DTO();
