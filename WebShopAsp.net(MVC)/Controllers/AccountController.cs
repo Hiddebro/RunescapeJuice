@@ -46,6 +46,15 @@ namespace WebShopAsp.net_MVC_.Controllers
             return View("Register");
         }
 
+         public IActionResult GoToLogin(Login_ViewModel login_ViewModel)
+        {
+            if (ModelState.IsValid)
+            { 
+            return View();
+            }
+            return View("Login");
+        }
+
            public IActionResult Register(Login_ViewModel vm)
            {
                if (ModelState.IsValid)
@@ -54,7 +63,7 @@ namespace WebShopAsp.net_MVC_.Controllers
                    user_Container.Insert(user);
                    return View("Login");
                }
-               return RedirectToAction("Login", "Account", vm);
+            return View("Register");
            }
 
         public ActionResult SingUp()
