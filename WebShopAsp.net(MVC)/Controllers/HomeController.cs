@@ -1,6 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WebShopAsp.net_MVC_.Models;
+using Business_logic_Layer.Models;
+using Data_Access_Layer.Context;
+using Business_logic_Layer.Converters;
+using Newtonsoft.Json;
 
 namespace WebShopAsp.net_MVC_.Controllers
 {
@@ -15,7 +19,10 @@ namespace WebShopAsp.net_MVC_.Controllers
 
         public IActionResult Index()
         {
-            return View();
+
+           
+            return RedirectToAction("Login", "Account");
+
         }
 
         public IActionResult Privacy()

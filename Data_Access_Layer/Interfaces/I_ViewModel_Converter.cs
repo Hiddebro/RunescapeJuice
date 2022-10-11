@@ -10,6 +10,8 @@ namespace Data_Access_Layer.Interfaces
     {
         TViewModel ModelToViewModel(TModel model);
         TModel ViewModelToModel(TViewModel viewmodel);
+
+
     }
     
 }

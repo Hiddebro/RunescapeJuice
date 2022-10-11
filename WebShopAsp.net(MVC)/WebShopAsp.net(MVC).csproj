@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <Folder Include="Images\" />
+    <Folder Include="Views\MainPages\" />
   </ItemGroup>
 
   <ItemGroup>

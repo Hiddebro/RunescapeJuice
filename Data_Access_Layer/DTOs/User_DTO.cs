@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data_Access_Layer.DTOs
 {
-    public record User_DTO
+    public class User_DTO
     {
         public int User_ID { get; set; }
         public bool IsAdmin { get; set; }
@@ -20,7 +20,9 @@ namespace Data_Access_Layer.DTOs
             Password = password;
         }
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public User_DTO(int user_ID)
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
             User_ID = user_ID;
         }

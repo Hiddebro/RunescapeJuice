@@ -8,6 +8,7 @@ using Business_logic_Layer.Container;
 using Business_logic_Layer.Models;
 using Data_Access_Layer.DTOs;
 using Data_Access_Layer.Interfaces;
+using Data_Access_Layer.Context;
 
 
 namespace Business_logic_Layer.Container
@@ -22,13 +23,27 @@ namespace Business_logic_Layer.Container
             this.user_Context = context;
         }
 
-       public long Insert(User_Model user_Model)
+  //   public AccUser_Model GetById(int id)
+  //   {
+  //       AccUser_Model accuser = new AccUser_Model();
+  //       AccUser_DTO dto = user_Context.GetById(id);
+  //       accuser = converter.DtoToModel(dto);
+  //       return accuser;
+  //   }
+
+        public long Insert(User_Model user_Model)
        {
            User_DTO dto = new User_DTO();
            dto = converter.ModelToDTO(user_Model);
            return user_Context.Insert(dto);
        }
 
+        public long DubbelName(User_Model user_Model)
+        {
+            User_DTO dto = new User_DTO();
+            dto = converter.ModelToDTO(user_Model);
+            return (long)user_Context.DubbelName(dto);
+        }
         public User_Model GetByName(User_Model user_Model)
         {
             User_DTO dto = new User_DTO();

@@ -4,11 +4,20 @@
 @{
     Layout = "LoginLayout";
 }
+
+
+
+
 <head>
     <style>
         html,
         body {
             height: 100%;
+        }
+        
+        .modal-content{
+            height: 500px;
+            width: 700px;
         }
 
         .btn-primary {
@@ -34,6 +43,8 @@
             padding-top: 40px;
             padding-bottom: 40px;
             background-color: #264b82;
+             background-size: cover;
+             background-image: url(https://preview.redd.it/rsfeq20h44151.jpg?width=1090&format=pjpg&auto=webp&s=c9ad4cb1c58ec3a622b09ef1c2aaf139cea97fce);
         }
 
         .form-signin {
@@ -75,32 +86,41 @@
 <body class="text-center">
 
     <form asp-controller="Account" asp-action="Login" method="post" class="form-signin">
-        <img class="mb-4" src="https://runescapetoday.com/wp-content/uploads/2022/02/LOGOweb.png" alt="Runescape Money"  height="70" />
+        <img class="mb-4"  src="https://runescapetoday.com/wp-content/uploads/2022/02/LOGOweb.png"  alt="Runescape Money"  height="63" />
 
         @*<div style="padding-top: 7px" class="h3 mb-3 font-weight-normal">@Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label" })</div>*@
 
         <div class="form-group">
-            <div style="margin-left:80px" class="InputBackgroundBox">
+            <div  class="InputBackgroundBox">
                 <input asp-for="Username" placeholder="Username" class="form-control text-center" required />
             </div>
             @*<span asp-validation-for="Username" class="text-danger"></span>*@
         </div>
         <div class="form-group">
-            <div style="margin-left:80px" class="InputBackgroundBox">
-                <input asp-for="Password" type="password" placeholder="Wachtwoord" class="form-control text-center" required />
+            <div class="InputBackgroundBox">
+                <input asp-for="Password" type="password" placeholder="Password" class="form-control text-center" required />
             </div>
             @*<span asp-validation-for="Password" class="text-danger"></span>*@
         </div>
 
-        <div style="margin-left:80px" class="modal-footer">
-            <input class="btn btn-lg btn-block btn-primary" type="submit" value="Log in" />
+        <div class="form-signin">
+            <input class="btn btn-dark" type="submit" value="Login" />
+            <br />
+
+          
+
+        </form>
+
+         <form asp-controller="Account" asp-action="GoToRegister" method="post">
+        <input class="btn btn-dark" type="submit" value="Create Account" />
         </div>
+        </form>
+    
 
-
-    </form>
+    
     </body>
 
-    <div class="offset-1">
+  @* <div class="offset-1">
     <div class="col-lg-11 col-md-11  col-sm-11  col-xs-11">
 
         <div class="modal" id="NieuweWerknemer">
@@ -156,7 +176,32 @@
 
             <br />
         </div>
+ 
 
     </div>
+*@ 
+@*
+<div class ="AddPopUp">
+    
+    @Html.Label("Add pop up")
+</div>
+<div class="modal fade" id="MyPopUp" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <input class="btn btn-lg btn-block btn-primary" type="submit" value="Register" />
+            </div>
+        </div>
+    </div>
+</div>
 
-
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(funciton(){
+            $(".AddPopUp").click(funciton(e){
+                $('MyPopUp').modal('show');
+            });
+        });
+    </script>
+}
+   *@

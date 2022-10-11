@@ -43,7 +43,7 @@ namespace Data_Access_Layer.Context
         {
             try
             {
-                string sql = "Update Account Set Registrated = 1 WHERE User_ID = @User_ID";
+                string sql = "Update [User] Set Registrated = 1 WHERE User_ID = @User_ID";
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
                     new KeyValuePair<string, string>("User_ID", id.ToString()),
@@ -57,62 +57,90 @@ namespace Data_Access_Layer.Context
 
         }
             
-        public long Insert(AccUser_DTO account)
-        {
-            try
+        
+ //    public long Insert(AccUser_DTO account)
+ //    {
+ //        try
+ //        {
+ //            string sql =
+ //                "INSERT INTO [User](Username, Password) OUTPUT INSERTED.Account_ID VALUES(@Username,@Password)";
+ //            List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+ //            {
+ //                new KeyValuePair<string, string>("Username", account.Username),
+ //                new KeyValuePair<string, string>("Password", account.Password),
+ //            };
+ //            int result = ExecuteInsert(sql, parameters);
+ //            return result;
+ //        }
+ //        catch (Exception e)
+ //        {
+ //            throw e;
+ //        }
+ //    }
+
+    long I_User_Context.Insert(User_DTO user)
+    {
+            
+                try
             {
                 string sql =
-                    "INSERT INTO Account(Username, Password) OUTPUT INSERTED.Account_ID VALUES(@Username,@Password)";
+                    "INSERT INTO [User](Username, Password) OUTPUT INSERTED.UserID VALUES (@Username, @Password)";
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>("Username", account.Username),
-                    new KeyValuePair<string, string>("Password", account.Password),
+                    new KeyValuePair<string, string>("Username", user.Username),
+                    new KeyValuePair<string, string>("Password", user.Password),
+                    
                 };
                 int result = ExecuteInsert(sql, parameters);
                 return result;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw e;
+                throw ex;
+            }
+            throw new NotImplementedException();
+        }
+        //                try { 
+        //        string sql =
+        //                "SELECT * FROM [User] WHERE username = @Username";
+        //    List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+        //                 {
+        //                     new KeyValuePair<string, string>("Username", user.Username)
+        //                 };
+        //    int value = ExecuteSql(sql, parameters);
+        //            return value;
+        //    }
+        //        catch (Exception e)
+        //        {
+        //            throw e;
+        //        }
+        //throw new NotImplementedException();
+
+        
+        public object DubbelName(User_DTO user)
+        {
+            try
+            {
+                SqlConnection con;
+                _ConnectionString = "Server = mssqlstud.fhict.local; Database = dbi439802_webshophid; User Id = dbi439802_webshophid; Password = Hidde012";
+                con = new SqlConnection(_ConnectionString);
+                SqlCommand cmd = new SqlCommand("Select count(*) from [User] where Username = @Username", con);
+                cmd.Parameters.AddWithValue("@Username", user);
+                con.Open();
+                var result = cmd.ExecuteScalar();
+
+                return (result);
+            }
+           
+            catch(Exception ex)
+            {
+                throw ex;
             }
         }
 
-        long I_User_Context.Insert(User_DTO user)
-        {
-            throw new NotImplementedException();
-        }
-        //    public bool Login(string username, string password)
-        //    {
-        //
-        //        using (SqlConnection con = new SqlConnection(connectionString))
-        //        {
-        //            try
-        //            {
-        //                con.Open();
-        //                SqlCommand comm = new SqlCommand("SELECT * FROM UserData WHERE Username = @username AND Password = @password", con);
-        //                SqlDataAdapter sda = new SqlDataAdapter(comm);
-        //
-        //                comm.Parameters.AddWithValue("@username", username.Trim());
-        //                comm.Parameters.AddWithValue("@password", password.Trim());
-        //
-        //                comm.ExecuteNonQuery();
-        //                DataTable dt = new DataTable();
-        //                sda.Fill(dt);
-        //
-        //
-        //                con.Close();
-        //
-        //                return dt.Rows.Count != 0;
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                Console.WriteLine(ex.Message);
-        //                return false;
-        //            }
-        //
-        //        }
-        //
-        //    }
+
+
+
         //  public User_DTO getUser(string username)
         //  {
         //      using (SqlConnection con = new SqlConnection(connectionString))
