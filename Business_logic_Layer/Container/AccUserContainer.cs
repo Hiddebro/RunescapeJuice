@@ -20,13 +20,13 @@ namespace Business_logic_Layer.Container
             this.context = context;
         }
         
-  //   public AccUser_Model GetById(int id)
-  //   {
-  //       AccUser_Model accuser = new AccUser_Model();
-  //       AccUser_DTO dto = context.GetById(id);
-  //       accuser = converter.DtoToModel(dto);
-  //       return accuser;
-  //   }
+      public AccUser_Model GetById(int id)
+      {
+          AccUser_Model accuser = new AccUser_Model();
+          AccUser_DTO dto = context.GetById(id);
+          accuser = converter.DtoToModel(dto);
+          return accuser;
+      }
         
         public long Insert(AccUser_Model accuser)
         {

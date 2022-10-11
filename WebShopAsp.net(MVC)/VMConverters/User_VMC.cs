@@ -30,7 +30,6 @@ namespace WebShopAsp.net_MVC_.VMConverters
             return user_Model;
         }
 
-     
        
     }
 }

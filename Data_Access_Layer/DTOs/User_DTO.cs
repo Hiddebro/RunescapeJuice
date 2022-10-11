@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data_Access_Layer.DTOs
 {
-    public record User_DTO
+    public class User_DTO
     {
         public int User_ID { get; set; }
         public bool IsAdmin { get; set; }

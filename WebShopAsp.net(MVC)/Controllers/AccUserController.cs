@@ -16,14 +16,14 @@ namespace WebShopAsp.net_MVC_.Controllers
 {
     public class AccUserController : Controller
     {
-        private readonly User_VMC viewModelConverter = new User_VMC();
-        private readonly AccUserContainer accUserContainer;
-        public readonly User_Container user_Container;
-        public AccUserController(AccUserContainer container, User_Container accountContainer)
-        {
-            accUserContainer = container;
-            this.user_Container = accountContainer;
-        }
+  //     private readonly User_VMC viewModelConverter = new User_VMC();
+  //     private readonly AccUserContainer accUserContainer;
+  //     public readonly User_Container user_Container;
+  //     public AccUserController(AccUserContainer container, User_Container accountContainer)
+  //     {
+  //         accUserContainer = container;
+  //         this.user_Container = accountContainer;
+  //     }
         public IActionResult Index()
         {
             return View();

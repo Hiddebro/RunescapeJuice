@@ -7,10 +7,9 @@ using Data_Access_Layer.DTOs;
 
 namespace Data_Access_Layer.Interfaces
 {
-    public interface I_AccUser_Context 
+    public interface I_Item_Context
     {
-        long Insert(AccUser_DTO accuser);
-        public long Update(AccUser_DTO accuser);
-        AccUser_DTO GetById(int id);
+        long AddItem(Item_DTO item);
+     //   public Item_DTO GetByItem(Item_DTO dto);
     }
 }

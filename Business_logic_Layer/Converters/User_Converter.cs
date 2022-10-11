@@ -8,7 +8,7 @@ using Data_Access_Layer.DTOs;
 
 namespace Business_logic_Layer.Converters
 {
-    public class User_Converter
+    public class User_Converter 
     {
         public User_Model DtoToModel(User_DTO dto)
         {

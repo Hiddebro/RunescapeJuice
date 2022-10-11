@@ -6,6 +6,7 @@ using WebShopAsp.net_MVC_.VMConverters;
 using Business_logic_Layer.Models;
 using Business_logic_Layer.Container;
 using Newtonsoft.Json;
+using Data_Access_Layer.Interfaces;
 
 namespace WebShopAsp.net_MVC_.Controllers
 {
@@ -25,16 +26,25 @@ namespace WebShopAsp.net_MVC_.Controllers
         {
             if (ModelState.IsValid)
             {
-                login_ViewModel = viewModelConverter.ModelToViewModel(user_Container.GetByName(viewModelConverter.ViewModelToModel(login_ViewModel)));
+                 login_ViewModel = viewModelConverter.ModelToViewModel(user_Container.GetByName(viewModelConverter.ViewModelToModel(login_ViewModel)));
 
-                if (login_ViewModel.User_ID != 0)
-                {
-                    return View("UserInfo");
-                }
-              return View();
+                 if (login_ViewModel.User_ID != 0)
+                 {
+                    return RedirectToAction("GoToUserInfo", "Account");
+                 }
+                return View();
             }
                 
             return View();
+        }
+
+        public IActionResult GoToUserInfo(Login_ViewModel login_ViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                return View();
+            }
+            return View("UserInfo");
         }
 
         public IActionResult GoToRegister(Login_ViewModel login_ViewModel)
@@ -45,7 +55,15 @@ namespace WebShopAsp.net_MVC_.Controllers
             }
             return View("Register");
         }
-
+       
+        public IActionResult GoToAddItem(Login_ViewModel login_Viewmodel)
+        {
+            if (ModelState.IsValid)
+            {
+                return View();
+            }
+            return View("AddItem");
+        }
          public IActionResult GoToLogin(Login_ViewModel login_ViewModel)
         {
             if (ModelState.IsValid)

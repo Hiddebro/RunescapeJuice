@@ -15,10 +15,7 @@ namespace Data_Access_Layer.Interfaces
         
        long Insert(User_DTO user);
         public object DubbelName(User_DTO user);
-
-
         User_DTO GetByName(User_DTO user);
         void Registrated(int id);
-        
     }
 }
