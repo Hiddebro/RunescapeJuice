@@ -21,15 +21,15 @@ namespace Data_Access_Layer.Context
             try
             {
                 string sql =
-                    "INSERT INTO [Items](ItemName, Price, Amount) OUTPUT INSERTED.ItemID VALUES (@ItemName, @Price, @Amount)";
+                    "INSERT INTO [Items](ItemName, Price, Amount) OUTPUT INSERTED.ItemID VALUES (@ItemName, @Price, @Amount)"; // wat doet output inserted
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
                     new KeyValuePair<string, string>("ItemName", item.ItemName),
                     new KeyValuePair<string, string>("Price", item.Price.ToString()),
                     new KeyValuePair<string, string>("Amount", item.Amount.ToString()),
                 };
-                int result = ExecuteInsert(sql, parameters);
-                return result;
+               // int result = ExecuteInsert(sql, parameters);
+             //   return result;
             }
             catch (Exception ex)
             {

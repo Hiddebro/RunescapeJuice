@@ -19,10 +19,7 @@ namespace WebShopAsp.net_MVC_.Controllers
 
         public IActionResult Index()
         {
-
-           
-            return RedirectToAction("Login", "Account");
-
+            return RedirectToAction("Login","User");
         }
 
         public IActionResult Privacy()

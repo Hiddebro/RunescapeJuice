@@ -10,12 +10,12 @@ using Data_Access_Layer.Interfaces;
 
 namespace WebShopAsp.net_MVC_.Controllers
 {
-    public class AccountController : Controller
+    public class UserController : Controller
     {
         private readonly User_VMC viewModelConverter = new User_VMC();
         private readonly User_Container user_Container;
 
-        public AccountController(User_Container container)
+        public UserController(User_Container container)
         {
             this.user_Container = container;
         }
@@ -26,11 +26,11 @@ namespace WebShopAsp.net_MVC_.Controllers
         {
             if (ModelState.IsValid)
             {
-                 login_ViewModel = viewModelConverter.ModelToViewModel(user_Container.GetByName(viewModelConverter.ViewModelToModel(login_ViewModel)));
+              //   login_ViewModel = viewModelConverter.ModelToViewModel(user_Container.GetByName(viewModelConverter.ViewModelToModel(login_ViewModel)));
 
                  if (login_ViewModel.User_ID != 0)
                  {
-                    return RedirectToAction("GoToUserInfo", "Account");
+                    return RedirectToAction("GoToUserInfo", "User");
                  }
                 return View();
             }
@@ -78,7 +78,7 @@ namespace WebShopAsp.net_MVC_.Controllers
                if (ModelState.IsValid)
                {
                    User_Model user = viewModelConverter.ViewModelToModel(vm);
-                   user_Container.Insert(user);
+                   user_Container.AddUser(user);
                    return View("Login");
                }
             return View("Register");

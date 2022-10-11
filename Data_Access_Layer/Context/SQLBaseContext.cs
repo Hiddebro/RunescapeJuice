@@ -10,93 +10,36 @@ namespace Data_Access_Layer.Context
         public SQLBaseContext()
         {
             _ConnectionString = "Server = mssqlstud.fhict.local; Database = dbi439802_webshophid; User Id = dbi439802_webshophid; Password = Hidde012";
-           
         }
-
-        public DataSet ExecuteSql(string sql, List<KeyValuePair<string, string>> parameters)
-        {
-            DataSet data = new DataSet();
-            try
-            {
-                SqlConnection connection = new SqlConnection(_ConnectionString);
-                SqlDataAdapter Adapter = new SqlDataAdapter();
-                SqlCommand command = connection.CreateCommand();
-
-                command.Parameters.AddRange(GetParameters(parameters));
-                command.CommandText = sql;
-
-                Adapter.SelectCommand = command;
-
-                connection.Open();
-
-                Adapter.Fill(data);
-                connection.Close();
-
-                return data;
-            }
-            catch (Exception e)
-            { 
-                throw e;
-            }
-        }
-
-        private SqlParameter[] GetParameters(List<KeyValuePair<string, string>> parameters)
-        {
-            SqlParameter[] retVal = new SqlParameter[parameters.Count];
-            foreach (KeyValuePair<string, string> kvp in parameters)
-            {
-                SqlParameter param = new SqlParameter
-                {
-                    ParameterName = "@" + kvp.Key,
-                    Value = kvp.Value
-                };
-                retVal[parameters.IndexOf(kvp)] = param;
-            }
-            return retVal;
-        }
-        public void ExecuteUpdate(string sql, List<KeyValuePair<string, string>> parameters)
+       public SqlConnection Con { get; set; } 
+        public void ConOpen()
         {
             try
             {
-                SqlConnection connection = new SqlConnection(_ConnectionString);
-                SqlCommand command = new SqlCommand();
-                command = connection.CreateCommand();
-
-                command.Parameters.AddRange(GetParameters(parameters));
-                command.CommandText = sql;
-
-                connection.Open();
-                command.ExecuteScalar();
-                connection.Close();
+                Con = new SqlConnection(_ConnectionString);
+                this.Con.Open();
+               // if not exist
             }
-            catch (Exception es)
+            catch (Exception ex)
             {
-                throw es;
+                Console.WriteLine(ex.Message);
             }
+
         }
 
-        public int ExecuteInsert(string sql, List<KeyValuePair<string, string>> parameters)
+        public void ConClose()
         {
             try
             {
-                SqlConnection connection = new SqlConnection(_ConnectionString);
-                SqlCommand command = new SqlCommand();
-                command = connection.CreateCommand();
-
-                command.Parameters.AddRange(GetParameters(parameters));
-                command.CommandText = sql;
-
-                connection.Open();
-                int id = (int)command.ExecuteScalar();
-                connection.Close();
-
-                return id;
+                    this.Con.Close();
+                // if not exist
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Console.WriteLine(ex.Message);
             }
         }
+
     }
-
 }
+

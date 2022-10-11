@@ -9,6 +9,7 @@ using System.Data;
 using System;
 using System.Data.SqlClient;
 using System.Collections.Generic;
+using Data_Access_Layer.Context;
 
 
 
@@ -17,89 +18,117 @@ namespace Data_Access_Layer.Context
     public class User_Context : SQLBaseContext, I_User_Context
     {
 
-        public User_DTO GetByName(User_DTO user)
+        //     public User_DTO GetByName(User_DTO user)
+        //     {
+        //         try
+        //         {
+        //             string sql = "SELECT * FROM [User] WHERE Username = @Username and Password = @Password";
+        //             List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
+        //             {
+        //                 new KeyValuePair<string, string>("Username", user.Username),
+        //                 new KeyValuePair<string, string>("Password", user.Password),
+        //             };
+        //
+        //             DataSet results = ExecuteSql(sql, parameters);
+        //             User_DTO b = Parses.Parses.DataSetToAccountDTO(results, 0);
+        //             int a = b.User_ID;
+        //             return b;
+        //         }
+        //         catch (Exception ex)
+        //         {
+        //             throw ex;
+        //         }
+        //     }
+
+        //    public void Registrated(int id)
+        //    {
+        //        try
+        //        {
+        //            string sql = "Update [User] Set Registrated = 1 WHERE User_ID = @User_ID";
+        //            List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+        //            {
+        //                new KeyValuePair<string, string>("User_ID", id.ToString()),
+        //            };
+        //            ExecuteUpdate(sql, parameters);
+        //        }
+        //        catch (Exception e) 
+        //        {
+        //            throw e;
+        //        }
+        //
+        //    }
+
+
+        //    public long Insert(AccUser_DTO account)
+        //    {
+        //        try
+        //        {
+        //            string sql =
+        //                "INSERT INTO [User](Username, Password) OUTPUT INSERTED.Account_ID VALUES(@Username,@Password)";
+        //            List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+        //            {
+        //                new KeyValuePair<string, string>("Username", account.Username),
+        //                new KeyValuePair<string, string>("Password", account.Password),
+        //            };
+        //            int result = ExecuteInsert(sql, parameters);
+        //            return result;
+        //        }
+        //        catch (Exception e)
+        //        {
+        //            throw e;
+        //        }
+        //    }
+       
+
+        public bool AddUser(User_DTO user)
         {
             try
             {
-                string sql = "SELECT * FROM [User] WHERE Username = @Username and Password = @Password";
-                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
-                {
-                    new KeyValuePair<string, string>("Username", user.Username),
-                    new KeyValuePair<string, string>("Password", user.Password),
-                };
-
-                DataSet results = ExecuteSql(sql, parameters);
-                User_DTO b = Parses.Parses.DataSetToAccountDTO(results, 0);
-                int a = b.User_ID;
-                return b;
+                { 
+                    ConOpen();
+                    var sql = "IF NOT EXISTS(SELECT * FROM [USER] WHERE Username = @Username) INSERT INTO [User](Username, Password) OUTPUT INSERTED.UserID VALUES (@Username, @Password)";
+                    SqlCommand cmd = new SqlCommand(sql , this.Con);
+                    cmd.Parameters.AddWithValue("@Username", user.Username);
+                    cmd.Parameters.AddWithValue("@Password", user.Password);
+                    Console.WriteLine("Succesful Registerd");
+                    var Com = cmd.ExecuteNonQuery();
+                    if(Com >= 1)
+                    {
+                    return true;
+                    }
+                    return false;
+                }
             }
             catch (Exception ex)
             {
-                throw ex;
+                Console.WriteLine(ex.Message);
+                return false;
             }
         }
 
-        public void Registrated(int id)
-        {
-            try
-            {
-                string sql = "Update [User] Set Registrated = 1 WHERE User_ID = @User_ID";
-                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
-                {
-                    new KeyValuePair<string, string>("User_ID", id.ToString()),
-                };
-                ExecuteUpdate(sql, parameters);
-            }
-            catch (Exception e) 
-            {
-                throw e;
-            }
 
-        }
-            
-        
- //    public long Insert(AccUser_DTO account)
- //    {
- //        try
- //        {
- //            string sql =
- //                "INSERT INTO [User](Username, Password) OUTPUT INSERTED.Account_ID VALUES(@Username,@Password)";
- //            List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
- //            {
- //                new KeyValuePair<string, string>("Username", account.Username),
- //                new KeyValuePair<string, string>("Password", account.Password),
- //            };
- //            int result = ExecuteInsert(sql, parameters);
- //            return result;
- //        }
- //        catch (Exception e)
- //        {
- //            throw e;
- //        }
- //    }
-
-    long I_User_Context.Insert(User_DTO user)
-    {
-            
-                try
-            {
-                string sql =
-                    "INSERT INTO [User](Username, Password) OUTPUT INSERTED.UserID VALUES (@Username, @Password)";
-                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
-                {
-                    new KeyValuePair<string, string>("Username", user.Username),
-                    new KeyValuePair<string, string>("Password", user.Password),
-                    
-                };
-                int result = ExecuteInsert(sql, parameters);
-                return result;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            throw new NotImplementedException();
-        }
+ // long I_User_Context.Insert(User_DTO user)
+ // {
+ //         
+ //             try
+ //         {
+ //             string sql =
+ //                 "INSERT INTO [User](Username, Password) OUTPUT INSERTED.UserID VALUES (@Username, @Password)";
+ //             List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+ //             {
+ //                 new KeyValuePair<string, string>("Username", user.Username),
+ //                 new KeyValuePair<string, string>("Password", user.Password),
+ //                 
+ //             };
+ //             int result = ExecuteInsert(sql, parameters);
+ //             return result;
+ //         }
+ //         catch (Exception ex)
+ //         {
+ //             throw ex;
+ //         }
+ //         throw new NotImplementedException();
+ //     }
         //                try { 
         //        string sql =
         //                "SELECT * FROM [User] WHERE username = @Username";

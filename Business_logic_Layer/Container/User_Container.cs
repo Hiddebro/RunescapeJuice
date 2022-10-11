@@ -31,11 +31,11 @@ namespace Business_logic_Layer.Container
   //       return accuser;
   //   }
 
-        public long Insert(User_Model user_Model)
+        public bool AddUser(User_Model user_Model)
        {
            User_DTO dto = new User_DTO();
            dto = converter.ModelToDTO(user_Model);
-           return user_Context.Insert(dto);
+           return user_Context.AddUser(dto);
        }
 
         public long DubbelName(User_Model user_Model)
@@ -44,16 +44,16 @@ namespace Business_logic_Layer.Container
             dto = converter.ModelToDTO(user_Model);
             return (long)user_Context.DubbelName(dto);
         }
-        public User_Model GetByName(User_Model user_Model)
-        {
-            User_DTO dto = new User_DTO();
-            dto = converter.ModelToDTO(user_Model);
-            return converter.DtoToModel(user_Context.GetByName(dto));
-        }
+    //   public User_Model GetByName(User_Model user_Model)
+    //   {
+    //       User_DTO dto = new User_DTO();
+    //       dto = converter.ModelToDTO(user_Model);
+    //       return converter.DtoToModel(user_Context.GetByName(dto));
+    //   }
 
-        public void Registrated(int id)
-        {
-            user_Context.Registrated(id);
-        }
+     // public void Registrated(int id)
+     // {
+     //     user_Context.Registrated(id);
+     // }
     }
 }

@@ -6,6 +6,6 @@
         public string? ItemName { get; set; }
         public int Price { get; set; }
         public int Amount { get; set; }
-    
+        public List<Item_ViewModel> allitems { get; set; } = new List<Item_ViewModel>();
     }
 }

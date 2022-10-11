@@ -12,10 +12,10 @@ namespace Data_Access_Layer.Interfaces
 {
     public interface I_User_Context 
     {
-        
-       long Insert(User_DTO user);
+        public bool AddUser(User_DTO user);
+    //   long Insert(User_DTO user);
         public object DubbelName(User_DTO user);
-        User_DTO GetByName(User_DTO user);
-        void Registrated(int id);
+     //   User_DTO GetByName(User_DTO user);
+     //   void Registrated(int id);
     }
 }
