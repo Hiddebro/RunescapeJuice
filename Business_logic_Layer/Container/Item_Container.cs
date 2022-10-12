@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Business_logic_Layer.Converters;
-using Business_logic_Layer.Container;
+﻿using Business_logic_Layer.Converters;
 using Business_logic_Layer.Models;
 using Data_Access_Layer.DTOs;
 using Data_Access_Layer.Interfaces;
@@ -20,18 +14,13 @@ namespace Business_logic_Layer.Container
         {
             this.item_Context = context;
         }
-        public long AddItem(Item_Model item_Model)
-     {
-         Item_DTO dto = new Item_DTO();
-         dto = converter.ModelToDTO(item_Model);
-         return item_Context.AddItem(dto);
-     }
+        public Item_DTO AddItem(Item_Model item_Model)
+        {
+            Item_DTO dto = new Item_DTO();
+            dto = converter.ModelToDTO(item_Model);
+            return item_Context.AddItem(dto);
+        }
 
-  //     public Item_Model GetByItem(Item_Model item_Model)
-  //     {
-  //         Item_DTO dto = new Item_DTO();
-  //         dto = converter.ModelToDTO(item_Model);
-  //         return converter.DtoToModel(item_Context.GetByItem(dto));
-  //     }
+
     }
 }

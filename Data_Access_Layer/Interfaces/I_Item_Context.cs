@@ -9,7 +9,7 @@ namespace Data_Access_Layer.Interfaces
 {
     public interface I_Item_Context
     {
-        long AddItem(Item_DTO item);
-     //   public Item_DTO GetByItem(Item_DTO dto);
+        public Item_DTO AddItem(Item_DTO item);
+        //   public Item_DTO GetByItem(Item_DTO dto);
     }
 }

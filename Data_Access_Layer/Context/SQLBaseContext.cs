@@ -1,5 +1,4 @@
-﻿using System.Data;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 
 namespace Data_Access_Layer.Context
 {
@@ -11,14 +10,14 @@ namespace Data_Access_Layer.Context
         {
             _ConnectionString = "Server = mssqlstud.fhict.local; Database = dbi439802_webshophid; User Id = dbi439802_webshophid; Password = Hidde012";
         }
-       public SqlConnection Con { get; set; } 
+        public SqlConnection Con { get; set; }
         public void ConOpen()
         {
             try
             {
                 Con = new SqlConnection(_ConnectionString);
                 this.Con.Open();
-               // if not exist
+                // if not exist
             }
             catch (Exception ex)
             {
@@ -31,7 +30,7 @@ namespace Data_Access_Layer.Context
         {
             try
             {
-                    this.Con.Close();
+                this.Con.Close();
                 // if not exist
             }
             catch (Exception ex)

@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
-namespace WebShopAsp.net_MVC_.ViewModels
+﻿namespace WebShopAsp.net_MVC_.ViewModels
 {
     public class Login_ViewModel
     {

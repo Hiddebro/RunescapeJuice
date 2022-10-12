@@ -1,12 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using WebShopAsp.net_MVC_.Models;
+﻿using Business_logic_Layer.Container;
+using Business_logic_Layer.Models;
+using Microsoft.AspNetCore.Mvc;
 using WebShopAsp.net_MVC_.ViewModels;
 using WebShopAsp.net_MVC_.VMConverters;
-using Business_logic_Layer.Models;
-using Business_logic_Layer.Container;
-using Newtonsoft.Json;
-using Data_Access_Layer.Interfaces;
 
 namespace WebShopAsp.net_MVC_.Controllers
 {
@@ -20,24 +16,45 @@ namespace WebShopAsp.net_MVC_.Controllers
             this.user_Container = container;
         }
 
-        
+
 
         public IActionResult Login(Login_ViewModel login_ViewModel)
         {
             if (ModelState.IsValid)
             {
-              //   login_ViewModel = viewModelConverter.ModelToViewModel(user_Container.GetByName(viewModelConverter.ViewModelToModel(login_ViewModel)));
+                login_ViewModel = viewModelConverter.ModelToViewModel(user_Container.GetByName(viewModelConverter.ViewModelToModel(login_ViewModel)));
 
-                 if (login_ViewModel.User_ID != 0)
-                 {
-                    return RedirectToAction("GoToUserInfo", "User");
-                 }
+                if (login_ViewModel.User_ID != 0 & login_ViewModel.IsAdmin == 0)
+                {
+                    return RedirectToAction("GoToUserMainPage", "User");
+                }
+                else if (login_ViewModel.User_ID != 0 & login_ViewModel.IsAdmin == 1)
+                {
+                    return RedirectToAction("GoToAdminMainPage", "User");
+                }
                 return View();
             }
-                
+
             return View();
         }
 
+        public IActionResult GoToUserMainPage(Login_ViewModel login_ViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                return View();
+            }
+            return View("UserMainPage");
+        }
+
+        public IActionResult GoToAdminMainPage(Login_ViewModel login_ViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                return View();
+            }
+            return View("AdminMainPage");
+        }
         public IActionResult GoToUserInfo(Login_ViewModel login_ViewModel)
         {
             if (ModelState.IsValid)
@@ -50,12 +67,12 @@ namespace WebShopAsp.net_MVC_.Controllers
         public IActionResult GoToRegister(Login_ViewModel login_ViewModel)
         {
             if (ModelState.IsValid)
-            { 
-            return View();
+            {
+                return View();
             }
             return View("Register");
         }
-       
+
         public IActionResult GoToAddItem(Login_ViewModel login_Viewmodel)
         {
             if (ModelState.IsValid)
@@ -64,54 +81,34 @@ namespace WebShopAsp.net_MVC_.Controllers
             }
             return View("AddItem");
         }
-         public IActionResult GoToLogin(Login_ViewModel login_ViewModel)
+        public IActionResult GoToLogin(Login_ViewModel login_ViewModel)
         {
             if (ModelState.IsValid)
-            { 
-            return View();
+            {
+                return View();
             }
             return View("Login");
         }
 
-           public IActionResult Register(Login_ViewModel vm)
-           {
-               if (ModelState.IsValid)
-               {
-                   User_Model user = viewModelConverter.ViewModelToModel(vm);
-                   user_Container.AddUser(user);
-                   return View("Login");
-               }
+        public IActionResult Register(Login_ViewModel vm)
+        {
+            if (ModelState.IsValid)
+            {
+                User_Model user = viewModelConverter.ViewModelToModel(vm);
+                user_Container.AddUser(user);
+                return View("Login");
+            }
             return View("Register");
         }
-  //      public IActionResult Register(Login_ViewModel vm)
-  //      {
-  //          User_Model user = viewModelConverter.ViewModelToModel(vm);
-  //          if (ModelState.IsValid)
-  //          {
-  //
-  //              user_Container.DubbelName(user);
-  //              return View("Register");
-  //          }
-  //          if (user != null)
-  //          {
-  //
-  //              user_Container.Insert(user);
-  //              return View("Login");
-  //          }
-  //          return View("Register");
-  //      }
+
 
         public ActionResult SingUp()
         {
             return View();
         }
 
-#pragma warning disable CS0114 // Member hides inherited member; missing override keyword
-        public ActionResult SignOut()
-#pragma warning restore CS0114 // Member hides inherited member; missing override keyword
-        {
-            return View();
-        }
+
+
 
 
     }
