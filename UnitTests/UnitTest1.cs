@@ -8,7 +8,7 @@ namespace UnitTests
     [TestClass]
     public class UnitTest1
     {
-        static I_User_Context user_Context = new User_Context();
+        static IUser_Context user_Context = new User_Context();
         User_Container container = new User_Container(user_Context);
        
 

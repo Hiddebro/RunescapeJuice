@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace Data_Access_Layer.Context
 {
-    public class User_Context : SQLBaseContext, I_User_Context
+    public class User_Context : SQLBaseContext, IUser_Context
     {
 
         public User_DTO GetByName(User_DTO user)
@@ -20,9 +20,10 @@ namespace Data_Access_Layer.Context
                     SqlCommand cmd = new SqlCommand(sql, this.Con);
                     cmd.Parameters.AddWithValue("@Username", user.Username);
                     cmd.Parameters.AddWithValue("@Password", user.Password);
-                    Console.WriteLine("Succesful Loged in");
+                    Console.WriteLine("Succesful Logged in");
                     SqlDataAdapter sda = new SqlDataAdapter(cmd);
                     cmd.ExecuteNonQuery();
+
                     DataTable dt = new DataTable();
                     sda.Fill(dt);
                     var row = dt.Rows[0];

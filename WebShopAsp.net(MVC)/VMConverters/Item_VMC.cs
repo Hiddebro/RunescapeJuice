@@ -4,7 +4,7 @@ using WebShopAsp.net_MVC_.ViewModels;
 
 namespace WebShopAsp.net_MVC_.VMConverters
 {
-    public class Item_VMC : I_ViewModel_Converter<Item_Model, Item_ViewModel>
+    public class Item_VMC : IViewModel_Converter<Item_Model, Item_ViewModel>
     {
 
         public Item_ViewModel ModelToViewModel(Item_Model model)

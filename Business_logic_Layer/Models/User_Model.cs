@@ -23,11 +23,12 @@
             Email = email;
         }
 
-        public User_Model(string username, string password, int user_ID)
+        public User_Model(string username, string password, int user_ID, int isAdmin)
         {
             Username = username;
             Password = password;
             User_ID = user_ID;
+            IsAdmin = isAdmin;
 
         }
         public User_Model()

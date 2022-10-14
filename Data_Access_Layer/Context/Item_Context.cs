@@ -5,11 +5,10 @@ using System.Data.SqlClient;
 
 namespace Data_Access_Layer.Context
 {
-    public class Item_Context : SQLBaseContext, I_Item_Context
+    public class Item_Context : SQLBaseContext, IItem_Context
     {
         public Item_DTO AddItem(Item_DTO item)
         {
-
             try
             {
                 ConOpen();
@@ -19,6 +18,31 @@ namespace Data_Access_Layer.Context
                 cmd.Parameters.AddWithValue("@Price", item.Price);
                 cmd.Parameters.AddWithValue("@Amount", item.Amount);
                 cmd.ExecuteNonQuery();
+                
+                
+                Console.WriteLine("Succesful Item Added");
+                return (item);
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            throw new NotImplementedException();
+        }
+
+        public Item_DTO GetAllItems(Item_DTO item)
+        {
+            List<Item_DTO> list = new List<Item_DTO>();
+            try
+            {
+                ConOpen();
+                var sql = "SELECT * FROM Items Where ItemID IS NOT NULL";
+                SqlCommand cmd = new SqlCommand(sql, this.Con);
+                cmd.ExecuteNonQuery();
+                
+                list.Add(item);
+
                 Console.WriteLine("Succesful Item Added");
                 return (item);
             }

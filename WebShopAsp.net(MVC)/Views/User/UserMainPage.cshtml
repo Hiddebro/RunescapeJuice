@@ -1,6 +1,12 @@
-﻿@model WebShopAsp.net_MVC_.ViewModels.Login_ViewModel
+﻿@model WebShopAsp.net_MVC_.ViewModels.Item_ViewModel
 @using WebShopAsp.net_MVC_.ViewModels
 
 @{
     Layout = "_UserLayout";
 }
+
+<form asp-controller="Item" asp-action="GetAllItems" method="post">
+    <input class="btn btn-dark" type="submit" value="Create Item" />
+
+
+</form>

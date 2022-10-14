@@ -8,10 +8,10 @@ namespace Business_logic_Layer.Container
 {
     public class User_Container
     {
-        private I_User_Context user_Context;
+        private IUser_Context user_Context;
         private readonly User_Converter converter = new User_Converter();
 
-        public User_Container(I_User_Context context)
+        public User_Container(IUser_Context context)
         {
             this.user_Context = context;
         }

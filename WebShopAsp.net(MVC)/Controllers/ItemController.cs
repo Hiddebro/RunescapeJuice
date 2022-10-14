@@ -24,16 +24,16 @@ namespace WebShopAsp.net_MVC_.Controllers
             return View();
         }
 
-        public static List<String> Item_Model;
-        public ActionResult ItemList(Item_ViewModel vm)
-        {
-            var model = new List<String>();
-            model.Add(item_Container.ToString());
-            return View(model);
-        }
         public IActionResult BackToUserInfo()
         {
             return RedirectToAction("UserInfo", "User");
+        }
+
+        public IActionResult GetAllItems(Item_ViewModel vm)
+        {
+            Item_Model item = viewModelConverter.ViewModelToModel(vm);
+            item_Container.GetAllItems(item);
+            return View();
         }
 
         public IActionResult AddItem(Item_ViewModel vm)
@@ -43,11 +43,8 @@ namespace WebShopAsp.net_MVC_.Controllers
                 Item_Model item = viewModelConverter.ViewModelToModel(vm);
                 item_Container.AddItem(item);
 
-                ItemList(vm);
                 return RedirectToAction("GoToAddItem", "User");
             }
-
-
             return RedirectToAction("GoToUserInfo", "User");
         }
 
