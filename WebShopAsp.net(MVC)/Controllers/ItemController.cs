@@ -24,11 +24,6 @@ namespace WebShopAsp.net_MVC_.Controllers
             return View();
         }
 
-        public IActionResult BackToUserInfo()
-        {
-            return RedirectToAction("UserInfo", "User");
-        }
-
         public IActionResult GetAllItems(Item_ViewModel vm)
         {
             Item_Model item = viewModelConverter.ViewModelToModel(vm);
@@ -42,10 +37,9 @@ namespace WebShopAsp.net_MVC_.Controllers
             {
                 Item_Model item = viewModelConverter.ViewModelToModel(vm);
                 item_Container.AddItem(item);
-
-                return RedirectToAction("GoToAddItem", "User");
+                return RedirectToAction("GoToAdminMainPage","Admin");
             }
-            return RedirectToAction("GoToUserInfo", "User");
+            return View();
         }
 
     }

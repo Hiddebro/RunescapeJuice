@@ -85,7 +85,7 @@
 </head>
 <body class="text-center">
 
-    <form asp-controller="User" asp-action="Login" method="post" class="form-signin">
+    <form asp-controller="Login" asp-action="Login" method="post" class="form-signin">
         <img class="mb-4"  src="https://runescapetoday.com/wp-content/uploads/2022/02/LOGOweb.png"  alt="Runescape Money"  height="63" />
 
         @*<div style="padding-top: 7px" class="h3 mb-3 font-weight-normal">@Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label" })</div>*@
@@ -111,7 +111,7 @@
 
         </form>
 
-         <form asp-controller="User" asp-action="GoToRegister" method="post">
+         <form asp-controller="Login" asp-action="GoToRegister" method="post">
         <input class="btn btn-dark" type="submit" value="Create Account" />
         </div>
         </form>

@@ -29,7 +29,7 @@ namespace Data_Access_Layer.Context
                     var row = dt.Rows[0];
                     user.User_ID = row.Field<int>("UserID");
                     user.IsAdmin = row.Field<int>("IsAdmin");
-
+                    
                     return (user);
                 }
 

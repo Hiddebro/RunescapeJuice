@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Diagnostics;
 using WebShopAsp.net_MVC_.Models;
+using WebShopAsp.net_MVC_.ViewModels;
+using WebShopAsp.net_MVC_;
 
 namespace WebShopAsp.net_MVC_.Controllers
 {
@@ -13,9 +16,12 @@ namespace WebShopAsp.net_MVC_.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+       
+         
+        
+        public IActionResult Index(Login_ViewModel login_ViewModel)
         {
-            return RedirectToAction("Login", "User");
+            return RedirectToAction("Login", "Login");
         }
 
         public IActionResult Privacy()
@@ -28,5 +34,8 @@ namespace WebShopAsp.net_MVC_.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+       
+
     }
 }

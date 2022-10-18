@@ -8,15 +8,24 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddSingleton(new User_Container(new User_Context()));
 
-builder.Services.AddSingleton(new Item_Container(new Item_Context()));
+
 builder.Services.AddScoped<Item_Container>();
 builder.Services.AddScoped<User_Container>();
 builder.Services.AddScoped<IItem_Context, Item_Context>();
 builder.Services.AddScoped<IUser_Context, User_Context>();
-
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(1);
+});
 var app = builder.Build();
+
+//private void ConfigureServices(IServiceCollection services)
+//{
+//    services.AddControllersWithViews();
+//    services.AddSession(options => { options.IdleTimeout = TimeSpan.FromMinutes(1); });
+//}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -25,7 +34,7 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-
+app.UseSession();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

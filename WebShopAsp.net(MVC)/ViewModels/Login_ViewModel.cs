@@ -6,7 +6,7 @@
         public string Username { get; set; }
         public string Password { get; set; }
         public int IsAdmin { get; set; }
-        public List<Login_ViewModel> allacounts { get; set; } = new List<Login_ViewModel>();
+       // public List<Login_ViewModel> allacounts { get; set; } = new List<Login_ViewModel>();
 
     }
 }
