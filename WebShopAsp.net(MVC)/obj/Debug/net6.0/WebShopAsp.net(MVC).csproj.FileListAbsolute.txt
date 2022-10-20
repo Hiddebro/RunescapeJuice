@@ -70,3 +70,4 @@ C:\Users\HOIDE\Desktop\semester 2 hidde\RunescapeJuice\WebShopAsp.net(MVC)\obj\D
 C:\Users\HOIDE\Desktop\semester 2 hidde\RunescapeJuice\WebShopAsp.net(MVC)\obj\Debug\net6.0\WebShopAsp.net(MVC).pdb
 C:\Users\HOIDE\Desktop\semester 2 hidde\RunescapeJuice\WebShopAsp.net(MVC)\obj\Debug\net6.0\WebShopAsp.net(MVC).genruntimeconfig.cache
 C:\Users\HOIDE\Desktop\semester 2 hidde\RunescapeJuice\WebShopAsp.net(MVC)\obj\Debug\net6.0\ref\WebShopAsp.net(MVC).dll
+C:\Users\HOIDE\Desktop\semester 2 hidde\RunescapeJuice\WebShopAsp.net(MVC)\bin\Debug\net6.0\System.Security.Permissions.dll

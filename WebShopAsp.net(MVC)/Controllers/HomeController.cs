@@ -4,6 +4,8 @@ using System.Diagnostics;
 using WebShopAsp.net_MVC_.Models;
 using WebShopAsp.net_MVC_.ViewModels;
 using WebShopAsp.net_MVC_;
+using Microsoft.AspNetCore.Http;
+using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace WebShopAsp.net_MVC_.Controllers
 {
@@ -16,9 +18,13 @@ namespace WebShopAsp.net_MVC_.Controllers
             _logger = logger;
         }
 
-       
-         
-        
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        {
+            app.UseSession();
+            //removed for brevity
+        }
+
+
         public IActionResult Index(Login_ViewModel login_ViewModel)
         {
             return RedirectToAction("Login", "Login");

@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebShopAsp.net_MVC_.ViewModels;
 using WebShopAsp.net_MVC_.VMConverters;
+using Microsoft.AspNetCore.Session;
+using Microsoft.AspNetCore.Http;
 
 namespace WebShopAsp.net_MVC_.Controllers
 {
@@ -33,15 +35,14 @@ namespace WebShopAsp.net_MVC_.Controllers
                 {
 
                     HttpContext.Session.SetInt32("User", login_ViewModel.User_ID);
-                    return RedirectToAction("GoToUserMainPage", "User");
+                    return RedirectToAction("GoToUserMainPage", "User", login_ViewModel);
 
                 }
                 else if (login_ViewModel.User_ID != 0 & login_ViewModel.IsAdmin == 1)
                 {
                     HttpContext.Session.SetInt32("User", login_ViewModel.User_ID);
 
-
-                    return RedirectToAction("GoToAdminMainPage", "Admin");
+                    return RedirectToAction("GoToAdminMainPage", "Admin", login_ViewModel);
                 }
                 return View();
             }

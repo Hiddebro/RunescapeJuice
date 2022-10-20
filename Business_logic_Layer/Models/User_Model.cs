@@ -16,6 +16,12 @@
             Email = email;
         }
 
+        public User_Model(int user_ID, int isadmin)
+        {
+            User_ID = user_ID;
+            IsAdmin = isadmin;
+        }
+
         public User_Model(string username, string password, string email)
         {
             Username = username;
