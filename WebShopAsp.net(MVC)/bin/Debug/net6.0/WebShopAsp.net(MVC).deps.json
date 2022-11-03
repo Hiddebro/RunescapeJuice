@@ -224,6 +224,7 @@
       },
       "Data_Access_Layer/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
           "System.Data.SqlClient": "4.8.3"
         },
         "runtime": {

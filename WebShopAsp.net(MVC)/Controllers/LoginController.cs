@@ -50,6 +50,17 @@ namespace WebShopAsp.net_MVC_.Controllers
             return View();
         }
 
+        public IActionResult AddUser(Login_ViewModel vm)
+        {
+            if (ModelState.IsValid)
+            {
+                User_Model user = viewModelConverter.ViewModelToModel(vm);
+                user_Container.AddUser(user);
+                return View("Login");
+            }
+            return View("Register");
+        }
+
         public IActionResult GoToRegister(Login_ViewModel login_ViewModel)
         {
             return View("Register");
