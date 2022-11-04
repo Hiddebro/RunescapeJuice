@@ -52,7 +52,7 @@ namespace WebShopAsp.net_MVC_.Controllers
             
             if (HttpContext.Session.GetInt32("Admin") > 0)
             {
-                return View("AddItem", login_ViewModel);
+                return View("AddItem", item_ViewModel);
             }
             else
             {
