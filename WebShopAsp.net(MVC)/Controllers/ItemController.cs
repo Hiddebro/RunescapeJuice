@@ -19,18 +19,42 @@ namespace WebShopAsp.net_MVC_.Controllers
             this.item_Container = container;
         }
 
-
+        [HttpGet]
         public IActionResult Index()
         {
-            return View();
-        }
+            List<Item_ViewModel> items = new List<Item_ViewModel>();
+            foreach (var item in item_Container.GetAllItems())
+            {
+                Item_ViewModel itemViewModel = new Item_ViewModel
+                {
+                    ItemID = item.ItemID,
+                    ItemName = item.ItemName,
+                    Price = item.Price,
+                    Amount = item.Amount
+                };
+                items.Add(itemViewModel);
 
-        public IActionResult GetAllItems(Item_ViewModel vm)
-        {
-            Item_Model item = viewModelConverter.ViewModelToModel(vm);
-            item_Container.GetAllItems(item);
-            return View();
+            }
+            return View(items);
         }
+        
+     //  public IActionResult GetAllItems()
+     //  {
+     //      List<Item_ViewModel> items = new List<Item_ViewModel>();
+     //      foreach(var item in item_Container.GetAllItems())
+     //      {
+     //          Item_ViewModel itemViewModel = new Item_ViewModel
+     //          {
+     //              ItemID = item.ItemID,
+     //              ItemName = item.ItemName,
+     //              Price = item.Price,
+     //              Amount = item.Amount
+     //          };
+     //          items.Add(itemViewModel);
+     //
+     //      }
+     //      return RedirectToAction("GoToAdminMainPage", "Admin");
+     //  }
 
         public IActionResult AddItem(Item_ViewModel vm)
         {

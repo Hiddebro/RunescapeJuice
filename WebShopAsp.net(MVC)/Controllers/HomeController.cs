@@ -27,6 +27,7 @@ namespace WebShopAsp.net_MVC_.Controllers
 
         public IActionResult Index(Login_ViewModel login_ViewModel)
         {
+            HttpContext.Session.Clear();
             return RedirectToAction("Login", "Login");
         }
 

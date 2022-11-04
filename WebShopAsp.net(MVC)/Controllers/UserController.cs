@@ -18,7 +18,16 @@ namespace WebShopAsp.net_MVC_.Controllers
 
         public IActionResult GoToUserMainPage(Login_ViewModel login_ViewModel)
         {
-            return View("UserMainPage");
+            if (HttpContext.Session.GetInt32("User") > 0 & login_ViewModel.IsAdmin == 0)
+            {
+                return View("UserMainPage", login_ViewModel);
+            }
+            else
+            {
+                HttpContext.Session.Clear();
+                return RedirectToAction("Login", "Login");
+            }
+           
         }
     }
 }

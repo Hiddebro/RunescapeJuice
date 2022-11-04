@@ -1,5 +1,6 @@
 ﻿using Data_Access_Layer.DTOs;
 using Data_Access_Layer.Interfaces;
+using System.Data;
 using System.Data.SqlClient;
 
 
@@ -18,8 +19,8 @@ namespace Data_Access_Layer.Context
                 cmd.Parameters.AddWithValue("@Price", item.Price);
                 cmd.Parameters.AddWithValue("@Amount", item.Amount);
                 cmd.ExecuteNonQuery();
-                
-                
+
+
                 Console.WriteLine("Succesful Item Added");
                 return (item);
             }
@@ -31,30 +32,53 @@ namespace Data_Access_Layer.Context
             throw new NotImplementedException();
         }
 
-        public Item_DTO GetAllItems(Item_DTO item)
+        public List<Item_DTO> GetAllItems()
         {
             List<Item_DTO> list = new List<Item_DTO>();
             try
             {
+                Item_DTO item = null;
                 ConOpen();
-                var sql = "SELECT * FROM Items Where ItemID IS NOT NULL";
+                var sql = "SELECT * FROM Items";
                 SqlCommand cmd = new SqlCommand(sql, this.Con);
-                cmd.ExecuteNonQuery();
-                
-                list.Add(item);
+                SqlDataReader rdr = cmd.ExecuteReader();
+               
+              
+                while (rdr.Read())
+                {
+                    item = new Item_DTO
+                    {
+                        ItemID = rdr.GetInt32("ItemID"),
+                        ItemName = rdr.GetString("ItemName"),
+                        Price = rdr.GetInt32("Price"),
+                        Amount = rdr.GetInt32("Amount")
+                    };
 
-                Console.WriteLine("Succesful Item Added");
-                return (item);
+                    list.Add(item);                      
+
+                }
+
+
+
+                return list ;
             }
 
             catch (Exception ex)
             {
                 throw ex;
             }
+            finally
+            {
+                ConClose();
+            }
             throw new NotImplementedException();
         }
-
-
-
     }
 }
+
+       
+        
+
+
+    
+

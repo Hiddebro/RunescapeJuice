@@ -16,7 +16,11 @@ namespace WebShopAsp.net_MVC_.Controllers
 
         private readonly User_VMC viewModelConverter = new User_VMC();
         private readonly User_Container user_Container;
-     
+        
+        protected void Page_load(object sender, EventArgs e)
+        {
+            HttpContext.Session.GetInt32("User");
+        }
 
         public AdminController(User_Container container)
         {
@@ -31,27 +35,30 @@ namespace WebShopAsp.net_MVC_.Controllers
 
         public IActionResult GoToAdminMainPage(Login_ViewModel login_ViewModel, User_Model user_Model)
         {
-          //  var SessionAdmin = HttpContext.Session.GetInt32("Admin");
-            var SessionUser = HttpContext.Session.GetInt32("User");
-            user_Container.CheckActorr(user_Model);
-            if (true)
-            {
+            if (HttpContext.Session.GetInt32("Admin") > 0)
+            { 
                 return View("AdminMainPage" , login_ViewModel);
-            }else if (false)
-            {
-                return View();
+                
             }
-            return View();
+            else
+            {
+                HttpContext.Session.Clear();
+                return RedirectToAction("Login", "Login");
+            }
         }
 
-        public IActionResult GoToAddItem(Login_ViewModel login_ViewModel , Item_ViewModel item_ViewModel)
+        public IActionResult GoToAddItem(Login_ViewModel login_ViewModel, Item_ViewModel item_ViewModel)
         {
-            var SessionUser = HttpContext.Session.GetInt32("User");
-         //  if (login_ViewModel.IsAdmin == 1)
-         //  { 
-         //      return View("AddItem");
-         //  }
-            return View("AddItem");
+            
+            if (HttpContext.Session.GetInt32("Admin") > 0)
+            {
+                return View("AddItem", login_ViewModel);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            
         }
     }
 }

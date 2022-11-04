@@ -1,0 +1,47 @@
+﻿@model List<Item_ViewModel>
+@using WebShopAsp.net_MVC_.ViewModels
+
+@{
+    ViewBag.Title = "Create Character";
+    Layout = "_Layout";
+    
+    @if (ViewData["Message"] != null)
+    {
+        <div class="@ViewData["MessageClass"]" role="alert">
+            @ViewData["Message"]
+        </div>
+    }
+}
+
+<h2>Browse Characters</h2>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            CharacterID
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Cost
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (Item_ViewModel item_ViewModel in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem =>item_ViewModel.ItemName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem =>item_ViewModel.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem =>item_ViewModel.Amount)
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
