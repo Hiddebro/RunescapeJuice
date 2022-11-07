@@ -28,6 +28,14 @@
             Password = password;
         }
 
+        public User_Model(int user_ID,  int isAdmin, string username, string password)
+        {
+            User_ID = user_ID;
+            IsAdmin = isAdmin;
+            Username = username;
+            Password = password;
+        }
+
         public User_Model(string username, string password, int user_ID, int isAdmin)
         {
             Username = username;

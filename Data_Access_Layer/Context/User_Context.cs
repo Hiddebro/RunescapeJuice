@@ -68,7 +68,7 @@ namespace Data_Access_Layer.Context
 
 
 
-        public bool AddUser(User_DTO user)
+        public User_DTO AddUser(User_DTO user)
         {
             try
             {
@@ -83,15 +83,15 @@ namespace Data_Access_Layer.Context
                     var Com = cmd.ExecuteNonQuery();
                     if (Com >= 1)
                     {
-                        return true;
+                        return user;
                     }
-                    return false;
+                    return null;
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return false;
+                return null;
             }
         }
         

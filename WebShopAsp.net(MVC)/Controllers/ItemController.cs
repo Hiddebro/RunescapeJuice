@@ -67,5 +67,11 @@ namespace WebShopAsp.net_MVC_.Controllers
             return View();
         }
 
+        public IActionResult Delete()
+        {
+
+            return RedirectToAction("Index", "Item");
+        }
+
     }
 }

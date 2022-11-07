@@ -27,11 +27,11 @@ namespace Business_logic_Layer.Container
             return  user_Context.CheckActorr(dto);
         }
 
-        public bool AddUser(User_Model user_Model)
+        public User_Model AddUser(User_Model user_Model)
         {
             User_DTO dto = new User_DTO();
             dto = converter.ModelToDTO(user_Model);
-            return user_Context.AddUser(dto);
+            return converter.DtoToModel(user_Context.AddUser(dto));
         }
 
 

@@ -4,9 +4,9 @@
 
 namespace Data_Access_Layer.Interfaces
 {
-    public interface IUser_Context
+    public interface IUser_Context 
     {
-        public bool AddUser(User_DTO user);
+        public User_DTO AddUser(User_DTO user);
         User_DTO GetByName(User_DTO user);
         User_DTO GetByIsAdmin(User_DTO user);
         public bool  CheckActorr(User_DTO user);

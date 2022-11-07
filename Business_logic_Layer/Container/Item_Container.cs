@@ -2,7 +2,6 @@
 using Business_logic_Layer.Models;
 using Data_Access_Layer.DTOs;
 using Data_Access_Layer.Interfaces;
-using Business_logic_Layer.Models;
 
 
 namespace Business_logic_Layer.Container
@@ -15,11 +14,11 @@ namespace Business_logic_Layer.Container
         {
             this.item_Context = context;
         }
-        public Item_DTO AddItem(Item_Model item_Model)
+        public Item_Model AddItem(Item_Model item_Model)
         {
             Item_DTO dto = new Item_DTO();
             dto = converter.ModelToDTO(item_Model);
-            return item_Context.AddItem(dto);
+            return converter.DtoToModel(item_Context.AddItem(dto));
         }
 
         public List<Item_Model> GetAllItems()
