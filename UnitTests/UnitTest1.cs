@@ -9,18 +9,19 @@ namespace UnitTests
     public class UnitTest1
     {
         static IUser_Context user_Context = new User_Context();
-       // User_Container container = new User_Container(user_Context);
+        User_Container container = new User_Container(user_Context);
        
 
         [TestMethod]
         public void LoginTrue()
         {
             //Arrange
-            User_Model user = new User_Model("Henk","Boos","HenkBoos@gmail.com");
+            User_Model user = new User_Model("Henk","Boos");
             //Act
-          //  container.Equals(user);
+          container.AddUser(user);
             //Assert
-           // Assert.IsTrue(container.Equals(user));   
+         //   Assert.AreEqual(user.Username, SQLUserContextStub.users.Last().Username);
+          //  Assert.AreEqual(user.Password, SQLUserContextStub.users.Last().Password);
         }
     }
 }
