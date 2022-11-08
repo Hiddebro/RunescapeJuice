@@ -21,6 +21,10 @@ namespace Business_logic_Layer.Container
             return converter.DtoToModel(item_Context.AddItem(dto));
         }
 
+        public void DeleteItem(int id)
+        {
+           item_Context.DeleteItem(id);
+        }
         public List<Item_Model> GetAllItems()
         {
             Item_Model item = new Item_Model();

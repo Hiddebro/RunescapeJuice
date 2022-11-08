@@ -11,6 +11,7 @@ namespace Data_Access_Layer.Interfaces
     {
         public Item_DTO AddItem(Item_DTO item);
         public List<Item_DTO> GetAllItems();
+        public void DeleteItem(int id);
         //   public Item_DTO GetByItem(Item_DTO dto);
     }
 }

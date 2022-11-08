@@ -67,11 +67,13 @@ namespace WebShopAsp.net_MVC_.Controllers
             return View();
         }
 
-        public IActionResult Delete()
+        public IActionResult DeleteItem(int ItemID)
         {
-
+            item_Container.DeleteItem(ItemID);
             return RedirectToAction("Index", "Item");
         }
 
     }
 }
+
+

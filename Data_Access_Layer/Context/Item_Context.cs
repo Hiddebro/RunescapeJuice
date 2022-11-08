@@ -32,6 +32,26 @@ namespace Data_Access_Layer.Context
             throw new NotImplementedException();
         }
 
+        public void DeleteItem(int id)
+        {
+            try
+            {
+                ConOpen();
+                var sql = "DELETE FROM [Items] WHERE ItemID = @ItemID";
+                SqlCommand cmd = new SqlCommand(sql, this.Con);
+                cmd.Parameters.AddWithValue("@ItemID", id);
+                cmd.ExecuteNonQuery();
+               
+        
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        
+        }
+
         public List<Item_DTO> GetAllItems()
         {
             List<Item_DTO> list = new List<Item_DTO>();

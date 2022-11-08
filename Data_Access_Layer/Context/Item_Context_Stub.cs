@@ -48,6 +48,11 @@ namespace Data_Access_Layer.Context
         {
             return item;
         }
+
+        public void DeleteItem(int id)
+        {
+            
+        }
         public List<Item_DTO> GetAllItems()
         {
             return items;

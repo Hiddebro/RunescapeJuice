@@ -1,6 +1,7 @@
 ﻿@model List<Item_ViewModel>
 @using WebShopAsp.net_MVC_.ViewModels
 
+
 @{
     Layout = "_UserLayout";
     
@@ -25,7 +26,8 @@
     </thead>
     <tbody>
     @foreach (Item_ViewModel item_ViewModel in Model) {
-        <tr>
+       //@Html.BeginForm("DeleteItem","Item") 
+       <tr>
             <td>
                 @Html.DisplayFor(modelItem =>item_ViewModel.ItemName)
             </td>
@@ -35,9 +37,14 @@
             <td>
                 @Html.DisplayFor(modelItem =>item_ViewModel.Amount)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem =>item_ViewModel.ItemID)
+            </td>
              <td>
-              <form asp-controller="Item" asp-action="Delete" method="get">
+              <form asp-controller="Item" asp-action="DeleteItem" method="post">
+                  <input asp-for="@item_ViewModel.ItemID" type="hidden" id="ItemID" name="ItemID" />
                     <input class="btn btn-dark" type="submit" value="Delete" />
+                   
                   </form>
             </td>
         </tr>
