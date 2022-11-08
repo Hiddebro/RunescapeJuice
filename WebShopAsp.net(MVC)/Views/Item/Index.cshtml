@@ -37,9 +37,6 @@
             <td>
                 @Html.DisplayFor(modelItem =>item_ViewModel.Amount)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem =>item_ViewModel.ItemID)
-            </td>
              <td>
               <form asp-controller="Item" asp-action="DeleteItem" method="post">
                   <input asp-for="@item_ViewModel.ItemID" type="hidden" id="ItemID" name="ItemID" />
