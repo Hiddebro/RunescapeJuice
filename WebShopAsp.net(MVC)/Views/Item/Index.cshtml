@@ -2,30 +2,24 @@
 @using WebShopAsp.net_MVC_.ViewModels
 
 @{
-    ViewBag.Title = "Create Character";
-    Layout = "_Layout";
+    Layout = "_UserLayout";
     
-    @if (ViewData["Message"] != null)
-    {
-        <div class="@ViewData["MessageClass"]" role="alert">
-            @ViewData["Message"]
-        </div>
-    }
+  
 }
 
-<h2>Browse Characters</h2>
+<h2>Items</h2>
 
 <table class="table">
     <thead>
     <tr>
         <th>
-            CharacterID
+            Item Name
         </th>
         <th>
-            Name
+            Price
         </th>
         <th>
-            Cost
+            Amount
         </th>
     </tr>
     </thead>
