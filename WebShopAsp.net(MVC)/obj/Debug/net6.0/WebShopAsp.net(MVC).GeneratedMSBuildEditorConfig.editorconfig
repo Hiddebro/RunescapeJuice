@@ -15,28 +15,28 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\HOIDE\Desktop\semester 2 hidde\RunescapeJuice\WebShopAsp.net(MVC)
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/HOIDE/Desktop/semester 2 hidde/RunescapeJuice/WebShopAsp.net(MVC)/Views/Account/AddItem.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBZGRJdGVtLmNzaHRtbA==
+[C:/Users/HOIDE/Desktop/semester 2 hidde/RunescapeJuice/WebShopAsp.net(MVC)/Views/Admin/AddItem.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkSXRlbS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HOIDE/Desktop/semester 2 hidde/RunescapeJuice/WebShopAsp.net(MVC)/Views/Account/Login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/HOIDE/Desktop/semester 2 hidde/RunescapeJuice/WebShopAsp.net(MVC)/Views/Account/Register.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/HOIDE/Desktop/semester 2 hidde/RunescapeJuice/WebShopAsp.net(MVC)/Views/Account/UserInfo.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxVc2VySW5mby5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/HOIDE/Desktop/semester 2 hidde/RunescapeJuice/WebShopAsp.net(MVC)/Views/Account/UserMainPage.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxVc2VyTWFpblBhZ2UuY3NodG1s
+[C:/Users/HOIDE/Desktop/semester 2 hidde/RunescapeJuice/WebShopAsp.net(MVC)/Views/Admin/AdminMainPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5NYWluUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/HOIDE/Desktop/semester 2 hidde/RunescapeJuice/WebShopAsp.net(MVC)/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HOIDE/Desktop/semester 2 hidde/RunescapeJuice/WebShopAsp.net(MVC)/Views/Item/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HOIDE/Desktop/semester 2 hidde/RunescapeJuice/WebShopAsp.net(MVC)/Views/Login/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HOIDE/Desktop/semester 2 hidde/RunescapeJuice/WebShopAsp.net(MVC)/Views/Login/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cUmVnaXN0ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/HOIDE/Desktop/semester 2 hidde/RunescapeJuice/WebShopAsp.net(MVC)/Views/Shared/Error.cshtml]
@@ -57,6 +57,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/HOIDE/Desktop/semester 2 hidde/RunescapeJuice/WebShopAsp.net(MVC)/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HOIDE/Desktop/semester 2 hidde/RunescapeJuice/WebShopAsp.net(MVC)/Views/User/UserMainPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyTWFpblBhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/HOIDE/Desktop/semester 2 hidde/RunescapeJuice/WebShopAsp.net(MVC)/Views/_ViewImports.cshtml]

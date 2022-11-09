@@ -19,4 +19,8 @@
     <ProjectReference Include="..\WebShopAsp.net(MVC)\WebShopAsp.net(MVC).csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Mock\" />
+  </ItemGroup>
+
 </Project>

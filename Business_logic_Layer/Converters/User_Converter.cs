@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Business_logic_Layer.Models;
+﻿using Business_logic_Layer.Models;
 using Data_Access_Layer.DTOs;
 
 namespace Business_logic_Layer.Converters
 {
-    public class User_Converter 
+    public class User_Converter
     {
         public User_Model DtoToModel(User_DTO dto)
         {
@@ -17,7 +12,7 @@ namespace Business_logic_Layer.Converters
                 Username = dto.Username,
                 Password = dto.Password,
                 User_ID = dto.User_ID,
-
+                IsAdmin = dto.IsAdmin
             };
             return user_Model;
         }
@@ -28,9 +23,8 @@ namespace Business_logic_Layer.Converters
             {
                 Username = model.Username,
                 Password = model.Password,
-                User_ID= model.User_ID,
-                
-
+                User_ID = model.User_ID,
+                IsAdmin = model.IsAdmin
             };
             return dto;
         }

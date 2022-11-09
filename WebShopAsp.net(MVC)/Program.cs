@@ -3,20 +3,32 @@ using Business_logic_Layer.Container;
 using Business_logic_Layer.Converters;
 using Data_Access_Layer.Interfaces;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-//builder.Services.AddSingleton(new User_Container(new User_Context()));
 
-//builder.Services.AddSingleton(new Item_Container(new Item_Context()));
+
 builder.Services.AddScoped<Item_Container>();
 builder.Services.AddScoped<User_Container>();
-builder.Services.AddScoped<I_Item_Context, Item_Context>();
-builder.Services.AddScoped<I_User_Context, User_Context>();
+builder.Services.AddScoped<IItem_Context, Item_Context>();
+builder.Services.AddScoped<IUser_Context, User_Context>();
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    
+});
 
 var app = builder.Build();
+
+//private void ConfigureServices(IServiceCollection services)
+//{
+//    services.AddControllersWithViews();
+//    services.AddSession(options => { options.IdleTimeout = TimeSpan.FromMinutes(1); });
+//}
+app.UseSession();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

@@ -28,10 +28,6 @@
         }
 
         body {
-         
-          
-          
-          
             display: -ms-flexbox;
             display: -webkit-box;
             display: flex;
@@ -44,8 +40,8 @@
             padding-top: 40px;
             padding-bottom: 40px;
             background-color: #264b82;
-             background-size: cover;
-             background-image: url(https://preview.redd.it/rsfeq20h44151.jpg?width=1090&format=pjpg&auto=webp&s=c9ad4cb1c58ec3a622b09ef1c2aaf139cea97fce);
+            background-size: cover;
+            background-image: url(https://preview.redd.it/rsfeq20h44151.jpg?width=1090&format=pjpg&auto=webp&s=c9ad4cb1c58ec3a622b09ef1c2aaf139cea97fce);
 }
         .form-signin {
             width: 100%;
@@ -88,7 +84,7 @@
 
                      
                          
-    <form asp-controller="Account" asp-action="Register" method="post" class="form-signin">
+    <form asp-controller="Login" asp-action="AddUser" method="post" class="form-signin">
           <img class="mb-4"  src="https://runescapetoday.com/wp-content/uploads/2022/02/LOGOweb.png"  alt="Runescape Money"  height="63" />
        <div class="form-group">
 
@@ -115,7 +111,7 @@
                                    
                                     <br /> 
                                    </form>
-                                    <form asp-controller="Account" asp-action="GoToLogin" method="post">
+                                    <form asp-controller="Login" asp-action="Login" method="post">
                                        
                                        <input class="btn btn-dark" type="submit" value="Back to Login" /> 
                                        </form>

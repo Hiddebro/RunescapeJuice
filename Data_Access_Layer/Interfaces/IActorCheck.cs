@@ -7,10 +7,8 @@ using Data_Access_Layer.DTOs;
 
 namespace Data_Access_Layer.Interfaces
 {
-    public interface I_AccUser_Context 
+    public interface IActorCheck
     {
-        long Insert(AccUser_DTO accuser);
-        public long Update(AccUser_DTO accuser);
-        AccUser_DTO GetById(int id);
+        public bool CheckActor(User_DTO user);
     }
 }

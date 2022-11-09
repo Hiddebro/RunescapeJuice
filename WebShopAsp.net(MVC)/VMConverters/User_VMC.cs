@@ -1,20 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Business_logic_Layer.Models;
-using WebShopAsp.net_MVC_.ViewModels;
+﻿using Business_logic_Layer.Models;
 using Data_Access_Layer.Interfaces;
+using WebShopAsp.net_MVC_.ViewModels;
 
 namespace WebShopAsp.net_MVC_.VMConverters
 {
-    public class User_VMC : I_ViewModel_Converter<User_Model,Login_ViewModel>
+    public class User_VMC : IViewModel_Converter<User_Model, Login_ViewModel>
     {
         public Login_ViewModel ModelToViewModel(User_Model model)
         {
             Login_ViewModel vm = new Login_ViewModel()
             {
-                
                 Username = model.Username,
                 Password = model.Password,
                 User_ID = model.User_ID,
+                IsAdmin = model.IsAdmin
             };
             return vm;
         }
@@ -24,12 +23,12 @@ namespace WebShopAsp.net_MVC_.VMConverters
             {
                 Username = vm.Username,
                 Password = vm.Password,
-                User_ID= vm.User_ID,
-                
+                User_ID = vm.User_ID,
+                IsAdmin = vm.IsAdmin
             };
             return user_Model;
         }
 
-       
+
     }
 }

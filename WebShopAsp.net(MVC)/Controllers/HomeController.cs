@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Diagnostics;
 using WebShopAsp.net_MVC_.Models;
-using Business_logic_Layer.Models;
-using Data_Access_Layer.Context;
-using Business_logic_Layer.Converters;
-using Newtonsoft.Json;
+using WebShopAsp.net_MVC_.ViewModels;
+using WebShopAsp.net_MVC_;
+using Microsoft.AspNetCore.Http;
+using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace WebShopAsp.net_MVC_.Controllers
 {
@@ -17,12 +18,17 @@ namespace WebShopAsp.net_MVC_.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            app.UseSession();
+            //removed for brevity
+        }
 
-           
-            return RedirectToAction("Login", "Account");
 
+        public IActionResult Index(Login_ViewModel login_ViewModel)
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login", "Login");
         }
 
         public IActionResult Privacy()
@@ -35,5 +41,8 @@ namespace WebShopAsp.net_MVC_.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+       
+
     }
 }

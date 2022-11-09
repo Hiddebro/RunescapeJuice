@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using WebShopAsp.net_MVC_.Models;
+﻿using Business_logic_Layer.Container;
+using Business_logic_Layer.Models;
+using Microsoft.AspNetCore.Mvc;
 using WebShopAsp.net_MVC_.ViewModels;
 using WebShopAsp.net_MVC_.VMConverters;
-using Business_logic_Layer.Models;
-using Business_logic_Layer.Container;
-using Newtonsoft.Json;
+using Microsoft.AspNetCore.Http;
 
 namespace WebShopAsp.net_MVC_.Controllers
 {
@@ -13,7 +11,7 @@ namespace WebShopAsp.net_MVC_.Controllers
     {
         private readonly Item_VMC viewModelConverter = new Item_VMC();
         private readonly Item_Container item_Container;
-        
+
 
 
         public ItemController(Item_Container container)
@@ -21,45 +19,61 @@ namespace WebShopAsp.net_MVC_.Controllers
             this.item_Container = container;
         }
 
-      
+        [HttpGet]
         public IActionResult Index()
         {
+            List<Item_ViewModel> items = new List<Item_ViewModel>();
+            foreach (var item in item_Container.GetAllItems())
+            {
+                Item_ViewModel itemViewModel = new Item_ViewModel
+                {
+                    ItemID = item.ItemID,
+                    ItemName = item.ItemName,
+                    Price = item.Price,
+                    Amount = item.Amount
+                };
+                items.Add(itemViewModel);
+
+            }
+            return View(items);
+        }
+        
+     //  public IActionResult GetAllItems()
+     //  {
+     //      List<Item_ViewModel> items = new List<Item_ViewModel>();
+     //      foreach(var item in item_Container.GetAllItems())
+     //      {
+     //          Item_ViewModel itemViewModel = new Item_ViewModel
+     //          {
+     //              ItemID = item.ItemID,
+     //              ItemName = item.ItemName,
+     //              Price = item.Price,
+     //              Amount = item.Amount
+     //          };
+     //          items.Add(itemViewModel);
+     //
+     //      }
+     //      return RedirectToAction("GoToAdminMainPage", "Admin");
+     //  }
+
+        public IActionResult AddItem(Item_ViewModel vm)
+        {
+            if (ModelState.IsValid)
+            {
+                Item_Model item = viewModelConverter.ViewModelToModel(vm);
+                item_Container.AddItem(item);
+                return RedirectToAction("GoToAdminMainPage","Admin");
+            }
             return View();
         }
 
-        public IActionResult BackToUserInfo()
+        public IActionResult DeleteItem(int ItemID)
         {
-            return RedirectToAction("UserInfo","Account");
+            item_Container.DeleteItem(ItemID);
+            return RedirectToAction("Index", "Item");
         }
 
-        public IActionResult AddItem(Item_ViewModel vm)
-      {
-              if (ModelState.IsValid)
-              {
-                 Item_Model item = viewModelConverter.ViewModelToModel(vm);
-                 item_Container.AddItem(item);
-               // return RedirectToAction("UserInfo", "Account");
-                return RedirectToAction("GoToAddItem","Account");
-            }
-
-
-            return RedirectToAction("UserInfo", "Account");
-        }
-      //  login_ViewModel = viewModelConverter.ModelToViewModel(user_Container.GetByName(viewModelConverter.ViewModelToModel(login_ViewModel)));
-    //       public IActionResult AddItem(Item_ViewModel item_ViewModel)
-    //  {
-    //      if (ModelState.IsValid)
-    //      {
-    //          item_ViewModel = viewModelConverter.ModelToViewModel(item_Container.GetByItem(viewModelConverter.ViewModelToModel(item_ViewModel)));
-    //          if(item_ViewModel != null)
-    //          {
-    //              return RedirectToAction("Inlog", "Account");
-    //          }
-    //
-    //          return RedirectToAction("UserInfo", "Account");
-    //      }
-    //
-    //      return RedirectToAction("UserInfo", "Account");
-    //  }
     }
 }
+
+

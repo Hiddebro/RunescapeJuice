@@ -8,7 +8,6 @@ namespace Data_Access_Layer.DTOs
 {
     public class Item_DTO
     {
-        public int v;
 
         public int ItemID { get; set; }
         public string? ItemName { get; set; }
@@ -16,9 +15,12 @@ namespace Data_Access_Layer.DTOs
         public int Amount { get; set; }
 
 
-        public Item_DTO(int v)
+        public Item_DTO(int itemID, string itemName, int price, int amount)
         {
-            this.v = v;
+            ItemID = itemID;
+            ItemName = itemName;
+            Price = price;
+            Amount = amount;
         }
 
         public Item_DTO()

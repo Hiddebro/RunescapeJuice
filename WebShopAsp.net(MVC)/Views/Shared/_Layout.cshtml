@@ -1,6 +1,25 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+   
 <head>
+   <style>
+       footer{
+           margin-top:auto;
+           margin-left: 0px;
+       }
+
+       header{
+           margin-top:auto;
+       }
+
+       body{
+           background-color: #264b82;
+       }
+
+       footer{
+           background-color: #264b82;
+       }
+   </style>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - RunescapeJuice</title>
@@ -8,21 +27,11 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WebShopAsp.net_MVC_.styles.css" asp-append-version="true" />
 </head>
+
+
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Register</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                    </ul>
-                </div>
-            </div>
-        </nav>
+      <img class="mb-4"  src="https://runescapetoday.com/wp-content/uploads/2022/02/LOGOweb.png"  alt="Runescape Money"  height="63" />
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -30,12 +39,15 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-      
-    </footer>
+  
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
-</body>
+</body>  
+<footer class="border-top footer text-muted">
+      <form asp-controller="Login" asp-action="LogOut" method="post" class="form-signin">
+           <input class="btn btn-dark" type="submit" value="LogOut" />
+          </form>
+    </footer>
 </html>
