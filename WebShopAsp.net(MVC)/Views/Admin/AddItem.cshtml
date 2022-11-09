@@ -2,12 +2,26 @@
 @using WebShopAsp.net_MVC_.ViewModels
 
 @{
-    Layout = "_UserLayout";
+    Layout = "_Layout";
 }
+<style>
+    body{
+        background-color: #264b82;
+    }
+</style>
+
+<header class ="align-content-center">
+
+</header>
+ <form asp-controller="Admin" asp-action="GoToAdminMainPage" method="post">
+        <input class="btn btn-dark" type="submit" value="Back" />
+        </form>
+      
+<body>
 
 
 <form asp-controller="Item" asp-action="AddItem" method="post" class="form-signin">
-       <img class="mb-4"  src="https://runescapetoday.com/wp-content/uploads/2022/02/LOGOweb.png"  alt="Runescape Money"  height="63" />
+       
 
  
        <div class="form-group">
@@ -18,13 +32,13 @@
        </div>
        <div class="form-group">
            <div class="InputBackgroundBox">
-                <input asp-for="Price" placeholder="Price" class="form-control text-center" required />
+                <input asp-for="Price" placeholder="Price" value="Price"class="form-control text-center" required />
            </div>
        
-       </div>
+       </div> 
         <div class="form-group">
            <div class="InputBackgroundBox">
-                <input asp-for="Amount" placeholder="Amount" class="form-control text-center" required />
+                <input asp-for="Amount" placeholder="Amount" value="Amount" class="form-control text-center" required />
            </div>
        
        </div>
@@ -35,9 +49,7 @@
            </div>
 
        </form>
-       <form asp-controller="Admin" asp-action="GoToAdminMainPage" method="post" class="form-signin">
-         <div class="form-signin">
-           <input class="btn btn-dark" type="submit" value="Back to Info" />
-           <br />
-           </div>
-           </form>
+
+       
+           </body>
+

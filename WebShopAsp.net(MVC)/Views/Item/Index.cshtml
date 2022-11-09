@@ -1,17 +1,39 @@
 ﻿@model List<Item_ViewModel>
 @using WebShopAsp.net_MVC_.ViewModels
 
-
 @{
-    Layout = "_UserLayout";
-    
-  
+    Layout = "_Layout";
 }
+<style>
+    tbody{
+        background-color: #264b82;
+        color: white;
+    }
 
-<h2>Items</h2>
+     body{
+        background-color: #264b82;
+        color: white;
+    }
 
+    head{
+        
+    body{
+        background-color: white;
+    }
+
+   
+</style>
+    
+
+<header class ="align-content-center">
+
+</header>
+<form asp-controller="Admin" asp-action="GoToAdminMainPage" method="post">
+        <input class="btn btn-dark" type="submit" value="Back" />
+       
+        </form>
 <table class="table">
-    <thead>
+    <head>
     <tr>
         <th>
             Item Name
@@ -23,8 +45,9 @@
             Amount
         </th>
     </tr>
-    </thead>
-    <tbody>
+    </head>
+    <body>
+
     @foreach (Item_ViewModel item_ViewModel in Model) {
        //@Html.BeginForm("DeleteItem","Item") 
        <tr>
@@ -46,5 +69,7 @@
             </td>
         </tr>
     }
-    </tbody>
+    
+     </tr>
+    </body>
 </table>

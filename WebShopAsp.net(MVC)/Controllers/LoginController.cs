@@ -60,6 +60,12 @@ namespace WebShopAsp.net_MVC_.Controllers
             return View("Register");
         }
 
+        public IActionResult LogOut(Login_ViewModel vm)
+        {
+            HttpContext.Session.Clear();
+            return View("Login");
+
+        }
         public IActionResult GoToRegister(Login_ViewModel login_ViewModel)
         {
             return View("Register");
