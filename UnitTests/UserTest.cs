@@ -27,7 +27,6 @@ namespace UnitTests
             Assert.AreEqual(usera.IsAdmin, 1);
             Assert.AreEqual(usera.Username, "Henkaa");
             Assert.AreEqual(usera.Password, "Boos");
-
         }
 
         [TestMethod]
