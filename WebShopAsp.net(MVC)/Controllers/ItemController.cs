@@ -37,24 +37,6 @@ namespace WebShopAsp.net_MVC_.Controllers
             }
             return View(items);
         }
-        
-     //  public IActionResult GetAllItems()
-     //  {
-     //      List<Item_ViewModel> items = new List<Item_ViewModel>();
-     //      foreach(var item in item_Container.GetAllItems())
-     //      {
-     //          Item_ViewModel itemViewModel = new Item_ViewModel
-     //          {
-     //              ItemID = item.ItemID,
-     //              ItemName = item.ItemName,
-     //              Price = item.Price,
-     //              Amount = item.Amount
-     //          };
-     //          items.Add(itemViewModel);
-     //
-     //      }
-     //      return RedirectToAction("GoToAdminMainPage", "Admin");
-     //  }
 
         public IActionResult AddItem(Item_ViewModel vm)
         {

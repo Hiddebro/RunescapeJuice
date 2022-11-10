@@ -7,8 +7,6 @@ using WebShopAsp.net_MVC_.VMConverters;
 using Microsoft.AspNetCore.Session;
 using Microsoft.AspNetCore.Http;
 
-
-
 namespace WebShopAsp.net_MVC_.Controllers
 {
     public class AdminController : Controller
