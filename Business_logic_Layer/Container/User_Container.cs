@@ -16,7 +16,6 @@ namespace Business_logic_Layer.Container
         public User_Container(IUser_Context context)
         {
             this.user_Context = context;
-            
         }
 
 
@@ -39,9 +38,10 @@ namespace Business_logic_Layer.Container
         {
             User_DTO dto = new User_DTO();
             dto = converter.ModelToDTO(user_Model);
+            
             return converter.DtoToModel(user_Context.GetByName(dto));
         }
-
+        
 
 
         public User_Model GetByIsAdmin(User_Model user_Model)

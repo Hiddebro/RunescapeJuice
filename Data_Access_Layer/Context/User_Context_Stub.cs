@@ -28,17 +28,30 @@ namespace Data_Access_Layer.Context
         }
         public User_DTO GetByName(User_DTO user)
         {
-            return user;
+            
+            User_DTO dto = new User_DTO();
+            if (user.Username == "Henk" && user.Password == "Boos")
+            {
+                user.User_ID = 1;
+                user.IsAdmin = 1;
+                dto = user;
+            }
+           
+            return dto;
         }
         public User_DTO GetByIsAdmin(User_DTO user)
         {
             User_DTO dto = new User_DTO();
-            foreach(var Admin in users)
+            if(user.User_ID == 1)
             {
-                if(Admin.IsAdmin == 1)
-                {
-                    dto = user;
-                }
+               user.IsAdmin= 1;
+                dto = user;
+            }
+
+            if (user.User_ID ==3)
+            {
+                user.IsAdmin = 0;
+                dto = user;
             }
             return dto;
         }

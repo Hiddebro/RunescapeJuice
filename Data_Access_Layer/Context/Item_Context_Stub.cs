@@ -57,5 +57,10 @@ namespace Data_Access_Layer.Context
         {
             return items;
         }
+
+        public Item_DTO BuyItem(Item_DTO item)
+        {
+            return item;
+        }
     }
 }

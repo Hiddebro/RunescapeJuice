@@ -15,16 +15,16 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\HOIDE\Desktop\semester 2 hidde\RunescapeJuice\WebShopAsp.net(MVC)
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/HOIDE/Desktop/semester 2 hidde/RunescapeJuice/WebShopAsp.net(MVC)/Views/Admin/AddItem.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkSXRlbS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/HOIDE/Desktop/semester 2 hidde/RunescapeJuice/WebShopAsp.net(MVC)/Views/Admin/AdminMainPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5NYWluUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/HOIDE/Desktop/semester 2 hidde/RunescapeJuice/WebShopAsp.net(MVC)/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HOIDE/Desktop/semester 2 hidde/RunescapeJuice/WebShopAsp.net(MVC)/Views/Item/AddItem.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbVxBZGRJdGVtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/HOIDE/Desktop/semester 2 hidde/RunescapeJuice/WebShopAsp.net(MVC)/Views/Item/Index.cshtml]
@@ -59,8 +59,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HOIDE/Desktop/semester 2 hidde/RunescapeJuice/WebShopAsp.net(MVC)/Views/User/UserMainPage.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyTWFpblBhZ2UuY3NodG1s
+[C:/Users/HOIDE/Desktop/semester 2 hidde/RunescapeJuice/WebShopAsp.net(MVC)/Views/User/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/HOIDE/Desktop/semester 2 hidde/RunescapeJuice/WebShopAsp.net(MVC)/Views/_ViewImports.cshtml]

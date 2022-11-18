@@ -35,7 +35,7 @@ namespace WebShopAsp.net_MVC_.Controllers
                 {
 
                     HttpContext.Session.SetInt32("User", login_ViewModel.User_ID);
-                    return RedirectToAction("GoToUserMainPage", "User", login_ViewModel.User_ID);
+                    return RedirectToAction("Index", "User", login_ViewModel.User_ID);
 
                 }
                 else if (login_ViewModel.User_ID != 0 & login_ViewModel.IsAdmin == 1)
@@ -43,9 +43,8 @@ namespace WebShopAsp.net_MVC_.Controllers
                     HttpContext.Session.SetInt32("Admin", login_ViewModel.User_ID);
                     return RedirectToAction("GoToAdminMainPage", "Admin", login_ViewModel.User_ID);
                 }
-                return View();
             }
-
+            HttpContext.Session.Clear();
             return View();
         }
 

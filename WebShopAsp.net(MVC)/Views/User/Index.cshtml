@@ -1,0 +1,29 @@
+﻿@model List<Item_ViewModel>
+@using WebShopAsp.net_MVC_.ViewModels
+@{
+    Layout = "_UserLayout";
+}
+ @foreach (Item_ViewModel item_ViewModel in Model) {
+       //@Html.BeginForm("DeleteItem","Item") <div class="card" style="width: 18rem;">
+  
+  <div class="card-body">
+    <h5 class="card-title">@Html.DisplayFor(modelItem =>item_ViewModel.ItemName)</h5>
+    <img class="card-img-top" src="..." alt="Card image cap">
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Price @Html.DisplayFor(modelItem =>item_ViewModel.Price)</li>
+    <li class="list-group-item">Amount in Stock @Html.DisplayFor(modelItem =>item_ViewModel.Amount)</li>
+  </ul>
+  <div class="card-body">
+    <form asp-controller="User" asp-action="BuyItem" method="post">
+        <input class="card-link" type="submit" value="Create Account" />
+        
+        </form>
+    <form asp-controller="User" asp-action="ReviewItem" method="post">
+        <input class="card-link" type="submit" value="Create Account" />
+        
+        </form>
+  </div>
+
+      
+    }

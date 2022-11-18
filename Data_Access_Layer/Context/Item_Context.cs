@@ -27,7 +27,7 @@ namespace Data_Access_Layer.Context
 
             catch (Exception ex)
             {
-                throw ex;
+                
             }
             throw new NotImplementedException();
         }
@@ -47,7 +47,7 @@ namespace Data_Access_Layer.Context
 
             catch (Exception ex)
             {
-                throw ex;
+                
             }
         
         }
@@ -85,13 +85,33 @@ namespace Data_Access_Layer.Context
 
             catch (Exception ex)
             {
-                throw ex;
+                
             }
             finally
             {
                 ConClose();
             }
             throw new NotImplementedException();
+        }
+
+        public Item_DTO BuyItem(Item_DTO item)
+        {
+            try
+            {
+        //   ConOpen();
+        //   var sql = ;
+        //   SqlCommand cmd = new SqlCommand(sql, this.Con);
+        //   cmd.Parameters.AddWithValue();
+        //   cmd.ExecuteNonQuery();
+
+
+            }
+
+            catch (Exception ex)
+            {
+                
+            }
+            return item;
         }
     }
 }
