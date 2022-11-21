@@ -60,11 +60,20 @@ namespace WebShopAsp.net_MVC_.Controllers
     //    }
         
         }
-
-        public IActionResult BuyItem()
+        public IActionResult BuyItem(Item_ViewModel item_ViewModel)
         {
-            return RedirectToAction("Index","User");
+
+
+            if (HttpContext.Session.GetInt32("User") > 0)
+            {
+                Item_Model item = viewModelConverter.ViewModelToModel(item_ViewModel);
+                item_Container.BuyItem(item);
+                return RedirectToAction("Index", "User");
+            }
+            return View();
         }
+
+        
 
         public IActionResult ReviewItem()
         {

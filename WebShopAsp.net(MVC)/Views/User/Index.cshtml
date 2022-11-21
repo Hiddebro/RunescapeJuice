@@ -9,12 +9,13 @@
   <div class="card-body">
     <h5 class="card-title">@Html.DisplayFor(modelItem =>item_ViewModel.ItemName)</h5>
     <img class="card-img-top" src="..." alt="Card image cap">
-  </div>
+  
   <ul class="list-group list-group-flush">
+       <li class="list-group-item">Item ID @Html.DisplayFor(modelItem =>item_ViewModel.ItemID)</li>
     <li class="list-group-item">Price @Html.DisplayFor(modelItem =>item_ViewModel.Price)</li>
     <li class="list-group-item">Amount in Stock @Html.DisplayFor(modelItem =>item_ViewModel.Amount)</li>
   </ul>
-  <div class="card-body">
+  
     <form asp-controller="User" asp-action="BuyItem" method="post">
         <input class="card-link" type="submit" value="Create Account" />
         

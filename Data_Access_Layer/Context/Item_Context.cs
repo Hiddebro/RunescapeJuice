@@ -1,5 +1,6 @@
 ﻿using Data_Access_Layer.DTOs;
 using Data_Access_Layer.Interfaces;
+using Microsoft.AspNetCore.Http;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -96,21 +97,24 @@ namespace Data_Access_Layer.Context
 
         public Item_DTO BuyItem(Item_DTO item)
         {
-            try
-            {
-        //   ConOpen();
-        //   var sql = ;
-        //   SqlCommand cmd = new SqlCommand(sql, this.Con);
-        //   cmd.Parameters.AddWithValue();
-        //   cmd.ExecuteNonQuery();
-
-
-            }
-
-            catch (Exception ex)
-            {
-                
-            }
+            
+       //    try
+       //    {
+       //       
+       //        ConOpen();
+       //        var sql = "SELECT U.UserID, I.ItemID FROM [User] as U, Items as I, UserItems as UI Where U.UserID = @UI.UserID AND I.ItemID = UI.ItemID";
+       //           SqlCommand cmd = new SqlCommand(sql, this.Con);
+       //        cmd.Parameters.AddWithValue("@UserID", item);
+       //        cmd.Parameters.AddWithValue("@ItemID", item);
+       //        cmd.ExecuteNonQuery();
+       //
+       //
+       //    }
+       //
+       //    catch (Exception ex)
+       //    {
+       //        
+       //    }
             return item;
         }
     }
