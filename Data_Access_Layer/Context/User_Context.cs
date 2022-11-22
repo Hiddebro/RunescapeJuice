@@ -22,15 +22,27 @@ namespace Data_Access_Layer.Context
                 SqlCommand cmd = new SqlCommand(sql, this.Con);
                 cmd.Parameters.AddWithValue("@Username", user.Username);
                 cmd.Parameters.AddWithValue("@Password", user.Password);
-                Console.WriteLine("Succesful Logged in");
-                SqlDataAdapter sda = new SqlDataAdapter(cmd);
-                cmd.ExecuteNonQuery();
+                SqlDataReader rdr = cmd.ExecuteReader();
+                
 
-                DataTable dt = new DataTable();
-                sda.Fill(dt);
-                var row = dt.Rows[0];
-                user.User_ID = row.Field<int>("UserID");
-                user.IsAdmin = row.Field<int>("IsAdmin");
+                while (rdr.Read())
+                {
+                    user = new User_DTO
+                    {
+                        Username = rdr.GetString("Username"),
+                        Password = rdr.GetString("Password"),
+                        User_ID = rdr.GetInt32("UserID"),
+                        IsAdmin = rdr.GetInt32("IsAdmin")
+                    };
+
+                   
+
+                }
+
+
+
+
+                
 
                 return (user);
 
