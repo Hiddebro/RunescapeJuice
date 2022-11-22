@@ -11,7 +11,8 @@ namespace WebShopAsp.net_MVC_.Controllers
 {
     public class UserController : Controller
     {
-        private readonly Item_VMC viewModelConverter = new Item_VMC();
+        private readonly User_VMC viewModelConverter2 = new User_VMC();
+        private readonly Item_VMC viewModelConverter1 = new Item_VMC();
         private readonly Item_Container item_Container;
 
 
@@ -60,14 +61,16 @@ namespace WebShopAsp.net_MVC_.Controllers
     //    }
         
         }
-        public IActionResult BuyItem(Item_ViewModel item_ViewModel)
+        public IActionResult BuyItem(Item_ViewModel item_ViewModel, Login_ViewModel login_ViewModel)
         {
 
 
             if (HttpContext.Session.GetInt32("User") > 0)
             {
-                Item_Model item = viewModelConverter.ViewModelToModel(item_ViewModel);
-                item_Container.BuyItem(item);
+                Item_Model item = viewModelConverter1.ViewModelToModel(item_ViewModel);
+                User_Model user = viewModelConverter2.ViewModelToModel(login_ViewModel);
+                user.User_ID = Convert.ToInt32(HttpContext.Session.GetInt32("User"));
+                item_Container.AddItemToUser(item, user);
                 return RedirectToAction("Index", "User");
             }
             return View();

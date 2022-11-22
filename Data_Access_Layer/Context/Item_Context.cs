@@ -28,7 +28,7 @@ namespace Data_Access_Layer.Context
 
             catch (Exception ex)
             {
-                
+
             }
             throw new NotImplementedException();
         }
@@ -42,15 +42,15 @@ namespace Data_Access_Layer.Context
                 SqlCommand cmd = new SqlCommand(sql, this.Con);
                 cmd.Parameters.AddWithValue("@ItemID", id);
                 cmd.ExecuteNonQuery();
-               
-        
+
+
             }
 
             catch (Exception ex)
             {
-                
+
             }
-        
+
         }
 
         public List<Item_DTO> GetAllItems()
@@ -63,30 +63,29 @@ namespace Data_Access_Layer.Context
                 var sql = "SELECT * FROM Items";
                 SqlCommand cmd = new SqlCommand(sql, this.Con);
                 SqlDataReader rdr = cmd.ExecuteReader();
-               
-              
+
+
                 while (rdr.Read())
                 {
                     item = new Item_DTO
                     {
                         ItemID = rdr.GetInt32("ItemID"),
                         ItemName = rdr.GetString("ItemName"),
-                        Price = rdr.GetInt32("Price"),
                         Amount = rdr.GetInt32("Amount")
                     };
 
-                    list.Add(item);                      
+                    list.Add(item);
 
                 }
 
 
 
-                return list ;
+                return list;
             }
 
             catch (Exception ex)
             {
-                
+
             }
             finally
             {
@@ -95,30 +94,36 @@ namespace Data_Access_Layer.Context
             throw new NotImplementedException();
         }
 
-        public Item_DTO BuyItem(Item_DTO item)
+        public Item_DTO AddItemToUser(Item_DTO item, User_DTO user)
         {
-            
-       //    try
-       //    {
-       //       
-       //        ConOpen();
-       //        var sql = "SELECT U.UserID, I.ItemID FROM [User] as U, Items as I, UserItems as UI Where U.UserID = @UI.UserID AND I.ItemID = UI.ItemID";
-       //           SqlCommand cmd = new SqlCommand(sql, this.Con);
-       //        cmd.Parameters.AddWithValue("@UserID", item);
-       //        cmd.Parameters.AddWithValue("@ItemID", item);
-       //        cmd.ExecuteNonQuery();
-       //
-       //
-       //    }
-       //
-       //    catch (Exception ex)
-       //    {
-       //        
-       //    }
+
+            try
+            {
+                //insert into koppeltabel
+                // als alles opwil halen user dan get je de userid daarvan alle itemids
+                ConOpen();
+                var sql = "INSERT INTO [dbo].[UserItems]([UserID],[ItemID],[AmountOwned]) VALUES(@UserID, @ItemID, @AmountOwned)";// "INSERT U.UserID, I.ItemID FROM [User] as U, Items as I, UserItems as UI Where U.UserID = @UI.UserID AND I.ItemID = UI.ItemID";
+                SqlCommand cmd = new SqlCommand(sql, this.Con);
+                cmd.Parameters.AddWithValue("@UserID", user.User_ID);
+
+                cmd.Parameters.AddWithValue("@ItemID", item.ItemID);
+                cmd.Parameters.AddWithValue("@AmountOwned", item.Amount);
+                cmd.ExecuteNonQuery();
+
+
+            }
+
+            catch (Exception ex)
+            {
+
+            }
             return item;
         }
+
+        
+        }
     }
-}
+
 
        
         

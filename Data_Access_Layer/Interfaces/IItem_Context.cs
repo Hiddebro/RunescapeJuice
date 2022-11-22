@@ -13,7 +13,7 @@ namespace Data_Access_Layer.Interfaces
         public List<Item_DTO> GetAllItems();
         public void DeleteItem(int id);
 
-        public Item_DTO BuyItem(Item_DTO item);
+        public Item_DTO AddItemToUser(Item_DTO item, User_DTO user);
         //   public Item_DTO GetByItem(Item_DTO dto);
     }
 }

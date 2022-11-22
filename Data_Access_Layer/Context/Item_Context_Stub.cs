@@ -51,16 +51,19 @@ namespace Data_Access_Layer.Context
 
         public void DeleteItem(int id)
         {
-            
+
         }
         public List<Item_DTO> GetAllItems()
         {
             return items;
         }
 
-        public Item_DTO BuyItem(Item_DTO item)
+        public Item_DTO AddItemToUser(Item_DTO item, User_DTO user)
         {
             return item;
         }
+
+       
     }
 }
+
