@@ -41,6 +41,7 @@ namespace Business_logic_Layer.Container
            item_Context.DeleteItem(id);
         }
 
+       
         public List<Item_Model> GetAllItems()
         {
             Item_Model item = new Item_Model();
@@ -69,6 +70,11 @@ namespace Business_logic_Layer.Container
                 userItem.Add(item);
             }
             return userItem;
+        }
+
+        public void SellItem(int id, int userID, int amount)
+        {
+            item_Context.SellItem(id, userID, amount);
         }
 
 

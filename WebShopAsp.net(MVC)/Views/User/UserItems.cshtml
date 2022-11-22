@@ -10,6 +10,12 @@
   <ul class="list-group list-group-flush">
       <li class="list-group-item">Item Name @Html.DisplayFor(modelItem =>item_ViewModel.ItemName)</li>
     <li class="list-group-item">Amount owned @Html.DisplayFor(modelItem =>item_ViewModel.Amount)</li>
+      <li>  <form asp-controller="User" asp-action="SellItem" method="post">
+           <input asp-for="@item_ViewModel.ItemID" type="hidden" class="form-control text-center" required />
+           <input asp-for="@item_ViewModel.Amount" type="hidden" class="form-control text-center" required />
+                 <input class="card-link" type="submit" value="Sell" />
+        </form>
+        </li>
   </ul>
   
    

@@ -66,7 +66,12 @@ namespace Data_Access_Layer.Context
             return null;
         }
 
-       
+        public void SellItem(int id, int userID, int amount)
+        {
+
+        }
+
+
     }
 }
 

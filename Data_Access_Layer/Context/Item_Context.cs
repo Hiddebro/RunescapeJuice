@@ -164,6 +164,39 @@ namespace Data_Access_Layer.Context
             return list;
         }
 
+        public void SellItem(int id, int userID, int amount)
+        {
+            ConOpen();
+            SqlTransaction transaction;
+            transaction = this.Con.BeginTransaction();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = this.Con;
+            cmd.Transaction = transaction;
+            try
+            {
+               
+                var sql = "DELETE FROM [UserItems] WHERE ItemID = @ItemID AND UserID = @UserID";
+                cmd.CommandText = sql;
+                cmd.Parameters.AddWithValue("@ItemID", id);
+                cmd.Parameters.AddWithValue("@UserID", userID);
+                cmd.ExecuteNonQuery();
+
+                var sql2 = "UPDATE [dbo].[Items] SET Amount=Amount + @amount WHERE ItemID=@idItem";
+                cmd.CommandText = sql2;
+                cmd.Parameters.AddWithValue("@amount", amount);
+                cmd.Parameters.AddWithValue("@idItem", id);
+                cmd.ExecuteNonQuery();
+
+                transaction.Commit();
+            }
+
+            catch (Exception ex)
+            {
+
+            }
+
+        }
+
 
     }
 }

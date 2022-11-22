@@ -122,5 +122,20 @@ namespace WebShopAsp.net_MVC_.Controllers
             {
                 return RedirectToAction("Index", "User");
             }
+
+        public IActionResult SellItem(Item_ViewModel item_Viewmodel,Login_ViewModel login_ViewModel)
+        {
+            if (HttpContext.Session.GetInt32("User") > 0)
+            {
+                
+                User_Model user = viewModelConverter2.ViewModelToModel(login_ViewModel);
+                user.User_ID = Convert.ToInt32(HttpContext.Session.GetInt32("User"));
+                Item_Model item = viewModelConverter1.ViewModelToModelA(item_Viewmodel);
+                item_Container.SellItem(item.ItemID, user.User_ID, item.Amount);
+                return RedirectToAction("GetAllUserItems");
+            }
+            return RedirectToAction("Index");
+        }
+
     }
 }
