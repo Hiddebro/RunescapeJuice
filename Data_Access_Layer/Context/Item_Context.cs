@@ -70,6 +70,7 @@ namespace Data_Access_Layer.Context
                     item = new Item_DTO
                     {
                         ItemID = rdr.GetInt32("ItemID"),
+                        Price = rdr.GetInt32("Price"),
                         ItemName = rdr.GetString("ItemName"),
                         Amount = rdr.GetInt32("Amount")
                     };
@@ -95,34 +96,77 @@ namespace Data_Access_Layer.Context
         }
 
         public Item_DTO AddItemToUser(Item_DTO item, User_DTO user)
-        {
-
+        {//wat doe een transaction opzoeken
+            ConOpen();  
+            SqlTransaction transaction;
+            transaction = this.Con.BeginTransaction();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection=this.Con;
+            cmd.Transaction = transaction;
             try
             {
-                //insert into koppeltabel
-                // als alles opwil halen user dan get je de userid daarvan alle itemids
-                ConOpen();
-                var sql = "INSERT INTO [dbo].[UserItems]([UserID],[ItemID],[AmountOwned]) VALUES(@UserID, @ItemID, @AmountOwned)";// "INSERT U.UserID, I.ItemID FROM [User] as U, Items as I, UserItems as UI Where U.UserID = @UI.UserID AND I.ItemID = UI.ItemID";
-                SqlCommand cmd = new SqlCommand(sql, this.Con);
+                var sql = "INSERT INTO [dbo].[UserItems]([UserID],[ItemID],[AmountOwned],[OwnedItem]) VALUES(@UserID, @ItemID, @AmountOwned, @OwnedItem)";// "INSERT U.UserID, I.ItemID FROM [User] as U, Items as I, UserItems as UI Where U.UserID = @UI.UserID AND I.ItemID = UI.ItemID";
+                cmd.CommandText = sql;
                 cmd.Parameters.AddWithValue("@UserID", user.User_ID);
-
                 cmd.Parameters.AddWithValue("@ItemID", item.ItemID);
                 cmd.Parameters.AddWithValue("@AmountOwned", item.Amount);
+                cmd.Parameters.AddWithValue("@OwnedItem", item.ItemName);
                 cmd.ExecuteNonQuery();
 
-
+                
+                 var sql2 = "UPDATE [dbo].[Items] SET Amount=Amount - @amount WHERE ItemID=@idItem";// "INSERT U.UserID, I.ItemID FROM [User] as U, Items as I, UserItems as UI Where U.UserID = @UI.UserID AND I.ItemID = UI.ItemID";
+                 //   if ("Amount=Amount - @amount">= 0) { 
+                cmd.CommandText = sql2;
+                cmd.Parameters.AddWithValue("@amount", item.Amount);
+                cmd.Parameters.AddWithValue("@idItem", item.ItemID);
+                cmd.ExecuteNonQuery();
+                
+                transaction.Commit();
             }
 
             catch (Exception ex)
             {
-
+                transaction.Rollback();
             }
             return item;
         }
 
-        
+        public List<Item_DTO> GetAllUserItems(User_DTO user)
+        {
+            List<Item_DTO> list = new List<Item_DTO>();
+            try
+            {
+                Item_DTO item = null;
+                ConOpen();
+                var sql = "SELECT [ItemID],[AmountOwned],[OwnedItem] FROM [dbo].[UserItems] WHERE UserID = @UserID";
+                SqlCommand cmd = new SqlCommand(sql, this.Con);
+                cmd.Parameters.AddWithValue("@UserID", user.User_ID);
+                SqlDataReader rdr = cmd.ExecuteReader();
+
+
+                while (rdr.Read())
+                {
+                    item = new Item_DTO
+                    {
+                        ItemID = rdr.GetInt32("ItemID"),
+                        ItemName = rdr.GetString("OwnedItem"),
+                        Amount = rdr.GetInt32("AmountOwned")
+                    };
+
+                    list.Add(item);
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return list;
         }
+
+
     }
+}
 
 
        

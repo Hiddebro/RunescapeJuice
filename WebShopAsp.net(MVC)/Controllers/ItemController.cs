@@ -53,8 +53,11 @@ namespace WebShopAsp.net_MVC_.Controllers
 
         public IActionResult DeleteItem(int ItemID)
         {
-            item_Container.DeleteItem(ItemID);
+            if (HttpContext.Session.GetInt32("Admin") > 0) { 
+                item_Container.DeleteItem(ItemID);
             return RedirectToAction("Index", "Item");
+            }
+            return RedirectToAction("Index");
         }
 
         public IActionResult GoToAddItem(Item_ViewModel item_ViewModel)

@@ -59,5 +59,10 @@ namespace Data_Access_Layer.Context
         {
             return true;
         }
-    }
+
+        public User_DTO GetAllUserItems(User_DTO user)
+        {
+            return null;
+        }
+}
 }

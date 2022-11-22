@@ -1,0 +1,19 @@
+﻿@model List<Item_ViewModel>
+@using WebShopAsp.net_MVC_.ViewModels
+@{
+    Layout = "_UserLayout";
+}
+ @foreach (Item_ViewModel item_ViewModel in Model) {
+       //@Html.BeginForm("DeleteItem","Item") <div class="card" style="width: 18rem;">
+  
+  <div class="card-body">
+  <ul class="list-group list-group-flush">
+      <li class="list-group-item">Item Name @Html.DisplayFor(modelItem =>item_ViewModel.ItemName)</li>
+    <li class="list-group-item">Amount owned @Html.DisplayFor(modelItem =>item_ViewModel.Amount)</li>
+  </ul>
+  
+   
+  </div>
+
+      
+    }

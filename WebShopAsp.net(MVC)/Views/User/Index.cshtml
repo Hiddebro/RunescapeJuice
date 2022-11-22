@@ -3,6 +3,10 @@
 @{
     Layout = "_UserLayout";
 }
+<form asp-controller="User" asp-action="GetAllUserItems" method="post">
+        <input class="card-link" type="submit" value="Go to personal Items" />
+        
+        </form>
  @foreach (Item_ViewModel item_ViewModel in Model) {
        //@Html.BeginForm("DeleteItem","Item") <div class="card" style="width: 18rem;">
   
@@ -19,7 +23,9 @@
     <form asp-controller="User" asp-action="BuyItem" method="post">
         <input class="card-link" type="hidden" id="ItemID" name="ItemID" value= @Html.DisplayFor(modelItem =>item_ViewModel.ItemID)>
         <input asp-for="@item_ViewModel.Amount" value="" placeholder="Amount" class="form-control text-center" required />
+        <input asp-for="@item_ViewModel.ItemName" type="hidden" class="form-control text-center" required />
         <input asp-for="@item_ViewModel.ItemID" type="hidden" class="form-control text-center" required />
+        <input asp-for="@item_ViewModel.TotalItems" type="hidden" class="form-control text-center" required />
         <input class="card-link" type="submit" value="Buy Item"/>
         </form>
     <form asp-controller="User" asp-action="ReviewItem" method="post">

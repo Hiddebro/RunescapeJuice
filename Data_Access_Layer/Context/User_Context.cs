@@ -121,30 +121,31 @@ namespace Data_Access_Layer.Context
             return false;
       }
 
-        //  public User_DTO GetByUserID(User_DTO user)
-        //  {
-        //      try
-        //      {
-        //          ConOpen();
-        //          var sql = "SELECT * FROM [User] WHERE UserID = @User_ID";
-        //          SqlCommand cmd = new SqlCommand(sql, this.Con);
-        //          cmd.Parameters.AddWithValue("@User_ID", user.User_ID);
-        //          SqlDataAdapter sda = new SqlDataAdapter(cmd);
-        //          cmd.ExecuteNonQuery();
-        //          DataTable dt = new DataTable();
-        //          sda.Fill(dt);
-        //          var row = dt.Rows[0];
-        //          user.IsAdmin = row.Field<int>("IsAdmin");
-        //          user.Username = row.Field<string>("Username");
-        //          user.User_ID = row.Field<int>("UserId");
-        //          return (user);
-        //      }
-        //      catch
-        //      {
-        //          return null;
-        //      }
-        //  }
-
-
     }
+    //  public User_DTO GetByUserID(User_DTO user)
+    //  {
+    //      try
+    //      {
+    //          ConOpen();
+    //          var sql = "SELECT * FROM [User] WHERE UserID = @User_ID";
+    //          SqlCommand cmd = new SqlCommand(sql, this.Con);
+    //          cmd.Parameters.AddWithValue("@User_ID", user.User_ID);
+    //          SqlDataAdapter sda = new SqlDataAdapter(cmd);
+    //          cmd.ExecuteNonQuery();
+    //          DataTable dt = new DataTable();
+    //          sda.Fill(dt);
+    //          var row = dt.Rows[0];
+    //          user.IsAdmin = row.Field<int>("IsAdmin");
+    //          user.Username = row.Field<string>("Username");
+    //          user.User_ID = row.Field<int>("UserId");
+    //          return (user);
+    //      }
+    //      catch
+    //      {
+    //          return null;
+    //      }
+    //  }
+
+
 }
+

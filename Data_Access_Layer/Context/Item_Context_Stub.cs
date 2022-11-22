@@ -57,10 +57,13 @@ namespace Data_Access_Layer.Context
         {
             return items;
         }
-
         public Item_DTO AddItemToUser(Item_DTO item, User_DTO user)
         {
-            return item;
+            return null;
+        }
+        public List<Item_DTO> GetAllUserItems(User_DTO user)
+        {
+            return null;
         }
 
        
