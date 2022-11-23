@@ -45,7 +45,7 @@ namespace WebShopAsp.net_MVC_.Controllers
                 }
             }
             HttpContext.Session.Clear();
-            return View();
+            return View();  
         }
 
         public IActionResult AddUser(Login_ViewModel vm)

@@ -71,7 +71,15 @@ namespace Data_Access_Layer.Context
 
         }
 
+        public Item_DTO DoubleItems(Item_DTO item, User_DTO user)
+        {
+            return null;
+        }
 
+        public bool CheckIfOwned(int item, int user)
+        {
+            return true;
+        }
     }
 }
 

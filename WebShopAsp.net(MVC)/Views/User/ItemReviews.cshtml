@@ -1,0 +1,55 @@
+﻿@model WebShopAsp.net_MVC_.ViewModels.Review_ViewModel
+@using WebShopAsp.net_MVC_.ViewModels
+@{
+    Layout = "_UserLayout";
+}
+
+
+<header class="bg-dark py-1">
+            <form asp-controller="User" asp-action="GetAllUserItems" method="post">
+        <input class="card-link" type="submit" value="Back" />
+        
+        </form> 
+            <div class="container px-1 px-lg-2 my-2">
+                <div class="text-center text-white">
+                    <h1 class="display-2 fw-bolder">All your personal items</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">Juicy items</p>
+                </div>
+            </div>
+            <form asp-controller="Login" asp-action="LogOut" method="post" class="form-signin">
+           <input class="btn btn-dark" type="submit" value="LogOut" />
+          </form>
+        </header>
+<body>
+        <form asp-controller="User" asp-action="ReviewItem" method="post" class="form-signin">
+       
+
+ 
+       <div class="form-group">
+           <div  class="InputBackgroundBox">
+               <input asp-for="ItemID" placeholder="Item Name" type="hidden" class="form-control text-center" required />
+           </div>
+       
+       </div>
+       <div class="form-group">
+           <div class="InputBackgroundBox">
+                <input asp-for="Score" placeholder="Score" value=""class="form-control text-center" required />
+           </div>
+       
+       </div> 
+        <div class="form-group">
+           <div class="InputBackgroundBox">
+                <input asp-for="Review" placeholder="Review" value="" class="form-control text-center" required />
+           </div>
+       
+       </div>
+
+       <div class="form-signin">
+           <input class="btn btn-dark" type="submit" value="Add review" />
+           <br />
+           </div>
+
+       </form>
+
+       
+           </body>

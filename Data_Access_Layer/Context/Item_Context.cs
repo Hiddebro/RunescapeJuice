@@ -97,11 +97,11 @@ namespace Data_Access_Layer.Context
 
         public Item_DTO AddItemToUser(Item_DTO item, User_DTO user)
         {//wat doe een transaction opzoeken
-            ConOpen();  
+            ConOpen();
             SqlTransaction transaction;
             transaction = this.Con.BeginTransaction();
             SqlCommand cmd = new SqlCommand();
-            cmd.Connection=this.Con;
+            cmd.Connection = this.Con;
             cmd.Transaction = transaction;
             try
             {
@@ -113,14 +113,14 @@ namespace Data_Access_Layer.Context
                 cmd.Parameters.AddWithValue("@OwnedItem", item.ItemName);
                 cmd.ExecuteNonQuery();
 
-                
-                 var sql2 = "UPDATE [dbo].[Items] SET Amount=Amount - @amount WHERE ItemID=@idItem";// "INSERT U.UserID, I.ItemID FROM [User] as U, Items as I, UserItems as UI Where U.UserID = @UI.UserID AND I.ItemID = UI.ItemID";
-                 //   if ("Amount=Amount - @amount">= 0) { 
+
+                var sql2 = "UPDATE [dbo].[Items] SET Amount=Amount - @amount WHERE ItemID=@idItem";// "INSERT U.UserID, I.ItemID FROM [User] as U, Items as I, UserItems as UI Where U.UserID = @UI.UserID AND I.ItemID = UI.ItemID";
+                                                                                                   //   if ("Amount=Amount - @amount">= 0) { 
                 cmd.CommandText = sql2;
                 cmd.Parameters.AddWithValue("@amount", item.Amount);
                 cmd.Parameters.AddWithValue("@idItem", item.ItemID);
                 cmd.ExecuteNonQuery();
-                
+
                 transaction.Commit();
             }
 
@@ -174,7 +174,7 @@ namespace Data_Access_Layer.Context
             cmd.Transaction = transaction;
             try
             {
-               
+
                 var sql = "DELETE FROM [UserItems] WHERE ItemID = @ItemID AND UserID = @UserID";
                 cmd.CommandText = sql;
                 cmd.Parameters.AddWithValue("@ItemID", id);
@@ -196,6 +196,79 @@ namespace Data_Access_Layer.Context
             }
 
         }
+
+        public Item_DTO DoubleItems(Item_DTO item, User_DTO user)
+        {//wat doe een transaction opzoeken q
+            ConOpen();
+            SqlTransaction transaction;
+            transaction = this.Con.BeginTransaction();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = this.Con;
+            cmd.Transaction = transaction;
+            try
+            {
+                var sql = "UPDATE [dbo].[UserItems] SET AmountOwned=AmountOwned + @AmountOwned WHERE ItemID=@ItemID AND UserID=@UserID";// "INSERT U.UserID, I.ItemID FROM [User] as U, Items as I, UserItems as UI Where U.UserID = @UI.UserID AND I.ItemID = UI.ItemID";
+                cmd.CommandText = sql;
+                cmd.Parameters.AddWithValue("@UserID", user.User_ID);
+                cmd.Parameters.AddWithValue("@ItemID", item.ItemID);
+                cmd.Parameters.AddWithValue("@AmountOwned", item.Amount);
+                cmd.Parameters.AddWithValue("@OwnedItem", item.ItemName);
+                cmd.ExecuteNonQuery();
+                
+                var sql2 = "UPDATE [dbo].[Items] SET Amount=Amount - @amount WHERE ItemID=@idItem";// "INSERT U.UserID, I.ItemID FROM [User] as U, Items as I, UserItems as UI Where U.UserID = @UI.UserID AND I.ItemID = UI.ItemID";
+                                                                                                   //   if ("Amount=Amount - @amount">= 0) { 
+                cmd.CommandText = sql2;
+                cmd.Parameters.AddWithValue("@amount", item.Amount);
+                cmd.Parameters.AddWithValue("@idItem", item.ItemID);
+                cmd.ExecuteNonQuery();
+
+                transaction.Commit();
+            }
+
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+            }
+            return item;
+
+        }
+
+        public bool CheckIfOwned(int item, int user)
+        {
+            try
+            {
+                int Amount = 0;
+                ConOpen();
+                var sql = "SELECT * FROM [UserItems] WHERE ItemID = @ItemID AND UserID = @UserID";
+                SqlCommand cmd = new SqlCommand(sql, this.Con);
+               
+                cmd.Parameters.AddWithValue("@ItemID", item);
+                cmd.Parameters.AddWithValue("@UserID", user);
+                SqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    {
+                         Amount = rdr.GetInt32("AmountOwned");
+                    };
+
+                }
+                if(Amount > 0)
+                {
+                    return true;
+                }
+  
+            }
+
+            catch (Exception ex)
+            {
+                
+            }return false;
+           
+        }
+
+
+
 
 
     }

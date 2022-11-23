@@ -19,14 +19,6 @@ namespace Business_logic_Layer.Container
             this.user_Context = context;
         }
 
-
-        public bool CheckActorr(User_Model user_Model)
-        {
-            User_DTO dto = new User_DTO();
-            dto = converterU.ModelToDTO(user_Model);
-            return  user_Context.CheckActorr(dto);
-        }
-
        
         public User_Model AddUser(User_Model user_Model)
         {
