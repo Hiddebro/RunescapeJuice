@@ -80,6 +80,10 @@ namespace Data_Access_Layer.Context
         {
             return true;
         }
+        public Review_DTO AddReview(Review_DTO review_DTO)
+        {
+            return null;
+        }
     }
 }
 

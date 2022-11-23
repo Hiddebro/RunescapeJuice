@@ -51,7 +51,8 @@
            <input asp-for="@item_ViewModel.Amount" type="hidden" class="form-control text-center" required />
                  <input class="card-link" type="submit" value="Sell" />
         </form>
-        <form asp-controller="User" asp-action="ReviewItem" method="post">
+        <form asp-controller="User" asp-action="GoToReviewItem" method="post">
+             <input asp-for="@item_ViewModel.ItemID" type="hidden" class="form-control text-center" required />
        <input class="card-link" type="submit" value="Add Review" />
        
        </form>

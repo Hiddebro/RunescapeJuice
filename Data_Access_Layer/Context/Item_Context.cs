@@ -35,20 +35,32 @@ namespace Data_Access_Layer.Context
 
         public void DeleteItem(int id)
         {
+            ConOpen();
+            SqlTransaction transaction;
+            transaction = this.Con.BeginTransaction();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = this.Con;
+            cmd.Transaction = transaction;
             try
-            {
-                ConOpen();
+
+            { var sql2 = "DELETE FROM [Reviews] WHERE ItemID = @IDItem";
+                cmd.CommandText = sql2;
+                cmd.Parameters.AddWithValue("@IDItem", id);
+                cmd.ExecuteNonQuery();
+
                 var sql = "DELETE FROM [Items] WHERE ItemID = @ItemID";
-                SqlCommand cmd = new SqlCommand(sql, this.Con);
+                cmd.CommandText = sql;
                 cmd.Parameters.AddWithValue("@ItemID", id);
                 cmd.ExecuteNonQuery();
 
+               
 
+                transaction.Commit();
             }
 
             catch (Exception ex)
             {
-
+                transaction.Rollback();
             }
 
         }
@@ -266,6 +278,31 @@ namespace Data_Access_Layer.Context
             }return false;
            
         }
+
+        public Review_DTO AddReview(Review_DTO review_DTO)
+        {
+            try
+            {
+                ConOpen();
+                var sql = "INSERT INTO[dbo].[Reviews] ([Score] ,[Review] ,[ItemID]) VALUES (@Score, @review,@ItemID)";
+                SqlCommand cmd = new SqlCommand(sql, this.Con);
+                cmd.Parameters.AddWithValue("@ItemID", review_DTO.ItemID);
+                cmd.Parameters.AddWithValue("@Score", review_DTO.Score);
+                cmd.Parameters.AddWithValue("@Review", review_DTO.Review);
+                cmd.ExecuteNonQuery();
+
+
+                Console.WriteLine("Succesful Item Added");
+                return review_DTO;
+            }
+
+            catch (Exception ex)
+            {
+
+            }
+            throw new NotImplementedException();
+        }
+
 
 
 

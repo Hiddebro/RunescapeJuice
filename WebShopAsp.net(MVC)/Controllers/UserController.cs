@@ -13,6 +13,7 @@ namespace WebShopAsp.net_MVC_.Controllers
     {
         private readonly User_VMC viewModelConverter2 = new User_VMC();
         private readonly Item_VMC viewModelConverter1 = new Item_VMC();
+        private readonly Review_VMC viewModelConverter3 = new Review_VMC();
         private readonly Item_Container item_Container;
 
 
@@ -102,11 +103,25 @@ namespace WebShopAsp.net_MVC_.Controllers
                 HttpContext.Session.Clear();
                 return RedirectToAction("Login", "Login");
             }
-        } 
-        public IActionResult ReviewItem()
+        }
+
+        public IActionResult GoToReviewItem(Review_ViewModel review_ViewModel,Item_ViewModel item_ViewModel)
+        {
+            if (HttpContext.Session.GetInt32("User") > 0)
+            {
+                review_ViewModel.ItemID = item_ViewModel.ItemID;
+                return View("ItemReviews", review_ViewModel);
+            }
+            
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login", "Login");
+        }
+        public IActionResult ReviewItem(Review_ViewModel review_ViewModel)
             {
             if (HttpContext.Session.GetInt32("User") > 0)
             {
+                Review_Model review= viewModelConverter3.ViewModelToModel(review_ViewModel);
+                item_Container.AddReview(review);
                 return View("ItemReviews");
             }
             HttpContext.Session.Clear();
