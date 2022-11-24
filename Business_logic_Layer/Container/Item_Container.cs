@@ -12,7 +12,7 @@ namespace Business_logic_Layer.Container
         private readonly Review_Converter converterR = new Review_Converter();
         private readonly Item_Converter converterI = new Item_Converter();
         private readonly User_Converter converterU = new User_Converter();
-       
+
         public Item_Container(IItem_Context context)
         {
             this.item_Context = context;
@@ -22,16 +22,17 @@ namespace Business_logic_Layer.Container
             Item_DTO dto = converterI.ModelToDTO(item_Model);
             return converterI.DtoToModel(item_Context.AddItem(dto));
         }
-       
+
         public Item_Model AddItemToUser(Item_Model item_Model, User_Model user_Model)
         {
-            if (item_Model.TotalItems - item_Model.Amount >= 0) {
-            Item_DTO item = new Item_DTO();
-            User_DTO user = new User_DTO();
-            item = converterI.ModelToDTO(item_Model);
-            user = converterU.ModelToDTO(user_Model);
-            item_Context.AddItemToUser(item, user);
-            return converterI.DtoToModel(item);
+            if (item_Model.TotalItems - item_Model.Amount >= 0)
+            {
+                Item_DTO item = new Item_DTO();
+                User_DTO user = new User_DTO();
+                item = converterI.ModelToDTO(item_Model);
+                user = converterU.ModelToDTO(user_Model);
+                item_Context.AddItemToUser(item, user);
+                return converterI.DtoToModel(item);
             }
             return null;
         }
@@ -40,10 +41,9 @@ namespace Business_logic_Layer.Container
         {
             if (item_Model.TotalItems - item_Model.Amount >= 0)
             {
-                Item_DTO item = new Item_DTO();
-                User_DTO user = new User_DTO();
-                item = converterI.ModelToDTO(item_Model);
-                user = converterU.ModelToDTO(user_Model);
+
+                Item_DTO item = converterI.ModelToDTO(item_Model);
+                User_DTO user = converterU.ModelToDTO(user_Model);
                 item_Context.DoubleItems(item, user);
                 return converterI.DtoToModel(item);
             }
@@ -53,10 +53,10 @@ namespace Business_logic_Layer.Container
 
         public void DeleteItem(int id)
         {
-           item_Context.DeleteItem(id);
+            item_Context.DeleteItem(id);
         }
 
-       
+
         public List<Item_Model> GetAllItems()
         {
             Item_Model item = new Item_Model();
@@ -71,6 +71,8 @@ namespace Business_logic_Layer.Container
 
             return items;
         }
+
+
 
         public List<Item_Model> GetAllUserItems(User_Model user_Model)
         {
@@ -102,6 +104,19 @@ namespace Business_logic_Layer.Container
             Review_DTO dto = converterR.ModelToDTO(review_Model);
             return converterR.DtoToModel(item_Context.AddReview(dto));
         }
+        public List<Review_Model> GetAllReviews(int itemid)
+        {
+            Review_Model review = new Review_Model();
+            List<Review_Model> reviews = new List<Review_Model>();
+            List<Review_DTO> DTOs = item_Context.GetAllReviews(itemid);
+            foreach (var dto in DTOs)
+            {
+                review = converterR.DtoToModel(dto);
+                reviews.Add(review);
+            }
 
+
+            return reviews;
+        }
     }
 }

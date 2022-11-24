@@ -84,6 +84,10 @@ namespace Data_Access_Layer.Context
         {
             return null;
         }
+        public List<Review_DTO> GetAllReviews(int itemid)
+        {
+            return null;
+        }
     }
 }
 

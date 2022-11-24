@@ -142,5 +142,31 @@ namespace WebShopAsp.net_MVC_.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult GetAllReviews(Review_ViewModel review_ViewModel, Item_ViewModel item_ViewModel)
+        {
+            if (HttpContext.Session.GetInt32("User") > 0)
+            {
+                List<Review_ViewModel> reviews = new List<Review_ViewModel>();
+                Item_Model item = viewModelConverter1.ViewModelToModel(item_ViewModel);
+                foreach (var review in item_Container.GetAllReviews(item.ItemID))
+                {
+                    Review_ViewModel reviewViewModel = new Review_ViewModel
+                    {
+                       Score = review.Score,
+                       Review = review.Review,
+                       ItemID = review.ItemID
+                    };
+                    reviews.Add(reviewViewModel);
+
+                }
+                return View("FilledItemReviews", reviews);
+            }
+            else
+            {
+                HttpContext.Session.Clear();
+                return RedirectToAction("Login", "Login");
+            }
+        }
+
     }
 }
