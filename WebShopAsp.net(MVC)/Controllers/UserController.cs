@@ -110,7 +110,7 @@ namespace WebShopAsp.net_MVC_.Controllers
             if (HttpContext.Session.GetInt32("User") > 0)
             {
                 review_ViewModel.ItemID = item_ViewModel.ItemID;
-                return View("ItemReviews", review_ViewModel);
+                return RedirectToAction("ReviewItem" ,"Review" , review_ViewModel);
             }
             
             HttpContext.Session.Clear();

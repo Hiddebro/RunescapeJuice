@@ -18,12 +18,7 @@ namespace WebShopAsp.net_MVC_.Controllers
         {
             this.review_Container = container;
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult GetAllReviews(Review_ViewModel review_ViewModel, Item_ViewModel item_ViewModel)
+        public IActionResult Index(Item_ViewModel item_ViewModel, Review_ViewModel review_ViewModel)
         {
             if (HttpContext.Session.GetInt32("User") > 0)
             {
@@ -40,7 +35,7 @@ namespace WebShopAsp.net_MVC_.Controllers
                     reviews.Add(reviewViewModel);
 
                 }
-                return View("FilledItemReviews", reviews);
+                return View(reviews);
             }
             else
             {
@@ -48,6 +43,10 @@ namespace WebShopAsp.net_MVC_.Controllers
                 return RedirectToAction("Login", "Login");
             }
         }
+
+      //  public IActionResult GetAllReviews(Review_ViewModel review_ViewModel, Item_ViewModel item_ViewModel)
+     //   {
+     // //  }
 
         public IActionResult ReviewItem(Review_ViewModel review_ViewModel)
         {
