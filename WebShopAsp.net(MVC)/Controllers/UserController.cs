@@ -105,28 +105,8 @@ namespace WebShopAsp.net_MVC_.Controllers
             }
         }
 
-        public IActionResult GoToReviewItem(Review_ViewModel review_ViewModel,Item_ViewModel item_ViewModel)
-        {
-            if (HttpContext.Session.GetInt32("User") > 0)
-            {
-                review_ViewModel.ItemID = item_ViewModel.ItemID;
-                return View("ItemReviews", review_ViewModel);
-            }
-            
-            HttpContext.Session.Clear();
-            return RedirectToAction("Login", "Login");
-        }
-        public IActionResult ReviewItem(Review_ViewModel review_ViewModel)
-            {
-            if (HttpContext.Session.GetInt32("User") > 0)
-            {
-                Review_Model review= viewModelConverter3.ViewModelToModel(review_ViewModel);
-                item_Container.AddReview(review);
-                return View("ItemReviews");
-            }
-            HttpContext.Session.Clear();
-            return RedirectToAction("Login", "Login");
-        }
+
+     
 
         public IActionResult SellItem(Item_ViewModel item_Viewmodel,Login_ViewModel login_ViewModel)
         {
@@ -142,31 +122,7 @@ namespace WebShopAsp.net_MVC_.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult GetAllReviews(Review_ViewModel review_ViewModel, Item_ViewModel item_ViewModel)
-        {
-            if (HttpContext.Session.GetInt32("User") > 0)
-            {
-                List<Review_ViewModel> reviews = new List<Review_ViewModel>();
-                Item_Model item = viewModelConverter1.ViewModelToModel(item_ViewModel);
-                foreach (var review in item_Container.GetAllReviews(item.ItemID))
-                {
-                    Review_ViewModel reviewViewModel = new Review_ViewModel
-                    {
-                       Score = review.Score,
-                       Review = review.Review,
-                       ItemID = review.ItemID
-                    };
-                    reviews.Add(reviewViewModel);
-
-                }
-                return View("FilledItemReviews", reviews);
-            }
-            else
-            {
-                HttpContext.Session.Clear();
-                return RedirectToAction("Login", "Login");
-            }
-        }
+       
 
     }
 }

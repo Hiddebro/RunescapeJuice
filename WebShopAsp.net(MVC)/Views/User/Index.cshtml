@@ -111,7 +111,7 @@
        <input asp-for="@item_ViewModel.TotalItems" type="hidden" class="form-control text-center" required />
        <input class="card-link" type="submit" value="Buy Item"/>
        </form>
-      <form asp-controller="User" asp-action="GetAllReviews" method="post">
+      <form asp-controller="Reviews" asp-action="Index" method="post">
           <input asp-for="@item_ViewModel.ItemID" type="hidden" class="form-control text-center" required />
           <input class="card-link" type="submit" value="Reviews"/>
           </form>

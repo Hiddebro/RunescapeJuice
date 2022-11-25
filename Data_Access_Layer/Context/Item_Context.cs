@@ -42,7 +42,7 @@ namespace Data_Access_Layer.Context
             cmd.Connection = this.Con;
             cmd.Transaction = transaction;
             try
-            { 
+            {
                 var sql2 = "DELETE FROM [Reviews] WHERE ItemID = @IDItem";
                 cmd.CommandText = sql2;
                 cmd.Parameters.AddWithValue("@IDItem", id);
@@ -58,7 +58,7 @@ namespace Data_Access_Layer.Context
                 cmd.Parameters.AddWithValue("@ItemID", id);
                 cmd.ExecuteNonQuery();
 
-               
+
 
                 transaction.Commit();
             }
@@ -231,7 +231,7 @@ namespace Data_Access_Layer.Context
                 cmd.Parameters.AddWithValue("@AmountOwned", item.Amount);
                 cmd.Parameters.AddWithValue("@OwnedItem", item.ItemName);
                 cmd.ExecuteNonQuery();
-                
+
                 var sql2 = "UPDATE [dbo].[Items] SET Amount=Amount - @amount WHERE ItemID=@idItem";// "INSERT U.UserID, I.ItemID FROM [User] as U, Items as I, UserItems as UI Where U.UserID = @UI.UserID AND I.ItemID = UI.ItemID";
                                                                                                    //   if ("Amount=Amount - @amount">= 0) { 
                 cmd.CommandText = sql2;
@@ -258,7 +258,7 @@ namespace Data_Access_Layer.Context
                 ConOpen();
                 var sql = "SELECT * FROM [UserItems] WHERE ItemID = @ItemID AND UserID = @UserID";
                 SqlCommand cmd = new SqlCommand(sql, this.Con);
-               
+
                 cmd.Parameters.AddWithValue("@ItemID", item);
                 cmd.Parameters.AddWithValue("@UserID", user);
                 SqlDataReader rdr = cmd.ExecuteReader();
@@ -266,86 +266,26 @@ namespace Data_Access_Layer.Context
                 while (rdr.Read())
                 {
                     {
-                         Amount = rdr.GetInt32("AmountOwned");
+                        Amount = rdr.GetInt32("AmountOwned");
                     };
 
                 }
-                if(Amount > 0)
+                if (Amount > 0)
                 {
                     return true;
                 }
-  
+
             }
 
             catch (Exception ex)
             {
-                
-            }return false;
-           
+
+            }
+            return false;
+
         }
 
-        public Review_DTO AddReview(Review_DTO review_DTO)
-        {
-            try
-            {
-                ConOpen();
-                var sql = "INSERT INTO[dbo].[Reviews] ([Score] ,[Review] ,[ItemID]) VALUES (@Score, @review,@ItemID)";
-                SqlCommand cmd = new SqlCommand(sql, this.Con);
-                cmd.Parameters.AddWithValue("@ItemID", review_DTO.ItemID);
-                cmd.Parameters.AddWithValue("@Score", review_DTO.Score);
-                cmd.Parameters.AddWithValue("@Review", review_DTO.Review);
-                cmd.ExecuteNonQuery();
 
-
-                Console.WriteLine("Succesful Item Added");
-                return review_DTO;
-            }
-
-            catch (Exception ex)
-            {
-
-            }
-            throw new NotImplementedException();
-        }
-
-        public List<Review_DTO> GetAllReviews(int itemid)
-        {
-            List<Review_DTO> list = new List<Review_DTO>();
-            try
-            {
-                Review_DTO review = null;
-                ConOpen();
-                var sql = "SELECT * FROM Reviews WHERE ItemID = @ItemID";
-                SqlCommand cmd = new SqlCommand(sql, this.Con);
-                cmd.Parameters.AddWithValue("@ItemID", itemid);
-                SqlDataReader rdr = cmd.ExecuteReader();
-
-
-                while (rdr.Read())
-                {
-                    review = new Review_DTO();
-                    {
-
-                        review.ItemID = rdr.GetInt32("ItemID");
-                        review.Review = rdr.GetString("Review");
-                        review.Score = rdr.GetInt32("Score");
-                    };
-
-                    list.Add(review);
-
-                }
-
-
-            }
-            catch (Exception ex)
-            {
-
-            }
-
-        
-                return list;
-            }
-         }
 
 
 
@@ -353,6 +293,7 @@ namespace Data_Access_Layer.Context
 
 
     }
+}
 
 
 

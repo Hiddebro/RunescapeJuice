@@ -17,8 +17,6 @@ namespace Data_Access_Layer.Interfaces
         public void SellItem(int id, int userID, int amount);
         public Item_DTO DoubleItems(Item_DTO item, User_DTO user);
         public bool CheckIfOwned(int item, int user);
-        public Review_DTO AddReview(Review_DTO review_DTO);
-        public List<Review_DTO> GetAllReviews(int itemid);
 
         //   public Item_DTO GetByItem(Item_DTO dto);
     }
