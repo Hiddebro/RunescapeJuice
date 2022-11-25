@@ -36,7 +36,7 @@
             </div>
             <form asp-controller="Login" asp-action="LogOut" method="post" class="form-signin">
            <input class="btn btn-dark" type="submit" value="LogOut" />
-          </form>
+          </form>s
         </header>
          <div class="flex-container">
  @foreach (Item_ViewModel item_ViewModel in Model) {
@@ -51,7 +51,7 @@
            <input asp-for="@item_ViewModel.Amount" type="hidden" class="form-control text-center" required />
                  <input class="card-link" type="submit" value="Sell" />
         </form>
-        <form asp-controller="Review" asp-action="ReviewItem" method="post">
+        <form asp-controller="Reviews" asp-action="GoToReviewItems" method="post">
              <input asp-for="@item_ViewModel.ItemID" type="hidden" class="form-control text-center" required />
        <input class="card-link" type="submit" value="Add Review" />
        

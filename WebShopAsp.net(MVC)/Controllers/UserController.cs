@@ -105,17 +105,7 @@ namespace WebShopAsp.net_MVC_.Controllers
             }
         }
 
-        public IActionResult GoToReviewItem(Review_ViewModel review_ViewModel,Item_ViewModel item_ViewModel)
-        {
-            if (HttpContext.Session.GetInt32("User") > 0)
-            {
-                review_ViewModel.ItemID = item_ViewModel.ItemID;
-                return RedirectToAction("ReviewItem" ,"Review" , review_ViewModel);
-            }
-            
-            HttpContext.Session.Clear();
-            return RedirectToAction("Login", "Login");
-        }
+
      
 
         public IActionResult SellItem(Item_ViewModel item_Viewmodel,Login_ViewModel login_ViewModel)

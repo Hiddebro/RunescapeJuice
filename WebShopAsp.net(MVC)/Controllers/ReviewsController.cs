@@ -9,12 +9,12 @@ using Microsoft.AspNetCore.Http;
 
 namespace WebShopAsp.net_MVC_.Controllers
 {
-    public class ReviewController : Controller
+    public class ReviewsController : Controller
     {
         private readonly Item_VMC viewModelConverter1 = new Item_VMC();
         private readonly Review_VMC viewModelConverter3 = new Review_VMC();
         private readonly Review_Container review_Container;
-        public ReviewController(Review_Container container)
+        public ReviewsController(Review_Container container)
         {
             this.review_Container = container;
         }
@@ -48,14 +48,26 @@ namespace WebShopAsp.net_MVC_.Controllers
      //   {
      // //  }
 
-        public IActionResult ReviewItem(Review_ViewModel review_ViewModel)
+        public IActionResult ReviewItem(Review_ViewModel review_ViewModel, Item_ViewModel item_ViewModel)
         {
             if (HttpContext.Session.GetInt32("User") > 0)
             {
                 Review_Model review = viewModelConverter3.ViewModelToModel(review_ViewModel);
                 review_Container.AddReview(review);
-                return View("ItemReviews");
+                return RedirectToAction("GetAllUserItems", "User");
             }
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login", "Login");
+        }
+
+        public IActionResult GoToReviewItems(Review_ViewModel review_ViewModel, Item_ViewModel item_ViewModel)
+        {
+            if (HttpContext.Session.GetInt32("User") > 0)
+            {
+                review_ViewModel.ItemID = item_ViewModel.ItemID;
+                return View("ItemReviews", review_ViewModel);
+            }
+
             HttpContext.Session.Clear();
             return RedirectToAction("Login", "Login");
         }
