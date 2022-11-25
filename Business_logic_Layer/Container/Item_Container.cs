@@ -9,7 +9,6 @@ namespace Business_logic_Layer.Container
     public class Item_Container
     {
         private IItem_Context item_Context;
-        private readonly Review_Converter converterR = new Review_Converter();
         private readonly Item_Converter converterI = new Item_Converter();
         private readonly User_Converter converterU = new User_Converter();
 
@@ -99,24 +98,6 @@ namespace Business_logic_Layer.Container
             return item_Context.CheckIfOwned(item, user);
         }
 
-        public Review_Model AddReview(Review_Model review_Model)
-        {
-            Review_DTO dto = converterR.ModelToDTO(review_Model);
-            return converterR.DtoToModel(item_Context.AddReview(dto));
-        }
-        public List<Review_Model> GetAllReviews(int itemid)
-        {
-            Review_Model review = new Review_Model();
-            List<Review_Model> reviews = new List<Review_Model>();
-            List<Review_DTO> DTOs = item_Context.GetAllReviews(itemid);
-            foreach (var dto in DTOs)
-            {
-                review = converterR.DtoToModel(dto);
-                reviews.Add(review);
-            }
-
-
-            return reviews;
-        }
+      
     }
 }

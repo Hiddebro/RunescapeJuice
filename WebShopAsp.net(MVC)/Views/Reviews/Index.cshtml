@@ -1,0 +1,38 @@
+﻿@model List<Review_ViewModel>
+@using WebShopAsp.net_MVC_.ViewModels
+@{
+    Layout = "_UserLayout";
+}
+
+ <header class="bg-dark py-1">
+            <form asp-controller="User" asp-action="Index" method="post">
+        <input class="card-link" type="submit" value="Back to shop" />
+        
+        </form> 
+            <div class="container px-1 px-lg-2 my-2">
+                <div class="text-center text-white">
+                    <h1 class="display-2 fw-bolder">Buy your items now</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">Item reviews</p>
+                </div>
+            </div>
+            <form asp-controller="Login" asp-action="LogOut" method="post" class="form-signin">
+           <input class="btn btn-dark" type="submit" value="LogOut" />
+          </form>
+        </header>
+
+        @foreach (Review_ViewModel review_ViewModel in Model) {
+       //@Html.BeginForm("DeleteItem","Item") <div class="card" style="width: 18rem;">
+  
+  <div class="card-body2">
+  <ul class="list-group list-group-flush">
+      <li class="list-group-item">Item review: @Html.DisplayFor(modelItem =>review_ViewModel.Review)</li>
+     
+    <li class="list-group-item"> Item score : @Html.DisplayFor(modelItem =>review_ViewModel.Score)</li>
+       <br> </br>
+  </ul>
+  
+   
+  </div>
+
+      
+    }
