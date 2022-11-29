@@ -10,7 +10,8 @@ namespace Data_Access_Layer.Context
 {
     public class Item_Context_Stub : IItem_Context
     {
-        public static List<Item_DTO> items = new List<Item_DTO>();
+        public  List<Item_DTO> items = new List<Item_DTO>();
+        public  List<Item_DTO> Useritems = new List<Item_DTO>();
         Item_DTO item = new Item_DTO();
 
         public Item_Context_Stub()
@@ -46,20 +47,23 @@ namespace Data_Access_Layer.Context
 
         public Item_DTO AddItem(Item_DTO item)
         {
+            items.Add(item);
             return item;
-        }
-
-        public void DeleteItem(int id)
-        {
-
         }
         public List<Item_DTO> GetAllItems()
         {
             return items;
         }
+        public void DeleteItem(int id)
+        {
+            GetAllItems().RemoveAt(id);
+        }
+        
         public Item_DTO AddItemToUser(Item_DTO item, User_DTO user)
         {
-            return null;
+
+            Useritems.Add(item);
+            return item;
         }
         public List<Item_DTO> GetAllUserItems(User_DTO user)
         {

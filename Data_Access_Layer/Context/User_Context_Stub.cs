@@ -40,19 +40,5 @@ namespace Data_Access_Layer.Context
             return dto;
         }
  
-        public bool CheckActorr(User_DTO user)
-        {
-            return true;
-        }
-
-        public User_DTO GetAllUserItems(User_DTO user)
-        {
-            return null;
-        }
-
-        public void SellItem(int id)
-        {
-            
-        }
     }
 }

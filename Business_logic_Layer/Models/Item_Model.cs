@@ -8,6 +8,15 @@
         public int Amount { get; set; }
         public int TotalItems { get; set; }
 
+        public Item_Model(int itemID, string itemName, int price, int amount, int totalItems)
+        {
+            ItemID = itemID;
+            ItemName = itemName;
+            Price = price;
+            Amount = amount;
+            TotalItems = totalItems;
+        }
+
         public Item_Model(int itemID, string itemName, int price, int amount)
         {
             ItemID = itemID;

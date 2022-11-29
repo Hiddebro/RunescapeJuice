@@ -50,11 +50,20 @@ namespace Business_logic_Layer.Container
         }
 
 
-        public void DeleteItem(int id)
+         public List<Item_Model> GetAllUserItems(User_Model user_Model)
         {
-            item_Context.DeleteItem(id);
+            User_DTO user = new User_DTO();
+            user = converterU.ModelToDTO(user_Model);
+            Item_Model item = new Item_Model();
+            List<Item_Model> userItem = new List<Item_Model>();
+            List<Item_DTO> DTOs = item_Context.GetAllUserItems(user);
+            foreach (var dto in DTOs)
+            {
+                item = converterI.DtoToModel(dto);
+                userItem.Add(item);
+            }
+            return userItem;
         }
-
 
         public List<Item_Model> GetAllItems()
         {
@@ -71,22 +80,13 @@ namespace Business_logic_Layer.Container
             return items;
         }
 
-
-
-        public List<Item_Model> GetAllUserItems(User_Model user_Model)
+        public void DeleteItem(int id)
         {
-            User_DTO user = new User_DTO();
-            user = converterU.ModelToDTO(user_Model);
-            Item_Model item = new Item_Model();
-            List<Item_Model> userItem = new List<Item_Model>();
-            List<Item_DTO> DTOs = item_Context.GetAllUserItems(user);
-            foreach (var dto in DTOs)
-            {
-                item = converterI.DtoToModel(dto);
-                userItem.Add(item);
-            }
-            return userItem;
+            item_Context.DeleteItem(id);
         }
+
+
+      
 
         public void SellItem(int id, int userID, int amount)
         {

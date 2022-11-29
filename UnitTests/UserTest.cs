@@ -38,7 +38,7 @@ namespace UnitTests
         public void AddUserFalse()
         {
             //Arrange
-            User_Model user = new User_Model(1, null, "Henk", "Boos");
+            User_Model user = new User_Model(1,"Henk", "Boos");
             //Act
             container.AddUser(user);
             //Assert
