@@ -1,0 +1,67 @@
+﻿@model List<Item_ViewModel>
+@using WebShopAsp.net_MVC_.ViewModels
+@{
+    Layout = "_UserLayout";
+}
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        
+ .flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card-body2{
+     margin: 50px;
+     border-style: solid;
+     font-size: 25px;
+     margin-left: 25px;
+     margin-right: 25px;
+     justify-content: left;
+     text-align:left;
+}
+</style>
+ <header class="bg-dark py-1">
+            <form asp-controller="User" asp-action="Index" method="post">
+        <input class="card-link" type="submit" value="Back" />
+        
+        </form> 
+            <div class="container px-1 px-lg-2 my-2">
+                <div class="text-center text-white">
+                    <h1 class="display-2 fw-bolder">All your personal items</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">Juicy items</p>
+                </div>
+            </div>
+            <form asp-controller="Login" asp-action="LogOut" method="post" class="form-signin">
+           <input class="btn btn-dark" type="submit" value="LogOut" />
+          </form>s
+        </header>
+         <div class="flex-container">
+ @foreach (Item_ViewModel item_ViewModel in Model) {
+       //@Html.BeginForm("DeleteItem","Item") <div class="card" style="width: 18rem;">
+  
+  <div class="card-body2">
+  <ul class="list-group list-group-flush">
+      <li class="list-group-item">Item: @Html.DisplayFor(modelItem =>item_ViewModel.ItemName)</li>
+    <li class="list-group-item">Amount owned: @Html.DisplayFor(modelItem =>item_ViewModel.Amount)</li>
+      <li>  <form asp-controller="User" asp-action="SellItem" method="post">
+           <input asp-for="@item_ViewModel.ItemID" type="hidden" class="form-control text-center" required />
+           <input asp-for="@item_ViewModel.Amount" type="hidden" class="form-control text-center" required />
+                 <input class="card-link" type="submit" value="Sell" />
+        </form>
+        <form asp-controller="Reviews" asp-action="GoToReviewItems" method="post">
+             <input asp-for="@item_ViewModel.ItemID" type="hidden" class="form-control text-center" required />
+       <input class="card-link" type="submit" value="Add Review" />
+       
+       </form>
+        </li>
+  </ul>
+  
+   
+  </div>
+
+      
+    }
+    </div>

@@ -35,18 +35,17 @@ namespace WebShopAsp.net_MVC_.Controllers
                 {
 
                     HttpContext.Session.SetInt32("User", login_ViewModel.User_ID);
-                    return RedirectToAction("GoToUserMainPage", "User", login_ViewModel);
+                    return RedirectToAction("Index", "User", login_ViewModel.User_ID);
 
                 }
                 else if (login_ViewModel.User_ID != 0 & login_ViewModel.IsAdmin == 1)
                 {
                     HttpContext.Session.SetInt32("Admin", login_ViewModel.User_ID);
-                    return RedirectToAction("GoToAdminMainPage", "Admin", login_ViewModel);
+                    return RedirectToAction("GoToAdminMainPage", "Admin", login_ViewModel.User_ID);
                 }
-                return View();
             }
-
-            return View();
+            HttpContext.Session.Clear();
+            return View();  
         }
 
         public IActionResult AddUser(Login_ViewModel vm)
@@ -60,6 +59,12 @@ namespace WebShopAsp.net_MVC_.Controllers
             return View("Register");
         }
 
+        public IActionResult LogOut(Login_ViewModel vm)
+        {
+            HttpContext.Session.Clear();
+            return View("Login");
+
+        }
         public IActionResult GoToRegister(Login_ViewModel login_ViewModel)
         {
             return View("Register");

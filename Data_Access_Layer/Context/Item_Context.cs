@@ -1,5 +1,6 @@
 ﻿using Data_Access_Layer.DTOs;
 using Data_Access_Layer.Interfaces;
+using Microsoft.AspNetCore.Http;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -27,9 +28,46 @@ namespace Data_Access_Layer.Context
 
             catch (Exception ex)
             {
-                throw ex;
+
             }
             throw new NotImplementedException();
+        }
+
+        public void DeleteItem(int id)
+        {
+            ConOpen();
+            SqlTransaction transaction;
+            transaction = this.Con.BeginTransaction();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = this.Con;
+            cmd.Transaction = transaction;
+            try
+            {
+                var sql2 = "DELETE FROM [Reviews] WHERE ItemID = @IDItem";
+                cmd.CommandText = sql2;
+                cmd.Parameters.AddWithValue("@IDItem", id);
+                cmd.ExecuteNonQuery();
+
+                var sql3 = "DELETE FROM [UserItems] WHERE ItemID = @item";
+                cmd.CommandText = sql3;
+                cmd.Parameters.AddWithValue("@item", id);
+                cmd.ExecuteNonQuery();
+
+                var sql = "DELETE FROM [Items] WHERE ItemID = @ItemID";
+                cmd.CommandText = sql;
+                cmd.Parameters.AddWithValue("@ItemID", id);
+                cmd.ExecuteNonQuery();
+
+
+
+                transaction.Commit();
+            }
+
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+            }
+
         }
 
         public List<Item_DTO> GetAllItems()
@@ -42,30 +80,30 @@ namespace Data_Access_Layer.Context
                 var sql = "SELECT * FROM Items";
                 SqlCommand cmd = new SqlCommand(sql, this.Con);
                 SqlDataReader rdr = cmd.ExecuteReader();
-               
-              
+
+
                 while (rdr.Read())
                 {
                     item = new Item_DTO
                     {
                         ItemID = rdr.GetInt32("ItemID"),
-                        ItemName = rdr.GetString("ItemName"),
                         Price = rdr.GetInt32("Price"),
+                        ItemName = rdr.GetString("ItemName"),
                         Amount = rdr.GetInt32("Amount")
                     };
 
-                    list.Add(item);                      
+                    list.Add(item);
 
                 }
 
 
 
-                return list ;
+                return list;
             }
 
             catch (Exception ex)
             {
-                throw ex;
+
             }
             finally
             {
@@ -73,8 +111,191 @@ namespace Data_Access_Layer.Context
             }
             throw new NotImplementedException();
         }
+
+        public Item_DTO AddItemToUser(Item_DTO item, User_DTO user)
+        {//wat doe een transaction opzoeken
+            ConOpen();
+            SqlTransaction transaction;
+            transaction = this.Con.BeginTransaction();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = this.Con;
+            cmd.Transaction = transaction;
+            try
+            {
+                var sql = "INSERT INTO [dbo].[UserItems]([UserID],[ItemID],[AmountOwned],[OwnedItem]) VALUES(@UserID, @ItemID, @AmountOwned, @OwnedItem)";// "INSERT U.UserID, I.ItemID FROM [User] as U, Items as I, UserItems as UI Where U.UserID = @UI.UserID AND I.ItemID = UI.ItemID";
+                cmd.CommandText = sql;
+                cmd.Parameters.AddWithValue("@UserID", user.User_ID);
+                cmd.Parameters.AddWithValue("@ItemID", item.ItemID);
+                cmd.Parameters.AddWithValue("@AmountOwned", item.Amount);
+                cmd.Parameters.AddWithValue("@OwnedItem", item.ItemName);
+                cmd.ExecuteNonQuery();
+
+
+                var sql2 = "UPDATE [dbo].[Items] SET Amount=Amount - @amount WHERE ItemID=@idItem";// "INSERT U.UserID, I.ItemID FROM [User] as U, Items as I, UserItems as UI Where U.UserID = @UI.UserID AND I.ItemID = UI.ItemID";
+                                                                                                   //   if ("Amount=Amount - @amount">= 0) { 
+                cmd.CommandText = sql2;
+                cmd.Parameters.AddWithValue("@amount", item.Amount);
+                cmd.Parameters.AddWithValue("@idItem", item.ItemID);
+                cmd.ExecuteNonQuery();
+
+                transaction.Commit();
+            }
+
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+            }
+            return item;
+        }
+
+        public List<Item_DTO> GetAllUserItems(User_DTO user)
+        {
+            List<Item_DTO> list = new List<Item_DTO>();
+            try
+            {
+                Item_DTO item = null;
+                ConOpen();
+                var sql = "SELECT [ItemID],[AmountOwned],[OwnedItem] FROM [dbo].[UserItems] WHERE UserID = @UserID";
+                SqlCommand cmd = new SqlCommand(sql, this.Con);
+                cmd.Parameters.AddWithValue("@UserID", user.User_ID);
+                SqlDataReader rdr = cmd.ExecuteReader();
+
+
+                while (rdr.Read())
+                {
+                    item = new Item_DTO
+                    {
+                        ItemID = rdr.GetInt32("ItemID"),
+                        ItemName = rdr.GetString("OwnedItem"),
+                        Amount = rdr.GetInt32("AmountOwned")
+                    };
+
+                    list.Add(item);
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return list;
+        }
+
+        public void SellItem(int id, int userID, int amount)
+        {
+            ConOpen();
+            SqlTransaction transaction;
+            transaction = this.Con.BeginTransaction();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = this.Con;
+            cmd.Transaction = transaction;
+            try
+            {
+
+                var sql = "DELETE FROM [UserItems] WHERE ItemID = @ItemID AND UserID = @UserID";
+                cmd.CommandText = sql;
+                cmd.Parameters.AddWithValue("@ItemID", id);
+                cmd.Parameters.AddWithValue("@UserID", userID);
+                cmd.ExecuteNonQuery();
+
+                var sql2 = "UPDATE [dbo].[Items] SET Amount=Amount + @amount WHERE ItemID=@idItem";
+                cmd.CommandText = sql2;
+                cmd.Parameters.AddWithValue("@amount", amount);
+                cmd.Parameters.AddWithValue("@idItem", id);
+                cmd.ExecuteNonQuery();
+
+                transaction.Commit();
+            }
+
+            catch (Exception ex)
+            {
+
+            }
+
+        }
+
+        public Item_DTO DoubleItems(Item_DTO item, User_DTO user)
+        {//wat doe een transaction opzoeken q
+            ConOpen();
+            SqlTransaction transaction;
+            transaction = this.Con.BeginTransaction();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = this.Con;
+            cmd.Transaction = transaction;
+            try
+            {
+                var sql = "UPDATE [dbo].[UserItems] SET AmountOwned=AmountOwned + @AmountOwned WHERE ItemID=@ItemID AND UserID=@UserID";// "INSERT U.UserID, I.ItemID FROM [User] as U, Items as I, UserItems as UI Where U.UserID = @UI.UserID AND I.ItemID = UI.ItemID";
+                cmd.CommandText = sql;
+                cmd.Parameters.AddWithValue("@UserID", user.User_ID);
+                cmd.Parameters.AddWithValue("@ItemID", item.ItemID);
+                cmd.Parameters.AddWithValue("@AmountOwned", item.Amount);
+                cmd.Parameters.AddWithValue("@OwnedItem", item.ItemName);
+                cmd.ExecuteNonQuery();
+
+                var sql2 = "UPDATE [dbo].[Items] SET Amount=Amount - @amount WHERE ItemID=@idItem";// "INSERT U.UserID, I.ItemID FROM [User] as U, Items as I, UserItems as UI Where U.UserID = @UI.UserID AND I.ItemID = UI.ItemID";
+                                                                                                   //   if ("Amount=Amount - @amount">= 0) { 
+                cmd.CommandText = sql2;
+                cmd.Parameters.AddWithValue("@amount", item.Amount);
+                cmd.Parameters.AddWithValue("@idItem", item.ItemID);
+                cmd.ExecuteNonQuery();
+
+                transaction.Commit();
+            }
+
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+            }
+            return item;
+
+        }
+
+        public bool CheckIfOwned(int item, int user)
+        {
+            try
+            {
+                int Amount = 0;
+                ConOpen();
+                var sql = "SELECT * FROM [UserItems] WHERE ItemID = @ItemID AND UserID = @UserID";
+                SqlCommand cmd = new SqlCommand(sql, this.Con);
+
+                cmd.Parameters.AddWithValue("@ItemID", item);
+                cmd.Parameters.AddWithValue("@UserID", user);
+                SqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    {
+                        Amount = rdr.GetInt32("AmountOwned");
+                    };
+
+                }
+                if (Amount > 0)
+                {
+                    return true;
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+
+            }
+            return false;
+
+        }
+
+
+
+
+
+
+
+
     }
 }
+
+
 
        
         

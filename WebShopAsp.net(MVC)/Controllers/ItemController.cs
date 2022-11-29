@@ -37,24 +37,6 @@ namespace WebShopAsp.net_MVC_.Controllers
             }
             return View(items);
         }
-        
-     //  public IActionResult GetAllItems()
-     //  {
-     //      List<Item_ViewModel> items = new List<Item_ViewModel>();
-     //      foreach(var item in item_Container.GetAllItems())
-     //      {
-     //          Item_ViewModel itemViewModel = new Item_ViewModel
-     //          {
-     //              ItemID = item.ItemID,
-     //              ItemName = item.ItemName,
-     //              Price = item.Price,
-     //              Amount = item.Amount
-     //          };
-     //          items.Add(itemViewModel);
-     //
-     //      }
-     //      return RedirectToAction("GoToAdminMainPage", "Admin");
-     //  }
 
         public IActionResult AddItem(Item_ViewModel vm)
         {
@@ -67,11 +49,50 @@ namespace WebShopAsp.net_MVC_.Controllers
             return View();
         }
 
-        public IActionResult Delete()
+        
+
+        public IActionResult DeleteItem(int ItemID)
+        {
+            if (HttpContext.Session.GetInt32("Admin") > 0) { 
+                item_Container.DeleteItem(ItemID);
+            return RedirectToAction("Index", "Item");
+            }
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult GoToAddItem(Item_ViewModel item_ViewModel)
         {
 
-            return RedirectToAction("Index", "Item");
+            if (HttpContext.Session.GetInt32("Admin") > 0)
+            {
+                return View("AddItem", item_ViewModel);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Login");
+            }
+
         }
+
+        public IActionResult GoToBuyItems(Item_ViewModel item_ViewModel)
+        {
+
+            if (HttpContext.Session.GetInt32("User") > 0)
+            {
+                return View("BuyItems", item_ViewModel);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Login");
+            }
+
+        }
+
+       
+
+       
 
     }
 }
+
+

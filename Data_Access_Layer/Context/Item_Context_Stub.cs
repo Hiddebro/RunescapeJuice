@@ -48,9 +48,46 @@ namespace Data_Access_Layer.Context
         {
             return item;
         }
+
+        public void DeleteItem(int id)
+        {
+
+        }
         public List<Item_DTO> GetAllItems()
         {
             return items;
         }
+        public Item_DTO AddItemToUser(Item_DTO item, User_DTO user)
+        {
+            return null;
+        }
+        public List<Item_DTO> GetAllUserItems(User_DTO user)
+        {
+            return null;
+        }
+
+        public void SellItem(int id, int userID, int amount)
+        {
+
+        }
+
+        public Item_DTO DoubleItems(Item_DTO item, User_DTO user)
+        {
+            return null;
+        }
+
+        public bool CheckIfOwned(int item, int user)
+        {
+            return true;
+        }
+        public Review_DTO AddReview(Review_DTO review_DTO)
+        {
+            return null;
+        }
+        public List<Review_DTO> GetAllReviews(int itemid)
+        {
+            return null;
+        }
     }
 }
+

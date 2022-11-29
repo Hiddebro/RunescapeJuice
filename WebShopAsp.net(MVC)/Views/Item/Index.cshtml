@@ -2,36 +2,55 @@
 @using WebShopAsp.net_MVC_.ViewModels
 
 @{
-    ViewBag.Title = "Create Character";
     Layout = "_Layout";
-    
-    @if (ViewData["Message"] != null)
-    {
-        <div class="@ViewData["MessageClass"]" role="alert">
-            @ViewData["Message"]
-        </div>
-    }
 }
+<style>
+    tbody{
+        background-color: #264b82;
+        color: white;
+    }
 
-<h2>Browse Characters</h2>
+     body{
+        background-color: #264b82;
+        color: white;
+    }
 
+    head{
+        
+    body{
+        background-color: white;
+    }
+
+   
+</style>
+    
+
+<header class ="align-content-center">
+
+</header>
+<form asp-controller="Admin" asp-action="GoToAdminMainPage" method="post">
+        <input class="btn btn-dark" type="submit" value="Back" />
+       
+        </form>
 <table class="table">
-    <thead>
+    <head>
     <tr>
         <th>
-            CharacterID
+            Item Name
         </th>
         <th>
-            Name
+            Price
         </th>
         <th>
-            Cost
+            Amount
         </th>
     </tr>
-    </thead>
-    <tbody>
+    </head>
+    <body>
+
     @foreach (Item_ViewModel item_ViewModel in Model) {
-        <tr>
+       //@Html.BeginForm("DeleteItem","Item") 
+       <tr>
             <td>
                 @Html.DisplayFor(modelItem =>item_ViewModel.ItemName)
             </td>
@@ -42,11 +61,15 @@
                 @Html.DisplayFor(modelItem =>item_ViewModel.Amount)
             </td>
              <td>
-              <form asp-controller="Item" asp-action="Delete" method="get">
+              <form asp-controller="Item" asp-action="DeleteItem" method="post">
+                  <input asp-for="@item_ViewModel.ItemID" type="hidden" id="ItemID" name="ItemID" />
                     <input class="btn btn-dark" type="submit" value="Delete" />
+                   
                   </form>
             </td>
         </tr>
     }
-    </tbody>
+    
+     </tr>
+    </body>
 </table>

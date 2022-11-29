@@ -22,6 +22,11 @@
             IsAdmin = isadmin;
         }
 
+        public User_Model(int user_ID)
+        {
+            User_ID = user_ID;
+        }
+
         public User_Model(string username, string password)
         {
             Username = username;

@@ -7,8 +7,6 @@ using WebShopAsp.net_MVC_.VMConverters;
 using Microsoft.AspNetCore.Session;
 using Microsoft.AspNetCore.Http;
 
-
-
 namespace WebShopAsp.net_MVC_.Controllers
 {
     public class AdminController : Controller
@@ -47,18 +45,6 @@ namespace WebShopAsp.net_MVC_.Controllers
             }
         }
 
-        public IActionResult GoToAddItem(Login_ViewModel login_ViewModel, Item_ViewModel item_ViewModel)
-        {
-            
-            if (HttpContext.Session.GetInt32("Admin") > 0)
-            {
-                return View("AddItem", item_ViewModel);
-            }
-            else
-            {
-                return RedirectToAction("Login", "Login");
-            }
-            
-        }
+        
     }
 }
