@@ -46,27 +46,6 @@ namespace UnitTests
 
         }
 
-        [TestMethod]
-        public void GetAdminIdIsAdminTrue()
-        {
-            //Arrange
-            User_Model a = new User_Model(1);
-            //Act
-            AB = container.GetByIsAdmin(a);
-            //Assert
-            Assert.AreEqual(AB.IsAdmin, 1);
-        }
-
-        [TestMethod]
-        public void GetAdminIdIsUserTrue()
-        {
-            //Arrange
-            User_Model b = new User_Model(3);
-            //Act
-            AB = container.GetByIsAdmin(b);
-            //Assert
-            Assert.AreEqual(AB.IsAdmin, 0);
-        }
 
         [TestMethod]
         public void GetByNameTrue()

@@ -35,17 +35,7 @@ namespace Business_logic_Layer.Container
             
             return converterU.DtoToModel(user_Context.GetByName(dto));
         }
-        
 
-
-        public User_Model GetByIsAdmin(User_Model user_Model)
-        {
-            User_DTO dto = new User_DTO();
-            dto = converterU.ModelToDTO(user_Model);
-            return converterU.DtoToModel(user_Context.GetByIsAdmin(dto));
-        }
-
-      
 
     }
 }

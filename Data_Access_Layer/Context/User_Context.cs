@@ -55,28 +55,6 @@ namespace Data_Access_Layer.Context
             }
         }
 
-        public User_DTO GetByIsAdmin(User_DTO user)
-        {
-            try
-            {
-
-                ConOpen();
-                var sql = "SELECT * FROM [User] WHERE User_ID = @UserID";
-                SqlCommand cmd = new SqlCommand(sql, this.Con);
-                cmd.Parameters.AddWithValue("@UserID", user.User_ID);
-                SqlDataAdapter sda = new SqlDataAdapter(cmd);
-                cmd.ExecuteNonQuery();
-                DataTable dt = new DataTable();
-                sda.Fill(dt);
-                var row = dt.Rows[0];
-                user.IsAdmin = row.Field<int>("IsAdmin");
-                return (user);
-            }
-            catch
-            {
-                return null;
-            }
-        }
 
 
 
