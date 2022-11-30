@@ -11,7 +11,6 @@ namespace Data_Access_Layer.Context
     public class User_Context_Stub : IUser_Context
     {
         public static List<User_DTO> users = new List<User_DTO>();
-        User_DTO user = new User_DTO();
         public static bool tryaddperson;
         public User_Context_Stub()
         {

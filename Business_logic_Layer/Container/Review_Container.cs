@@ -21,7 +21,7 @@ namespace Business_logic_Layer.Container
         }
         public List<Review_Model> GetAllReviews(int itemid)
         {
-            Review_Model review = new Review_Model();
+            Review_Model review;
             List<Review_Model> reviews = new List<Review_Model>();
             List<Review_DTO> DTOs = Review_Context.GetAllReviews(itemid);
             foreach (var dto in DTOs)

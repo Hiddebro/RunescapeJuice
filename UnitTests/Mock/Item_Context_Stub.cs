@@ -13,8 +13,6 @@ namespace Data_Access_Layer.Context
         public  List<Item_DTO> items = new List<Item_DTO>();
         public  List<Item_DTO> Useritems = new List<Item_DTO>();
         public List<Item_DTO> doubleItems = new List<Item_DTO>();
-        Item_DTO item = new Item_DTO();
-
         public Item_Context_Stub()
         {
             Item_DTO item = new Item_DTO();

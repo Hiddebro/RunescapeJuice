@@ -10,7 +10,6 @@ namespace Business_logic_Layer.Container
     {
         private IUser_Context user_Context;
         private readonly User_Converter converterU = new User_Converter();
-        private readonly Item_Converter converterI = new Item_Converter();
 
 
 
@@ -22,17 +21,14 @@ namespace Business_logic_Layer.Container
        
         public User_Model AddUser(User_Model user_Model)
         {
-            User_DTO dto = new User_DTO();
-            dto = converterU.ModelToDTO(user_Model);
+            User_DTO dto = converterU.ModelToDTO(user_Model);
             return converterU.DtoToModel(user_Context.AddUser(dto));
         }
 
 
         public User_Model GetByName(User_Model user_Model)
         {
-            User_DTO dto = new User_DTO();
-            dto = converterU.ModelToDTO(user_Model);
-            
+            User_DTO dto = converterU.ModelToDTO(user_Model);
             return converterU.DtoToModel(user_Context.GetByName(dto));
         }
 

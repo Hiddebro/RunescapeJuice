@@ -15,30 +15,10 @@ namespace Data_Access_Layer.Context
 
         public Review_Context_Stub()
         {
-        //   Review_DTO review = new Review_DTO();
-        //   review.Review = "mooi";
-        //   review.Score = 5;
-        //   review.ItemID = 1;
-        //   reviews.Add(review);
-        //
-        //   Review_DTO review2 = new Review_DTO();
-        //   review2.Review = "lelijk";
-        //   review2.Score = 1;
-        //   review2.ItemID = 1;
-        //   reviews.Add(review2);
-        //
-        //   Review_DTO review3 = new Review_DTO();
-        //   review2.Review = "lelijk";
-        //   review2.Score = 1;
-        //   review2.ItemID = 2;
-        //   reviews.Add(review2);
-        //
-
-
+     
         }
         public Review_DTO AddReview(Review_DTO review)
         {
-
             return review;
         }
         public List<Review_DTO> GetAllReviews(int itemid)

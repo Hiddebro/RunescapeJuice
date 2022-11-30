@@ -14,7 +14,7 @@ namespace UnitTests
         public IItem_Context item_Context;
         public Item_Container container;
 
-        public List<Item_Model> TestResult { get; private set; }
+
 
         [TestInitialize]
         public void Setup()
@@ -47,8 +47,9 @@ namespace UnitTests
             
             //Act  
             container.DeleteItem(1);
+            List<Item_Model> TestResultList = container.GetAllItems();
             //Assert
-            Assert.AreEqual(3 , container.GetAllItems().Count());
+            Assert.AreEqual(3 , TestResultList.Count);
         }
          [TestMethod]
         public void GetAllItemsTrue()
@@ -56,9 +57,9 @@ namespace UnitTests
             //Arrange
 
             //Act
-           TestResult = container.GetAllItems();
+            List<Item_Model> TestResultList = container.GetAllItems();
             //Assert
-            Assert.AreEqual(4, TestResult.Count());
+            Assert.AreEqual(4, TestResultList.Count());
         }
 
         [TestMethod]
@@ -66,15 +67,11 @@ namespace UnitTests
         public void GetUserItems()
         {
             //Arrange
-            
             User_Model user = new User_Model(1,0);
-
-
             //Act
-            TestResult = container.GetAllUserItems(user);
+            List<Item_Model> TestResultList = container.GetAllUserItems(user);
             //Assert
-            Assert.AreEqual(4, TestResult.Count());
-
+            Assert.AreEqual(4, TestResultList.Count());
         }
 
         [TestMethod]
@@ -82,17 +79,15 @@ namespace UnitTests
         public void AddItemToUserAndGetList()
         {
             //Arrange
-
             User_Model user = new User_Model(1, 0);
             Item_Model item = new Item_Model(7, "SGS", 100000, 50, 100);
             Item_Model item2 = new Item_Model(8, "BGS", 1000, 20, 100);
             //Act
             container.AddItemToUser(item, user);
             container.AddItemToUser(item2, user);
-            TestResult = container.GetAllUserItems(user);
+            List<Item_Model> TestResultList = container.GetAllUserItems(user);
             //Assert
-            Assert.AreEqual(6, TestResult.Count());
-
+            Assert.AreEqual(6, TestResultList.Count());
         }
 
         [TestMethod]
@@ -102,10 +97,9 @@ namespace UnitTests
             User_Model user = new User_Model(1, 0);
             Item_Model item = new Item_Model(7, "BGS", 100000, 50, 100);
             //Act
-            container.DoubleItems(item , user);
+            Item_Model TestResult = container.DoubleItems(item, user);
             //Assert
-            Assert.AreEqual("BGS", container.DoubleItems(item,user).ItemName);
-
+            Assert.AreEqual("BGS", TestResult.ItemName);
         }
 
         [TestMethod]
@@ -115,10 +109,9 @@ namespace UnitTests
             User_Model user = new User_Model(1, 0);
             Item_Model item = new Item_Model(7, "SGS", 100000, 50, 100);
             //Act
-            container.DoubleItems(item, user);
+            Item_Model TestResult = container.DoubleItems(item, user);
             //Assert
-            Assert.AreEqual("SGS", container.DoubleItems(item,user).ItemName);
-
+            Assert.AreEqual("SGS", TestResult.ItemName);
         }
 
         [TestMethod]
@@ -128,8 +121,9 @@ namespace UnitTests
             User_Model user = new User_Model(1, 0);
             //Act
             container.SellItem(1, 1, 50);
+            List<Item_Model> TestResultList = container.GetAllUserItems(user);
             //Assert
-            Assert.AreEqual(3,container.GetAllUserItems(user).Count);
+            Assert.AreEqual(3,TestResultList.Count);
         }
 
         [TestMethod]
@@ -139,9 +133,9 @@ namespace UnitTests
             User_Model user = new User_Model(1);
             Item_Model item = new Item_Model(1, "SGS", 100000, 50, 100);
             //Act
-            container.CheckIfOwned(item.ItemID, user.User_ID);
+            bool  TestResultBool = container.CheckIfOwned(item.ItemID, user.User_ID);
             //Assert
-            Assert.IsTrue(container.CheckIfOwned(item.ItemID, user.User_ID));
+            Assert.IsTrue(TestResultBool);
         }
 
         [TestMethod]
@@ -151,9 +145,9 @@ namespace UnitTests
             User_Model user = new User_Model(1);
             Item_Model item = new Item_Model(7, "BGS", 100000, 50, 100);
             //Act
-            container.CheckIfOwned(item.ItemID, user.User_ID);
+           bool TestResultBool = container.CheckIfOwned(item.ItemID, user.User_ID);
             //Assert
-            Assert.IsFalse(container.CheckIfOwned(item.ItemID, user.User_ID));
+            Assert.IsFalse(TestResultBool);
         }
     }
 }
