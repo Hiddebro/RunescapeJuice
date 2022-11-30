@@ -12,6 +12,7 @@ namespace Data_Access_Layer.Context
     {
         public  List<Item_DTO> items = new List<Item_DTO>();
         public  List<Item_DTO> Useritems = new List<Item_DTO>();
+        public List<Item_DTO> doubleItems = new List<Item_DTO>();
         Item_DTO item = new Item_DTO();
 
         public Item_Context_Stub()
@@ -62,36 +63,55 @@ namespace Data_Access_Layer.Context
         public Item_DTO AddItemToUser(Item_DTO item, User_DTO user)
         {
 
-            Useritems.Add(item);
+            items.Add(item);
             return item;
         }
         public List<Item_DTO> GetAllUserItems(User_DTO user)
         {
-            return null;
+           
+            return items;
         }
 
         public void SellItem(int id, int userID, int amount)
         {
-
+            GetAllItems().RemoveAt(id);
         }
 
         public Item_DTO DoubleItems(Item_DTO item, User_DTO user)
         {
-            return null;
+            Item_DTO item1 = new Item_DTO();
+            item1.ItemID = 1;
+            item1.ItemName = "SGS";
+            item1.Amount = 50;
+            item1.Price = 100000;
+
+            if (item1.ItemName == item.ItemName)
+            {
+                return item1;
+
+            }
+            else if (item1.ItemName != item.ItemName)
+            {
+                return item;
+            }
+              
+            return item1;
         }
 
         public bool CheckIfOwned(int item, int user)
         {
-            return true;
+            Item_DTO item1 = new Item_DTO();
+            item1.ItemID = 1;
+            item1.ItemName = "SGS";
+            item1.Amount = 50;
+            item1.Price = 100000;
+            if (item1.ItemID == item)
+            {
+                return true;
+            }
+            return false;
         }
-        public Review_DTO AddReview(Review_DTO review_DTO)
-        {
-            return null;
-        }
-        public List<Review_DTO> GetAllReviews(int itemid)
-        {
-            return null;
-        }
+      
     }
 }
 

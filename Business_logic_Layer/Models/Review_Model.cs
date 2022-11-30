@@ -17,5 +17,12 @@ namespace Business_logic_Layer.Models
 
         }
 
+        public Review_Model(int itemID, string review, int score)
+        {
+            ItemID = itemID;
+            Review = review;   
+            Score = score;
+        }
+
     }
 }

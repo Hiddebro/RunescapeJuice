@@ -25,6 +25,8 @@
             Amount = amount;
         }
 
+
+
         public Item_Model()
         {
 
