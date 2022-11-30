@@ -15,10 +15,7 @@ namespace WebShopAsp.net_MVC_.Controllers
         private readonly User_VMC viewModelConverter = new User_VMC();
         private readonly User_Container user_Container;
         
-        protected void Page_load(object sender, EventArgs e)
-        {
-            HttpContext.Session.GetInt32("User");
-        }
+    
 
         public AdminController(User_Container container)
         {
@@ -26,17 +23,11 @@ namespace WebShopAsp.net_MVC_.Controllers
         }
 
         
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult GoToAdminMainPage(Login_ViewModel login_ViewModel, User_Model user_Model)
+        public IActionResult Index(Login_ViewModel login_ViewModel)
         {
             if (HttpContext.Session.GetInt32("Admin") > 0)
-            { 
-                return View("AdminMainPage" , login_ViewModel);
-                
+            {
+                return View(login_ViewModel);
             }
             else
             {

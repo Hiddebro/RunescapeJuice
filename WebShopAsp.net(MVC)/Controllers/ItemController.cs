@@ -23,7 +23,8 @@ namespace WebShopAsp.net_MVC_.Controllers
         public IActionResult Index()
         {
             List<Item_ViewModel> items = new List<Item_ViewModel>();
-            foreach (var item in item_Container.GetAllItems())
+            if (HttpContext.Session.GetInt32("Admin") > 0) { 
+                foreach (var item in item_Container.GetAllItems())
             {
                 Item_ViewModel itemViewModel = new Item_ViewModel
                 {
@@ -36,12 +37,19 @@ namespace WebShopAsp.net_MVC_.Controllers
 
             }
             return View(items);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Login");
+            }
+
         }
 
         public IActionResult AddItem(Item_ViewModel vm)
         {
-            if (ModelState.IsValid)
-            {
+            if (HttpContext.Session.GetInt32("Admin") > 0)
+            
+                {
                 Item_Model item = viewModelConverter.ViewModelToModel(vm);
                 item_Container.AddItem(item);
                 return RedirectToAction("GoToAdminMainPage","Admin");
@@ -57,7 +65,10 @@ namespace WebShopAsp.net_MVC_.Controllers
                 item_Container.DeleteItem(ItemID);
             return RedirectToAction("Index", "Item");
             }
-            return RedirectToAction("Index");
+            else
+            {
+                return RedirectToAction("Login", "Login");
+            }
         }
 
         public IActionResult GoToAddItem(Item_ViewModel item_ViewModel)

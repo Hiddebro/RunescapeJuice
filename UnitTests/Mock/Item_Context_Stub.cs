@@ -60,13 +60,11 @@ namespace Data_Access_Layer.Context
         
         public Item_DTO AddItemToUser(Item_DTO item, User_DTO user)
         {
-
             items.Add(item);
             return item;
         }
         public List<Item_DTO> GetAllUserItems(User_DTO user)
         {
-           
             return items;
         }
 
@@ -91,8 +89,7 @@ namespace Data_Access_Layer.Context
             else if (item1.ItemName != item.ItemName)
             {
                 return item;
-            }
-              
+            }  
             return item1;
         }
 

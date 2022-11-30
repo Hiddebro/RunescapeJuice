@@ -45,7 +45,6 @@ namespace WebShopAsp.net_MVC_.Controllers
             }
             else
             {
-                HttpContext.Session.Clear();
                 return RedirectToAction("Login", "Login");
             }
 
@@ -72,7 +71,10 @@ namespace WebShopAsp.net_MVC_.Controllers
                     return RedirectToAction("Index", "User");
                         
             }
-            return RedirectToAction("Index", "User");
+            else
+            {
+                return RedirectToAction("Login", "Login");
+            }
         }
 
    
@@ -100,7 +102,6 @@ namespace WebShopAsp.net_MVC_.Controllers
             }
             else
             {
-                HttpContext.Session.Clear();
                 return RedirectToAction("Login", "Login");
             }
         }
@@ -119,7 +120,10 @@ namespace WebShopAsp.net_MVC_.Controllers
                 item_Container.SellItem(item.ItemID, user.User_ID, item.Amount);
                 return RedirectToAction("GetAllUserItems");
             }
-            return RedirectToAction("Index");
+            else
+            {
+                return RedirectToAction("Login", "Login");
+            }
         }
 
        

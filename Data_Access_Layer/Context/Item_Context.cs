@@ -58,8 +58,6 @@ namespace Data_Access_Layer.Context
                 cmd.Parameters.AddWithValue("@ItemID", id);
                 cmd.ExecuteNonQuery();
 
-
-
                 transaction.Commit();
             }
 
@@ -113,7 +111,7 @@ namespace Data_Access_Layer.Context
         }
 
         public Item_DTO AddItemToUser(Item_DTO item, User_DTO user)
-        {//wat doe een transaction opzoeken
+        {
             ConOpen();
             SqlTransaction transaction;
             transaction = this.Con.BeginTransaction();
@@ -215,7 +213,7 @@ namespace Data_Access_Layer.Context
         }
 
         public Item_DTO DoubleItems(Item_DTO item, User_DTO user)
-        {//wat doe een transaction opzoeken q
+        {
             ConOpen();
             SqlTransaction transaction;
             transaction = this.Con.BeginTransaction();

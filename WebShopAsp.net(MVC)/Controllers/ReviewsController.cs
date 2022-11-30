@@ -56,8 +56,10 @@ namespace WebShopAsp.net_MVC_.Controllers
                 review_Container.AddReview(review);
                 return RedirectToAction("GetAllUserItems", "User");
             }
-            HttpContext.Session.Clear();
-            return RedirectToAction("Login", "Login");
+            else
+            {
+                return RedirectToAction("Login", "Login");
+            }
         }
 
         public IActionResult GoToReviewItems(Review_ViewModel review_ViewModel, Item_ViewModel item_ViewModel)
@@ -67,9 +69,10 @@ namespace WebShopAsp.net_MVC_.Controllers
                 review_ViewModel.ItemID = item_ViewModel.ItemID;
                 return View("ItemReviews", review_ViewModel);
             }
-
-            HttpContext.Session.Clear();
-            return RedirectToAction("Login", "Login");
+            else
+            {
+                return RedirectToAction("Login", "Login");
+            }
         }
     }
 }
