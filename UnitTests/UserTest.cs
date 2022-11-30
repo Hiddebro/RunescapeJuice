@@ -15,7 +15,7 @@ namespace UnitTests
         static IUser_Context user_Context = new User_Context_Stub();
         User_Container container = new User_Container(user_Context);
 
-        public User_Model AB { get; private set; }
+
 
         [TestMethod]
         public void AddUserTrue()
@@ -53,10 +53,10 @@ namespace UnitTests
             //Arrange
             User_Model c = new User_Model("Henk", "Boos");
             //Act
-            AB = container.GetByName(c);
+            User_Model user = container.GetByName(c);
             //Assert
-            Assert.AreEqual(AB.User_ID, 1);
-            Assert.AreEqual(AB.IsAdmin, 1);
+            Assert.AreEqual(user.User_ID, 1);
+            Assert.AreEqual(user.IsAdmin, 1);
         }
 
         [TestMethod]
@@ -65,10 +65,10 @@ namespace UnitTests
             //Arrange
             User_Model d = new User_Model("Henk", "Boos");
             //Act
-            AB = container.GetByName(d);
+            User_Model user = container.GetByName(d);
             //Assert
-            Assert.AreNotEqual(AB.User_ID, 0);
-            Assert.AreNotEqual(AB.IsAdmin, 0);
+            Assert.AreNotEqual(user.User_ID, 0);
+            Assert.AreNotEqual(user.IsAdmin, 0);
         }
     }
 }

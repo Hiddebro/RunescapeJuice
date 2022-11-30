@@ -51,7 +51,8 @@ namespace UnitTests
             //Assert
             Assert.AreEqual(3 , TestResultList.Count);
         }
-         [TestMethod]
+
+        [TestMethod]
         public void GetAllItemsTrue()
         {
             //Arrange
@@ -133,7 +134,7 @@ namespace UnitTests
             User_Model user = new User_Model(1);
             Item_Model item = new Item_Model(1, "SGS", 100000, 50, 100);
             //Act
-            bool  TestResultBool = container.CheckIfOwned(item.ItemID, user.User_ID);
+            bool TestResultBool = container.CheckIfOwned(item.ItemID, user.User_ID);
             //Assert
             Assert.IsTrue(TestResultBool);
         }
@@ -145,7 +146,7 @@ namespace UnitTests
             User_Model user = new User_Model(1);
             Item_Model item = new Item_Model(7, "BGS", 100000, 50, 100);
             //Act
-           bool TestResultBool = container.CheckIfOwned(item.ItemID, user.User_ID);
+            bool TestResultBool = container.CheckIfOwned(item.ItemID, user.User_ID);
             //Assert
             Assert.IsFalse(TestResultBool);
         }
