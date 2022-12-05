@@ -46,7 +46,7 @@ namespace UnitTests
             //Arrange
           
             //Act
-          TestResult = container.GetAllReviews(1);
+            TestResult = container.GetAllReviews(1);
             //Assert
             Assert.AreEqual(2, TestResult.Count());
         }
