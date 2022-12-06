@@ -23,20 +23,21 @@ namespace WebShopAsp.net_MVC_.Controllers
         public IActionResult Index()
         {
             List<Item_ViewModel> items = new List<Item_ViewModel>();
-            if (HttpContext.Session.GetInt32("Admin") > 0) { 
-                foreach (var item in item_Container.GetAllItems())
+            if (HttpContext.Session.GetInt32("Admin") > 0)
             {
-                Item_ViewModel itemViewModel = new Item_ViewModel
+                foreach (var item in item_Container.GetAllItems())
                 {
-                    ItemID = item.ItemID,
-                    ItemName = item.ItemName,
-                    Price = item.Price,
-                    Amount = item.Amount
-                };
-                items.Add(itemViewModel);
+                    Item_ViewModel itemViewModel = new Item_ViewModel
+                    {
+                        ItemID = item.ItemID,
+                        ItemName = item.ItemName,
+                        Price = item.Price,
+                        Amount = item.Amount
+                    };
+                    items.Add(itemViewModel);
 
-            }
-            return View(items);
+                }
+                return View(items);
             }
             else
             {
@@ -48,22 +49,23 @@ namespace WebShopAsp.net_MVC_.Controllers
         public IActionResult AddItem(Item_ViewModel vm)
         {
             if (HttpContext.Session.GetInt32("Admin") > 0)
-            
-                {
+
+            {
                 Item_Model item = viewModelConverter.ViewModelToModel(vm);
                 item_Container.AddItem(item);
-                return RedirectToAction("GoToAdminMainPage","Admin");
+                return RedirectToAction("GoToAdminMainPage", "Admin");
             }
             return View();
         }
 
-        
+
 
         public IActionResult DeleteItem(int ItemID)
         {
-            if (HttpContext.Session.GetInt32("Admin") > 0) { 
+            if (HttpContext.Session.GetInt32("Admin") > 0)
+            {
                 item_Container.DeleteItem(ItemID);
-            return RedirectToAction("Index", "Item");
+                return RedirectToAction("Index", "Item");
             }
             else
             {
@@ -99,9 +101,9 @@ namespace WebShopAsp.net_MVC_.Controllers
 
         }
 
-       
 
-       
+
+
 
     }
 }

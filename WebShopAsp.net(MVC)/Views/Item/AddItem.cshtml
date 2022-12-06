@@ -16,31 +16,31 @@
  <form asp-controller="Admin" asp-action="GoToAdminMainPage" method="post">
         <input class="btn btn-dark" type="submit" value="Back" />
         </form>
-      
+
 <body>
 
 
 <form asp-controller="Item" asp-action="AddItem" method="post" class="form-signin">
-       
 
- 
+
+
        <div class="form-group">
            <div  class="InputBackgroundBox">
                <input asp-for="ItemName" placeholder="Item Name" class="form-control text-center" required />
            </div>
-       
+
        </div>
        <div class="form-group">
            <div class="InputBackgroundBox">
                 <input asp-for="Price" placeholder="Price" value="Price"class="form-control text-center" required />
            </div>
-       
+
        </div> 
         <div class="form-group">
            <div class="InputBackgroundBox">
                 <input asp-for="Amount" placeholder="Amount" value="Amount" class="form-control text-center" required />
            </div>
-       
+
        </div>
 
        <div class="form-signin">
@@ -50,6 +50,6 @@
 
        </form>
 
-       
+
            </body>
 

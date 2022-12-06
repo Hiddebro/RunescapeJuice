@@ -14,15 +14,14 @@ namespace WebShopAsp.net_MVC_.Controllers
 
         private readonly User_VMC viewModelConverter = new User_VMC();
         private readonly User_Container user_Container;
-        
-    
+
+
 
         public AdminController(User_Container container)
         {
             this.user_Container = container;
         }
 
-        
         public IActionResult Index(Login_ViewModel login_ViewModel)
         {
             if (HttpContext.Session.GetInt32("Admin") > 0)
@@ -36,6 +35,6 @@ namespace WebShopAsp.net_MVC_.Controllers
             }
         }
 
-        
+
     }
 }

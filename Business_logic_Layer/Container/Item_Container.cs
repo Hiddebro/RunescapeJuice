@@ -26,10 +26,10 @@ namespace Business_logic_Layer.Container
         {
             if (item_Model.TotalItems - item_Model.Amount >= 0)
             {
-               Item_DTO item = converterI.ModelToDTO(item_Model);
-               User_DTO user = converterU.ModelToDTO(user_Model);
-               item_Context.AddItemToUser(item, user);
-               return converterI.DtoToModel(item);
+                Item_DTO item = converterI.ModelToDTO(item_Model);
+                User_DTO user = converterU.ModelToDTO(user_Model);
+                item_Context.AddItemToUser(item, user);
+                return converterI.DtoToModel(item);
             }
             return item_Model;
         }
@@ -47,9 +47,9 @@ namespace Business_logic_Layer.Container
         }
 
 
-         public List<Item_Model> GetAllUserItems(User_Model user_Model)
+        public List<Item_Model> GetAllUserItems(User_Model user_Model)
         {
-           User_DTO user = converterU.ModelToDTO(user_Model);
+            User_DTO user = converterU.ModelToDTO(user_Model);
             Item_Model item;
             List<Item_Model> userItem = new List<Item_Model>();
             List<Item_DTO> DTOs = item_Context.GetAllUserItems(user);
@@ -71,8 +71,6 @@ namespace Business_logic_Layer.Container
                 item = converterI.DtoToModel(dto);
                 items.Add(item);
             }
-
-
             return items;
         }
 
@@ -91,6 +89,6 @@ namespace Business_logic_Layer.Container
             return item_Context.CheckIfOwned(item, user);
         }
 
-      
+
     }
 }

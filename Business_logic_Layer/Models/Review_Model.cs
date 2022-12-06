@@ -12,17 +12,11 @@ namespace Business_logic_Layer.Models
         public string Review { get; set; }
         public int Score { get; set; }
 
-        public Review_Model()
-        {
-
-        }
-
         public Review_Model(int itemID, string review, int score)
         {
             ItemID = itemID;
-            Review = review;   
+            Review = review;
             Score = score;
         }
-
     }
 }

@@ -12,7 +12,7 @@ namespace UnitTests
     [TestClass]
     public class ReviewTest
     {
-      
+
         public IReview_Context review_Context;
         public Review_Container container;
 
@@ -21,16 +21,16 @@ namespace UnitTests
         [TestInitialize]
         public void Setup()
         {
-            
+
             review_Context = new Review_Context_Stub();
             container = new Review_Container(review_Context);
-    }
+        }
 
         [TestMethod]
         public void AddReviewTrue()
         {
             //Arrange
-            Review_Model model = new Review_Model(1,"mooi",5);
+            Review_Model model = new Review_Model(1, "mooi", 5);
             //Act
             Review_Model model2 = container.AddReview(model);
             //Assert
@@ -44,7 +44,7 @@ namespace UnitTests
         public void GetallReviewsTrue()
         {
             //Arrange
-          
+
             //Act
             TestResult = container.GetAllReviews(1);
             //Assert

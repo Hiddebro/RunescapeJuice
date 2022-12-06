@@ -17,6 +17,7 @@
             TotalItems = totalItems;
         }
 
+
         public Item_Model(int itemID, string itemName, int price, int amount)
         {
             ItemID = itemID;
@@ -26,10 +27,5 @@
         }
 
 
-
-        public Item_Model()
-        {
-
-        }
     }
 }

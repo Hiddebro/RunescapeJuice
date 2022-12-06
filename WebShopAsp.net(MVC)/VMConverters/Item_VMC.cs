@@ -20,26 +20,13 @@ namespace WebShopAsp.net_MVC_.VMConverters
         }
         public Item_Model ViewModelToModel(Item_ViewModel vm)
         {
-            Item_Model item_Model = new Item_Model()
-            {
-                ItemID = vm.ItemID,
-                ItemName = vm.ItemName,
-                Price = vm.Price,
-                Amount = vm.Amount
-            };
+            Item_Model item_Model = new Item_Model(vm.ItemID, vm.ItemName, vm.Price, vm.Amount);
             return item_Model;
         }
 
         public Item_Model ViewModelToModelA(Item_ViewModel vm)
         {
-            Item_Model item_Model = new Item_Model()
-            {
-                ItemID = vm.ItemID,
-                ItemName = vm.ItemName,
-                Price = vm.Price,
-                Amount = vm.Amount,
-                TotalItems = vm.TotalItems
-            };
+            Item_Model item_Model = new Item_Model(vm.ItemID, vm.ItemName, vm.Price, vm.Amount, vm.TotalItems);
             return item_Model;
         }
     }

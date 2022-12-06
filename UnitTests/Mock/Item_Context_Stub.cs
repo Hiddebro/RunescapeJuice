@@ -10,8 +10,8 @@ namespace Data_Access_Layer.Context
 {
     public class Item_Context_Stub : IItem_Context
     {
-        public  List<Item_DTO> items = new List<Item_DTO>();
-        public  List<Item_DTO> Useritems = new List<Item_DTO>();
+        public List<Item_DTO> items = new List<Item_DTO>();
+        public List<Item_DTO> Useritems = new List<Item_DTO>();
         public List<Item_DTO> doubleItems = new List<Item_DTO>();
         public Item_Context_Stub()
         {
@@ -57,7 +57,7 @@ namespace Data_Access_Layer.Context
         {
             GetAllItems().RemoveAt(id);
         }
-        
+
         public Item_DTO AddItemToUser(Item_DTO item, User_DTO user)
         {
             items.Add(item);
@@ -89,7 +89,7 @@ namespace Data_Access_Layer.Context
             else if (item1.ItemName != item.ItemName)
             {
                 return item;
-            }  
+            }
             return item1;
         }
 
@@ -106,7 +106,7 @@ namespace Data_Access_Layer.Context
             }
             return false;
         }
-      
+
     }
 }
 

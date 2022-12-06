@@ -25,7 +25,7 @@ namespace Data_Access_Layer.DTOs
 
         public Item_DTO()
         {
-            
+
         }
     }
 }

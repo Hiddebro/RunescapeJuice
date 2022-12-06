@@ -11,11 +11,11 @@ namespace Data_Access_Layer.Context
     public class Review_Context_Stub : IReview_Context
     {
         public List<Review_DTO> reviews = new List<Review_DTO>();
-        
+
 
         public Review_Context_Stub()
         {
-     
+
         }
         public Review_DTO AddReview(Review_DTO review)
         {
@@ -34,7 +34,7 @@ namespace Data_Access_Layer.Context
             review2.Score = 1;
             review2.ItemID = 1;
             reviews.Add(review2);
-           
+
             return reviews;
         }
     }

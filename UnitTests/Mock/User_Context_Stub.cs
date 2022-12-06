@@ -27,7 +27,7 @@ namespace Data_Access_Layer.Context
         }
         public User_DTO GetByName(User_DTO user)
         {
-            
+
             User_DTO dto = new User_DTO();
             if (user.Username == "Henk" && user.Password == "Boos")
             {
@@ -35,9 +35,9 @@ namespace Data_Access_Layer.Context
                 user.IsAdmin = 1;
                 dto = user;
             }
-           
+
             return dto;
         }
- 
+
     }
 }

@@ -20,11 +20,10 @@ namespace Data_Access_Layer.Context
                 cmd.Parameters.AddWithValue("@Review", review_DTO.Review);
                 cmd.ExecuteNonQuery();
 
-
                 Console.WriteLine("Succesful Item Added");
+                ConClose();
                 return review_DTO;
             }
-
             catch (Exception ex)
             {
 
@@ -43,30 +42,23 @@ namespace Data_Access_Layer.Context
                 SqlCommand cmd = new SqlCommand(sql, this.Con);
                 cmd.Parameters.AddWithValue("@ItemID", itemid);
                 SqlDataReader rdr = cmd.ExecuteReader();
-
-
                 while (rdr.Read())
                 {
                     review = new Review_DTO();
                     {
-
                         review.ItemID = rdr.GetInt32("ItemID");
                         review.Review = rdr.GetString("Review");
                         review.Score = rdr.GetInt32("Score");
                     };
-
                     list.Add(review);
 
                 }
-
-
             }
             catch (Exception ex)
             {
 
             }
-
-
+            ConClose();
             return list;
         }
     }

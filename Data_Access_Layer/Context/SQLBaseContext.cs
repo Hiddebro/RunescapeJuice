@@ -2,14 +2,9 @@
 
 namespace Data_Access_Layer.Context
 {
-    public class SQLBaseContext
+    public abstract class SQLBaseContext
     {
-        public string _ConnectionString;
-
-        public SQLBaseContext()
-        {
-            _ConnectionString = "Server = mssqlstud.fhict.local; Database = dbi439802_webshophid; User Id = dbi439802_webshophid; Password = Hidde012";
-        }
+        private string _ConnectionString = "Server = mssqlstud.fhict.local; Database = dbi439802_webshophid; User Id = dbi439802_webshophid; Password = Hidde012";
         public SqlConnection Con { get; set; }
         public void ConOpen()
         {
@@ -17,7 +12,6 @@ namespace Data_Access_Layer.Context
             {
                 Con = new SqlConnection(_ConnectionString);
                 this.Con.Open();
-                // if not exist
             }
             catch (Exception ex)
             {
@@ -25,13 +19,11 @@ namespace Data_Access_Layer.Context
             }
 
         }
-
         public void ConClose()
         {
             try
             {
                 this.Con.Close();
-                // if not exist
             }
             catch (Exception ex)
             {

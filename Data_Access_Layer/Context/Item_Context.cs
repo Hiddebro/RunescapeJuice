@@ -20,12 +20,10 @@ namespace Data_Access_Layer.Context
                 cmd.Parameters.AddWithValue("@Price", item.Price);
                 cmd.Parameters.AddWithValue("@Amount", item.Amount);
                 cmd.ExecuteNonQuery();
-
-
                 Console.WriteLine("Succesful Item Added");
+                ConClose();
                 return (item);
             }
-
             catch (Exception ex)
             {
 
@@ -59,13 +57,13 @@ namespace Data_Access_Layer.Context
                 cmd.ExecuteNonQuery();
 
                 transaction.Commit();
+                ConClose();
             }
 
             catch (Exception ex)
             {
                 transaction.Rollback();
             }
-
         }
 
         public List<Item_DTO> GetAllItems()
@@ -93,9 +91,7 @@ namespace Data_Access_Layer.Context
                     list.Add(item);
 
                 }
-
-
-
+                ConClose();
                 return list;
             }
 
@@ -128,7 +124,6 @@ namespace Data_Access_Layer.Context
                 cmd.Parameters.AddWithValue("@OwnedItem", item.ItemName);
                 cmd.ExecuteNonQuery();
 
-
                 var sql2 = "UPDATE [dbo].[Items] SET Amount=Amount - @amount WHERE ItemID=@idItem";// "INSERT U.UserID, I.ItemID FROM [User] as U, Items as I, UserItems as UI Where U.UserID = @UI.UserID AND I.ItemID = UI.ItemID";
                                                                                                    //   if ("Amount=Amount - @amount">= 0) { 
                 cmd.CommandText = sql2;
@@ -137,8 +132,8 @@ namespace Data_Access_Layer.Context
                 cmd.ExecuteNonQuery();
 
                 transaction.Commit();
+                ConClose();
             }
-
             catch (Exception ex)
             {
                 transaction.Rollback();
@@ -157,8 +152,6 @@ namespace Data_Access_Layer.Context
                 SqlCommand cmd = new SqlCommand(sql, this.Con);
                 cmd.Parameters.AddWithValue("@UserID", user.User_ID);
                 SqlDataReader rdr = cmd.ExecuteReader();
-
-
                 while (rdr.Read())
                 {
                     item = new Item_DTO
@@ -167,15 +160,14 @@ namespace Data_Access_Layer.Context
                         ItemName = rdr.GetString("OwnedItem"),
                         Amount = rdr.GetInt32("AmountOwned")
                     };
-
                     list.Add(item);
-
                 }
             }
             catch (Exception ex)
             {
 
             }
+            ConClose();
             return list;
         }
 
@@ -189,7 +181,6 @@ namespace Data_Access_Layer.Context
             cmd.Transaction = transaction;
             try
             {
-
                 var sql = "DELETE FROM [UserItems] WHERE ItemID = @ItemID AND UserID = @UserID";
                 cmd.CommandText = sql;
                 cmd.Parameters.AddWithValue("@ItemID", id);
@@ -203,6 +194,7 @@ namespace Data_Access_Layer.Context
                 cmd.ExecuteNonQuery();
 
                 transaction.Commit();
+                ConClose();
             }
 
             catch (Exception ex)
@@ -244,10 +236,10 @@ namespace Data_Access_Layer.Context
             {
                 transaction.Rollback();
             }
+            ConClose();
             return item;
 
         }
-
         public bool CheckIfOwned(int item, int user)
         {
             try
@@ -266,38 +258,28 @@ namespace Data_Access_Layer.Context
                     {
                         Amount = rdr.GetInt32("AmountOwned");
                     };
-
                 }
                 if (Amount > 0)
                 {
+                    ConClose();
                     return true;
                 }
-
             }
-
             catch (Exception ex)
             {
 
             }
+            ConClose();
             return false;
-
         }
-
-
-
-
-
-
-
-
     }
 }
 
 
 
-       
-        
 
 
-    
+
+
+
 

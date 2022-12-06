@@ -14,11 +14,13 @@ namespace Business_logic_Layer.Container
         {
             this.Review_Context = context;
         }
+
         public Review_Model AddReview(Review_Model review_Model)
         {
             Review_DTO dto = converterR.ModelToDTO(review_Model);
             return converterR.DtoToModel(Review_Context.AddReview(dto));
         }
+
         public List<Review_Model> GetAllReviews(int itemid)
         {
             Review_Model review;
@@ -29,8 +31,6 @@ namespace Business_logic_Layer.Container
                 review = converterR.DtoToModel(dto);
                 reviews.Add(review);
             }
-
-
             return reviews;
         }
     }

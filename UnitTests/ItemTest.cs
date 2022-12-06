@@ -20,7 +20,7 @@ namespace UnitTests
         public void Setup()
         {
             item_Context = new Item_Context_Stub();
-            container = new Item_Container(item_Context); 
+            container = new Item_Container(item_Context);
         }
 
 
@@ -28,7 +28,7 @@ namespace UnitTests
         public void AddItemTrue()
         {
             //Arrange
-            Item_Model item = new Item_Model(5 , "SGS" , 100000, 50);
+            Item_Model item = new Item_Model(5, "SGS", 100000, 50);
             //Act
             Item_Model itema = container.AddItem(item);
             //Assert
@@ -37,19 +37,19 @@ namespace UnitTests
             Assert.AreEqual(itema.Price, 100000);
             Assert.AreEqual(itema.Amount, 50);
         }
-      
-       
+
+
 
         [TestMethod]
         public void DeleteItemTrue()
         {
             //Arrange
-            
+
             //Act  
             container.DeleteItem(1);
             List<Item_Model> TestResultList = container.GetAllItems();
             //Assert
-            Assert.AreEqual(3 , TestResultList.Count);
+            Assert.AreEqual(3, TestResultList.Count);
         }
 
         [TestMethod]
@@ -68,7 +68,7 @@ namespace UnitTests
         public void GetUserItems()
         {
             //Arrange
-            User_Model user = new User_Model(1,0);
+            User_Model user = new User_Model(1, 0);
             //Act
             List<Item_Model> TestResultList = container.GetAllUserItems(user);
             //Assert
@@ -124,7 +124,7 @@ namespace UnitTests
             container.SellItem(1, 1, 50);
             List<Item_Model> TestResultList = container.GetAllUserItems(user);
             //Assert
-            Assert.AreEqual(3,TestResultList.Count);
+            Assert.AreEqual(3, TestResultList.Count);
         }
 
         [TestMethod]

@@ -16,17 +16,15 @@ namespace WebShopAsp.net_MVC_.Controllers
         private readonly Review_VMC viewModelConverter3 = new Review_VMC();
         private readonly Item_Container item_Container;
 
-
-
         public UserController(Item_Container container)
         {
             this.item_Container = container;
         }
 
-
         public IActionResult Index(Login_ViewModel login_ViewModel)
         {
-            if (HttpContext.Session.GetInt32("User") > 0 & login_ViewModel.IsAdmin == 0) {
+            if (HttpContext.Session.GetInt32("User") > 0 & login_ViewModel.IsAdmin == 0)
+            {
                 List<Item_ViewModel> items = new List<Item_ViewModel>();
                 foreach (var item in item_Container.GetAllItems())
                 {
@@ -39,7 +37,6 @@ namespace WebShopAsp.net_MVC_.Controllers
                         TotalItems = item.Amount
                     };
                     items.Add(itemViewModel);
-
                 }
                 return View(items);
             }
@@ -47,37 +44,30 @@ namespace WebShopAsp.net_MVC_.Controllers
             {
                 return RedirectToAction("Login", "Login");
             }
-
-       
-
         }
         public IActionResult BuyItem(Item_ViewModel item_ViewModel, Login_ViewModel login_ViewModel)
         {
-
-
             if (HttpContext.Session.GetInt32("User") > 0)
-           {
+            {
                 Item_Model item = viewModelConverter1.ViewModelToModelA(item_ViewModel);
                 User_Model user = viewModelConverter2.ViewModelToModel(login_ViewModel);
                 user.User_ID = Convert.ToInt32(HttpContext.Session.GetInt32("User"));
                 if (item_Container.CheckIfOwned(item.ItemID, user.User_ID) == true)
                 {
-                item_Container.DoubleItems(item, user);
+                    item_Container.DoubleItems(item, user);
                 }
                 else
                 {
-                item_Container.AddItemToUser(item, user);
+                    item_Container.AddItemToUser(item, user);
                 }
-                    return RedirectToAction("Index", "User");
-                        
+                return RedirectToAction("Index", "User");
+
             }
             else
             {
                 return RedirectToAction("Login", "Login");
             }
         }
-
-   
 
         public IActionResult GetAllUserItems(Login_ViewModel login_ViewModel)
         {
@@ -98,7 +88,7 @@ namespace WebShopAsp.net_MVC_.Controllers
                     items.Add(itemViewModel);
 
                 }
-                return View("UserItems",items);
+                return View("UserItems", items);
             }
             else
             {
@@ -106,14 +96,11 @@ namespace WebShopAsp.net_MVC_.Controllers
             }
         }
 
-
-     
-
-        public IActionResult SellItem(Item_ViewModel item_Viewmodel,Login_ViewModel login_ViewModel)
+        public IActionResult SellItem(Item_ViewModel item_Viewmodel, Login_ViewModel login_ViewModel)
         {
             if (HttpContext.Session.GetInt32("User") > 0)
             {
-                
+
                 User_Model user = viewModelConverter2.ViewModelToModel(login_ViewModel);
                 user.User_ID = Convert.ToInt32(HttpContext.Session.GetInt32("User"));
                 Item_Model item = viewModelConverter1.ViewModelToModelA(item_Viewmodel);
@@ -125,8 +112,5 @@ namespace WebShopAsp.net_MVC_.Controllers
                 return RedirectToAction("Login", "Login");
             }
         }
-
-       
-
     }
 }

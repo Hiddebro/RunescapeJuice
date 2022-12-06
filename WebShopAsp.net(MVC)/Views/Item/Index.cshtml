@@ -16,21 +16,21 @@
     }
 
     head{
-        
+
     body{
         background-color: white;
     }
 
-   
+
 </style>
-    
+
 
 <header class ="align-content-center">
 
 </header>
 <form asp-controller="Admin" asp-action="GoToAdminMainPage" method="post">
         <input class="btn btn-dark" type="submit" value="Back" />
-       
+
         </form>
 <table class="table">
     <head>
@@ -48,28 +48,29 @@
     </head>
     <body>
 
-    @foreach (Item_ViewModel item_ViewModel in Model) {
-       //@Html.BeginForm("DeleteItem","Item") 
-       <tr>
-            <td>
-                @Html.DisplayFor(modelItem =>item_ViewModel.ItemName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem =>item_ViewModel.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem =>item_ViewModel.Amount)
-            </td>
-             <td>
-              <form asp-controller="Item" asp-action="DeleteItem" method="post">
-                  <input asp-for="@item_ViewModel.ItemID" type="hidden" id="ItemID" name="ItemID" />
-                    <input class="btn btn-dark" type="submit" value="Delete" />
-                   
-                  </form>
-            </td>
-        </tr>
-    }
-    
+        @foreach (Item_ViewModel item_ViewModel in Model)
+        {
+            //@Html.BeginForm("DeleteItem","Item") 
+           <tr>
+                <td>
+                    @Html.DisplayFor(modelItem =>item_ViewModel.ItemName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem =>item_ViewModel.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem =>item_ViewModel.Amount)
+                </td>
+                 <td>
+                  <form asp-controller="Item" asp-action="DeleteItem" method="post">
+                      <input asp-for="@item_ViewModel.ItemID" type="hidden" id="ItemID" name="ItemID" />
+                        <input class="btn btn-dark" type="submit" value="Delete" />
+
+                      </form>
+                </td>
+            </tr>
+        }
+
      </tr>
     </body>
 </table>
