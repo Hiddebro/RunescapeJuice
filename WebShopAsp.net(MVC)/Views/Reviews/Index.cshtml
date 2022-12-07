@@ -1,7 +1,7 @@
 ﻿@model List<Review_ViewModel>
 @using WebShopAsp.net_MVC_.ViewModels
 @{
-    Layout = "_UserLayout";
+     Layout = "_ItemPageLayout";
 }
 
  <header class="bg-dark py-1">
@@ -28,7 +28,7 @@
       <li class="list-group-item">Item review: @Html.DisplayFor(modelItem =>review_ViewModel.Review)</li>
      
     <li class="list-group-item"> Item score : @Html.DisplayFor(modelItem =>review_ViewModel.Score)</li>
-       <br> </br>
+
   </ul>
   
    

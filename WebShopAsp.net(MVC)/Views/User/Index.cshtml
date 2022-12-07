@@ -1,63 +1,10 @@
 ﻿@model List<Item_ViewModel>
 @using WebShopAsp.net_MVC_.ViewModels
 @{
-    Layout = "_UserLayout";
+    Layout = "_ItemPageLayout";
 }
 
-  @*@foreach (Item_ViewModel item_ViewModel in Model) {
-      //@Html.BeginForm("DeleteItem","Item") <div class="card" style="width: 18rem;">
- 
- <div class="card-body">
-   <h5 class="card-title">@Html.DisplayFor(modelItem =>item_ViewModel.ItemName)</h5>
-   <img class="card-img-top" src="..." alt="Card image cap">
- 
- <ul class="list-group list-group-flush">
-      <li class="list-group-item">Item ID @Html.DisplayFor(modelItem =>item_ViewModel.ItemID)</li>
-   <li class="list-group-item">Price @Html.DisplayFor(modelItem =>item_ViewModel.Price)</li>
-   <li class="list-group-item">Amount in Stock @Html.DisplayFor(modelItem =>item_ViewModel.Amount)</li>
- </ul>
- 
-   <form asp-controller="User" asp-action="BuyItem" method="post">
-       <input class="card-link" type="hidden" id="ItemID" name="ItemID" value= @Html.DisplayFor(modelItem =>item_ViewModel.ItemID)>
-       <input asp-for="@item_ViewModel.Amount" value="" placeholder="Amount" class="form-control text-center" required />
-       <input asp-for="@item_ViewModel.ItemName" type="hidden" class="form-control text-center" required />
-       <input asp-for="@item_ViewModel.ItemID" type="hidden" class="form-control text-center" required />
-       <input asp-for="@item_ViewModel.TotalItems" type="hidden" class="form-control text-center" required />
-       <input class="card-link" type="submit" value="Buy Item"/>
-       </form>
-   <form asp-controller="User" asp-action="ReviewItem" method="post">
-       <input class="card-link" type="submit" value="Add Review" />
-       
-       </form>
- </div>
-
-     
-   }*@
-  
-<!DOCTYPE html>
-<html lang="en">
-    <style>
-        
- .flex-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.card-body2{
-     margin: 50px;
-     border-style: solid;
-     font-size: 25px;
-     margin-left: 25px;
-     margin-right: 25px;
-     justify-content: left;
-     text-align:left;
-}
-
-
-</style>
     <head>
-
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
