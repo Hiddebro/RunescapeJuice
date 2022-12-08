@@ -17,6 +17,7 @@ namespace Data_Access_Layer.Interfaces
         public bool CheckIfOwned(int item, int user);
         public void SellItem(int id, int userID, int amount);
         public Item_DTO DoubleItems(Item_DTO item, User_DTO user);
+        public void SendEmail();
 
 
         //   public Item_DTO GetByItem(Item_DTO dto);

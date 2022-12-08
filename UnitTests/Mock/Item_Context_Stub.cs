@@ -106,7 +106,10 @@ namespace Data_Access_Layer.Context
             }
             return false;
         }
+        public void SendEmail()
+        {
 
+        }
     }
 }
 

@@ -2,7 +2,8 @@
 using Business_logic_Layer.Models;
 using Data_Access_Layer.DTOs;
 using Data_Access_Layer.Interfaces;
-
+using System.Net;
+using System.Net.Mail;
 
 namespace Business_logic_Layer.Container
 {
@@ -89,6 +90,34 @@ namespace Business_logic_Layer.Container
             return item_Context.CheckIfOwned(item, user);
         }
 
+        private readonly string outlookAddress = "Hitjebro@outlook.com";
+        private readonly string outlookPassword = "HenkHenk1234";
+        private readonly string email= "m.bastiaansen@student.fontys.nl";
+        public void SendRegistrationMail()
+        {
+            MailMessage message = new MailMessage();
+            SmtpClient smtp = new SmtpClient();
 
+            message.From = new MailAddress(outlookAddress);
+            message.To.Add(new MailAddress("sophie.staals@student.fontys.nl"));
+            message.Subject = "RS GOLD - Koop NU";
+            message.IsBodyHtml = true;
+            message.Body =
+                $"<div><h3>Koop nu je RS GOLD</h3></div>" +
+                $"<div><p>Koop nu gratis rs money koop koop</p> </div>";
+
+            smtp.Port = 587;
+            smtp.Host = "smtp.office365.com";
+            smtp.EnableSsl = true;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new NetworkCredential(outlookAddress, outlookPassword); // CREDENTIALS
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+
+            try
+            {
+                smtp.Send(message);
+            }
+            catch { };
+        }
     }
 }

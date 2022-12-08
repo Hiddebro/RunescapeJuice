@@ -3,12 +3,42 @@ using Data_Access_Layer.Interfaces;
 using Microsoft.AspNetCore.Http;
 using System.Data;
 using System.Data.SqlClient;
-
+using System.Net.Mail;
+using System.Net;
+using System.Text;
 
 namespace Data_Access_Layer.Context
 {
     public class Item_Context : SQLBaseContext, IItem_Context
     {
+        public void SendEmail()
+        {
+            string to = "h.brouwer@student.fontys.nl"; //To address    
+            string from = "h.brouwer@student.fontys.nl"; //From address    
+            MailMessage message = new MailMessage(from, to);
+
+            string mailbody = "In this article you will learn how to send a email using Asp.Net & C#";
+            message.Subject = "Sending Email Using Asp.Net & C#";
+            message.Body = mailbody;
+            message.BodyEncoding = Encoding.UTF8;
+            message.IsBodyHtml = true;
+            SmtpClient client = new SmtpClient("smtp.live.com", 587); //Outlook smpt  
+            System.Net.NetworkCredential basicCredential1 = new
+            System.Net.NetworkCredential("h.brouwer@student.fontys.nl", "Bebtamparmu6");
+            client.EnableSsl = true;
+            client.UseDefaultCredentials = false;
+            client.Credentials = basicCredential1;
+            try
+            {
+                client.Send(message);
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
         public Item_DTO AddItem(Item_DTO item)
         {
             try
