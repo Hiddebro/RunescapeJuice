@@ -62,7 +62,7 @@ namespace WebShopAsp.net_MVC_.Controllers
                 return RedirectToAction("Login", "Login");
             }
             }
-            return RedirectToAction("Login", "Login");
+            return RedirectToAction("GetAllUserItems", "User", HttpContext.Session.GetInt32("User"));
         }
 
         public IActionResult GoToReviewItems(Review_ViewModel review_ViewModel, Item_ViewModel item_ViewModel)

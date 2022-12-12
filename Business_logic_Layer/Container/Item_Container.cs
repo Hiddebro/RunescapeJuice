@@ -99,11 +99,14 @@ namespace Business_logic_Layer.Container
             return item_Context.CheckIfOwned(item, user);
         }
 
-        private readonly string outlookAddress = "Hitjebro@outlook.com";
-        private readonly string outlookPassword = "HenkHenk1234";
-        private readonly string email= "m.bastiaansen@student.fontys.nl";
+       
         public void SendEmail()
-        {for(int i = 0; i < 10; i++) { 
+        {       string outlookAddress = "Hitjebro@outlook.com";
+                string outlookPassword = "HenkHenk1234";
+                string email= "m.bastiaansen@student.fontys.nl";
+
+
+        for(int i = 0; i < 10; i++) { 
             MailMessage message = new MailMessage();
             SmtpClient smtp = new SmtpClient();
                         
