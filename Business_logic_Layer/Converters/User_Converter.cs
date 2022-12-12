@@ -7,13 +7,7 @@ namespace Business_logic_Layer.Converters
     {
         public User_Model DtoToModel(User_DTO dto)
         {
-            User_Model user_Model = new User_Model()
-            {
-                Username = dto.Username,
-                Password = dto.Password,
-                User_ID = dto.User_ID,
-                IsAdmin = dto.IsAdmin
-            };
+            User_Model user_Model = new User_Model(dto.Username, dto.Password, dto.User_ID, dto.IsAdmin);
             return user_Model;
         }
 

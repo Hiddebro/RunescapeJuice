@@ -11,10 +11,5 @@
         public string Review { get; set; }
         public int Score { get; set; }
         //public List<Item_ViewModel> allitems { get; set; } = new List<Item_ViewModel>();
-
-        public Item_ViewModel()
-        {
-
-        }
     }
 }

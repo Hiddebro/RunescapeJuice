@@ -1,15 +1,14 @@
-﻿namespace WebShopAsp.net_MVC_.ViewModels
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace WebShopAsp.net_MVC_.ViewModels
 {
     public class Review_ViewModel
     {
 
         public int ItemID { get; set; }
         public string Review { get; set; }
+        [Range(1, 5)]
         public int Score { get; set; }
 
-        public Review_ViewModel()
-        {
-
-        }
     }
 }

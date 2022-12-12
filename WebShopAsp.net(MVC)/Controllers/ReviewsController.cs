@@ -48,8 +48,9 @@ namespace WebShopAsp.net_MVC_.Controllers
         //   {
         // //  }
 
-        public IActionResult ReviewItem(Review_ViewModel review_ViewModel, Item_ViewModel item_ViewModel)
+        public IActionResult ReviewItem(Review_ViewModel review_ViewModel)
         {
+            if (ModelState.IsValid) { 
             if (HttpContext.Session.GetInt32("User") > 0)
             {
                 Review_Model review = viewModelConverter3.ViewModelToModel(review_ViewModel);
@@ -60,6 +61,8 @@ namespace WebShopAsp.net_MVC_.Controllers
             {
                 return RedirectToAction("Login", "Login");
             }
+            }
+            return RedirectToAction("Login", "Login");
         }
 
         public IActionResult GoToReviewItems(Review_ViewModel review_ViewModel, Item_ViewModel item_ViewModel)

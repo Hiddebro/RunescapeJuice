@@ -42,9 +42,6 @@
             User_ID = user_ID;
             IsAdmin = isAdmin;
         }
-        public User_Model()
-        {
 
-        }
     }
 }

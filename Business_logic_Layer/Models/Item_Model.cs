@@ -17,18 +17,12 @@
             TotalItems = totalItems;
         }
 
-
         public Item_Model(int itemID, string itemName, int price, int amount)
         {
             ItemID = itemID;
             ItemName = itemName;
             Price = price;
             Amount = amount;
-        }
-
-        public Item_Model()
-        {
-
         }
 
     }

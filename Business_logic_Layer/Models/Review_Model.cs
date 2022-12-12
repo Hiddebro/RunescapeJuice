@@ -18,5 +18,6 @@ namespace Business_logic_Layer.Models
             Review = review;
             Score = score;
         }
+
     }
 }
