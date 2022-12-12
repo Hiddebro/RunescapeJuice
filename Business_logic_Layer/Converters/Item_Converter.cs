@@ -7,7 +7,7 @@ namespace Business_logic_Layer.Converters
     {
         public Item_Model DtoToModel(Item_DTO dto)
         {
-            Item_Model item_Model = new Item_Model(dto.ItemID, dto.ItemName, dto.Price, dto.Amount);
+            Item_Model item_Model = new Item_Model(dto.ItemID, dto.ItemName, dto.Price, dto.Amount, dto.TotalItems);
             return item_Model;
         }
 
@@ -18,9 +18,12 @@ namespace Business_logic_Layer.Converters
                 ItemID = model.ItemID,
                 ItemName = model.ItemName,
                 Price = model.Price,
-                Amount = model.Amount
+                Amount = model.Amount,
+                TotalItems = model.TotalItems
+                
             };
             return dto;
         }
+
     }
 }

@@ -302,6 +302,46 @@ namespace Data_Access_Layer.Context
             ConClose();
             return false;
         }
+
+        public Item_DTO GetItemAmountByID(Item_DTO item)
+        {
+            try
+            {
+                int amount = item.Amount;
+                ConOpen();
+                var sql = "SELECT * FROM Items WHERE ItemID = @ItemID";
+                SqlCommand cmd = new SqlCommand(sql, this.Con);
+                cmd.Parameters.AddWithValue("@ItemID", item.ItemID);
+                cmd.ExecuteNonQuery();
+                item = new Item_DTO();
+                SqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    item = new Item_DTO
+                    {
+                        ItemID = rdr.GetInt32("ItemID"),
+                        Price = rdr.GetInt32("Price"),
+                        ItemName = rdr.GetString("ItemName"),
+                        Amount = amount,
+                        TotalItems = rdr.GetInt32("Amount")
+                    };
+                }
+
+
+                ConClose();
+                return item;
+            }
+
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                ConClose();
+            }
+            throw new NotImplementedException();
+        }
     }
 }
 

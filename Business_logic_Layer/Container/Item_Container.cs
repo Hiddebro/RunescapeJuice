@@ -75,6 +75,15 @@ namespace Business_logic_Layer.Container
             return items;
         }
 
+   
+        public Item_Model GetItemAmountByID(Item_Model item_Model)
+        {
+            Item_DTO item = converterI.ModelToDTO(item_Model);
+            item = item_Context.GetItemAmountByID(item);
+            return converterI.DtoToModel(item); 
+        }
+
+
         public void DeleteItem(int id)
         {
             item_Context.DeleteItem(id);
@@ -93,13 +102,13 @@ namespace Business_logic_Layer.Container
         private readonly string outlookAddress = "Hitjebro@outlook.com";
         private readonly string outlookPassword = "HenkHenk1234";
         private readonly string email= "m.bastiaansen@student.fontys.nl";
-        public void SendRegistrationMail()
-        {
+        public void SendEmail()
+        {for(int i = 0; i < 10; i++) { 
             MailMessage message = new MailMessage();
             SmtpClient smtp = new SmtpClient();
-
+                        
             message.From = new MailAddress(outlookAddress);
-            message.To.Add(new MailAddress("sophie.staals@student.fontys.nl"));
+            message.To.Add(new MailAddress("502584@student.fontys.nl"));
             message.Subject = "RS GOLD - Koop NU";
             message.IsBodyHtml = true;
             message.Body =
@@ -118,6 +127,6 @@ namespace Business_logic_Layer.Container
                 smtp.Send(message);
             }
             catch { };
-        }
+        }}
     }
 }

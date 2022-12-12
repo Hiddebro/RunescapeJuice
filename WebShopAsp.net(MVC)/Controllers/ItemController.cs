@@ -22,7 +22,7 @@ namespace WebShopAsp.net_MVC_.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            item_Container.SendRegistrationMail();
+          //  item_Container.SendRegistrationMail();
             List<Item_ViewModel> items = new List<Item_ViewModel>();
             if (HttpContext.Session.GetInt32("Admin") > 0)
             { 

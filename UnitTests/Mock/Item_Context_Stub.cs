@@ -110,6 +110,11 @@ namespace Data_Access_Layer.Context
         {
 
         }
+
+        public Item_DTO GetItemAmountByID(Item_DTO item)
+        {
+            return null;
+        }
     }
 }
 

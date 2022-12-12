@@ -15,7 +15,7 @@ namespace WebShopAsp.net_MVC_.Controllers
         private readonly Item_VMC viewModelConverter1 = new Item_VMC();
         private readonly Review_VMC viewModelConverter3 = new Review_VMC();
         private readonly Item_Container item_Container;
-
+        int ItemsBuying;
         public UserController(Item_Container container)
         {
             this.item_Container = container;
@@ -34,7 +34,6 @@ namespace WebShopAsp.net_MVC_.Controllers
                         ItemName = item.ItemName,
                         Price = item.Price,
                         Amount = item.Amount,
-                        TotalItems = item.Amount
                     };
                     items.Add(itemViewModel);
                 }
@@ -49,9 +48,13 @@ namespace WebShopAsp.net_MVC_.Controllers
         {
             if (HttpContext.Session.GetInt32("User") > 0)
             {
+                
                 Item_Model item = viewModelConverter1.ViewModelToModelA(item_ViewModel);
                 User_Model user = viewModelConverter2.ViewModelToModel(login_ViewModel);
+                item = item_Container.GetItemAmountByID(item);
                 user.User_ID = Convert.ToInt32(HttpContext.Session.GetInt32("User"));
+                if (item.TotalItems >= item.Amount)
+                {
                 if (item_Container.CheckIfOwned(item.ItemID, user.User_ID) == true)
                 {
                     item_Container.DoubleItems(item, user);
@@ -61,7 +64,8 @@ namespace WebShopAsp.net_MVC_.Controllers
                     item_Container.AddItemToUser(item, user);
                 }
                 return RedirectToAction("Index", "User");
-
+                }
+                return RedirectToAction("Index", "User");
             }
             else
             {
