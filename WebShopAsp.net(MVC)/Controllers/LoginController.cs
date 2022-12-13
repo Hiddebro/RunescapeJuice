@@ -44,6 +44,11 @@ namespace WebShopAsp.net_MVC_.Controllers
                     return RedirectToAction("Index", "Admin", login_ViewModel.User_ID);
                 }
             }
+            else
+            {
+                return View();
+                //error message
+            }
             HttpContext.Session.Clear();
             return View();
         }
@@ -55,6 +60,11 @@ namespace WebShopAsp.net_MVC_.Controllers
                 User_Model user = viewModelConverter.ViewModelToModel(vm);
                 user_Container.AddUser(user);
                 return View("Login");
+            }
+            else
+            {
+                return View("Register");
+                //error message
             }
             return View("Register");
         }

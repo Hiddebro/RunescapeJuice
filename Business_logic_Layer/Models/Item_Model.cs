@@ -17,12 +17,17 @@
             TotalItems = totalItems;
         }
 
-        public Item_Model(int itemID, string itemName, int price, int amount)
+        public Item_Model(int itemID, string itemName, int price, int totalItems)
         {
             ItemID = itemID;
             ItemName = itemName;
             Price = price;
-            Amount = amount;
+            TotalItems= totalItems;
+        }
+
+        public Item_Model(int itemID)
+        {
+            ItemID = itemID;
         }
 
     }

@@ -65,13 +65,13 @@ namespace Data_Access_Layer.Context
                         ConClose();
                         return user;
                     }
-                    return null;
+                    return user;
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return null;
+                return user;
             }
         }
 

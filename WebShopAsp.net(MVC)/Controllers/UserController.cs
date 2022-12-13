@@ -13,7 +13,6 @@ namespace WebShopAsp.net_MVC_.Controllers
     {
         private readonly User_VMC viewModelConverter2 = new User_VMC();
         private readonly Item_VMC viewModelConverter1 = new Item_VMC();
-        private readonly Review_VMC viewModelConverter3 = new Review_VMC();
         private readonly Item_Container item_Container;
         int ItemsBuying;
         public UserController(Item_Container container)
@@ -44,26 +43,27 @@ namespace WebShopAsp.net_MVC_.Controllers
                 return RedirectToAction("Login", "Login");
             }
         }
-        public IActionResult BuyItem(Item_ViewModel item_ViewModel, Login_ViewModel login_ViewModel)
+        public IActionResult BuyItem(Item_ViewModel item_ViewModel)
         {
             if (HttpContext.Session.GetInt32("User") > 0)
             {
-                
+
                 Item_Model item = viewModelConverter1.ViewModelToModelA(item_ViewModel);
-                User_Model user = viewModelConverter2.ViewModelToModel(login_ViewModel);
-                item = item_Container.GetItemAmountByID(item);
-                user.User_ID = Convert.ToInt32(HttpContext.Session.GetInt32("User"));
-                if (item.TotalItems >= item.Amount)
+                int User_ID = Convert.ToInt32(HttpContext.Session.GetInt32("User"));
+                User_Model user = new User_Model(User_ID);
+                item = item_Container.GetItemData(item.ItemID);
+
+                if (item.TotalItems >= item_ViewModel.Amount)
                 {
-                if (item_Container.CheckIfOwned(item.ItemID, user.User_ID) == true)
-                {
-                    item_Container.DoubleItems(item, user);
-                }
-                else
-                {
-                    item_Container.AddItemToUser(item, user);
-                }
-                return RedirectToAction("Index", "User");
+                    if (item_Container.CheckIfOwned(item.ItemID, user.User_ID) == true)
+                    {
+                        item_Container.DoubleItems(item, user, item_ViewModel.Amount);
+                    }
+                    else
+                    {
+                        item_Container.AddItemToUser(item, user, item_ViewModel.Amount);
+                    }
+                    return RedirectToAction("Index", "User");
                 }
                 return RedirectToAction("Index", "User");
             }

@@ -83,9 +83,10 @@ namespace UnitTests
             User_Model user = new User_Model(1, 0);
             Item_Model item = new Item_Model(7, "SGS", 100000, 50, 100);
             Item_Model item2 = new Item_Model(8, "BGS", 1000, 20, 100);
+            int amount = 10;
             //Act
-            container.AddItemToUser(item, user);
-            container.AddItemToUser(item2, user);
+            container.AddItemToUser(item, user, amount);
+            container.AddItemToUser(item2, user, amount);
             List<Item_Model> TestResultList = container.GetAllUserItems(user);
             //Assert
             Assert.AreEqual(6, TestResultList.Count());
@@ -97,8 +98,9 @@ namespace UnitTests
             //Arrange
             User_Model user = new User_Model(1, 0);
             Item_Model item = new Item_Model(7, "BGS", 100000, 50, 100);
+            int amount = 7;
             //Act
-            Item_Model TestResult = container.DoubleItems(item, user);
+            Item_Model TestResult = container.DoubleItems(item, user, amount);
             //Assert
             Assert.AreEqual("BGS", TestResult.ItemName);
         }
@@ -109,8 +111,9 @@ namespace UnitTests
             //Arrange
             User_Model user = new User_Model(1, 0);
             Item_Model item = new Item_Model(7, "SGS", 100000, 50, 100);
+            int amount = 7;
             //Act
-            Item_Model TestResult = container.DoubleItems(item, user);
+            Item_Model TestResult = container.DoubleItems(item, user, amount);
             //Assert
             Assert.AreEqual("SGS", TestResult.ItemName);
         }

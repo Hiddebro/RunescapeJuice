@@ -14,7 +14,7 @@
 
         </form>
 <table class="table">
-    <head>
+  
     <tr>
         <th>
             Item Name
@@ -26,9 +26,8 @@
             Amount
         </th>
     </tr>
-    </head>
-    <body>
-
+  
+  
         @foreach (Item_ViewModel item_ViewModel in Model)
         {
             //@Html.BeginForm("DeleteItem","Item") 
@@ -53,5 +52,5 @@
         }
 
      </tr>
-    </body>
+    
 </table>

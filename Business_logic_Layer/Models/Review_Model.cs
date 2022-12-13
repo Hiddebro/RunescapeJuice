@@ -19,5 +19,10 @@ namespace Business_logic_Layer.Models
             Score = score;
         }
 
+        public Review_Model(int itemID)
+        {
+            ItemID = itemID;
+        }
+
     }
 }

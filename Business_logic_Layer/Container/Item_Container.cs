@@ -23,25 +23,25 @@ namespace Business_logic_Layer.Container
             return converterI.DtoToModel(item_Context.AddItem(dto));
         }
 
-        public Item_Model AddItemToUser(Item_Model item_Model, User_Model user_Model)
+        public Item_Model AddItemToUser(Item_Model item_Model, User_Model user_Model, int amount)
         {
             if (item_Model.TotalItems - item_Model.Amount >= 0)
             {
                 Item_DTO item = converterI.ModelToDTO(item_Model);
                 User_DTO user = converterU.ModelToDTO(user_Model);
-                item_Context.AddItemToUser(item, user);
+                item_Context.AddItemToUser(item, user,amount);
                 return converterI.DtoToModel(item);
             }
             return item_Model;
         }
 
-        public Item_Model DoubleItems(Item_Model item_Model, User_Model user_Model)
+        public Item_Model DoubleItems(Item_Model item_Model, User_Model user_Model, int Amount)
         {
             if (item_Model.TotalItems - item_Model.Amount >= 0)
             {
                 Item_DTO item = converterI.ModelToDTO(item_Model);
                 User_DTO user = converterU.ModelToDTO(user_Model);
-                item_Context.DoubleItems(item, user);
+                item_Context.DoubleItems(item, user, Amount);
                 return converterI.DtoToModel(item);
             }
             return item_Model;
@@ -76,10 +76,10 @@ namespace Business_logic_Layer.Container
         }
 
    
-        public Item_Model GetItemAmountByID(Item_Model item_Model)
+        public Item_Model GetItemData(int itemid)
         {
-            Item_DTO item = converterI.ModelToDTO(item_Model);
-            item = item_Context.GetItemAmountByID(item);
+            Item_DTO item = converterI.ModelToDTOId(itemid);
+            item = item_Context.GetItemData(item);
             return converterI.DtoToModel(item); 
         }
 

@@ -58,7 +58,7 @@ namespace Data_Access_Layer.Context
             GetAllItems().RemoveAt(id);
         }
 
-        public Item_DTO AddItemToUser(Item_DTO item, User_DTO user)
+        public Item_DTO AddItemToUser(Item_DTO item, User_DTO user, int amount)
         {
             items.Add(item);
             return item;
@@ -73,7 +73,7 @@ namespace Data_Access_Layer.Context
             GetAllItems().RemoveAt(id);
         }
 
-        public Item_DTO DoubleItems(Item_DTO item, User_DTO user)
+        public Item_DTO DoubleItems(Item_DTO item, User_DTO user, int Amount)
         {
             Item_DTO item1 = new Item_DTO();
             item1.ItemID = 1;
@@ -111,7 +111,7 @@ namespace Data_Access_Layer.Context
 
         }
 
-        public Item_DTO GetItemAmountByID(Item_DTO item)
+        public Item_DTO GetItemData(Item_DTO item)
         {
             return null;
         }

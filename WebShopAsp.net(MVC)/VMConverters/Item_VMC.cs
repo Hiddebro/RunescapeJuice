@@ -24,6 +24,12 @@ namespace WebShopAsp.net_MVC_.VMConverters
             return item_Model;
         }
 
+        public Item_Model ViewModelToModelID(int id)    
+        {
+            Item_Model item_Model = new Item_Model(id);
+            return item_Model;
+        }
+
         public Item_Model ViewModelToModelA(Item_ViewModel vm)
         {
             Item_Model item_Model = new Item_Model(vm.ItemID, vm.ItemName, vm.Price, vm.Amount, vm.TotalItems);

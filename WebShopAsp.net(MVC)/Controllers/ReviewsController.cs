@@ -18,12 +18,12 @@ namespace WebShopAsp.net_MVC_.Controllers
         {
             this.review_Container = container;
         }
-        public IActionResult Index(Item_ViewModel item_ViewModel, Review_ViewModel review_ViewModel)
+        public IActionResult Index(int id)
         {
             if (HttpContext.Session.GetInt32("User") > 0)
             {
                 List<Review_ViewModel> reviews = new List<Review_ViewModel>();
-                Item_Model item = viewModelConverter1.ViewModelToModel(item_ViewModel);
+                Item_Model item = viewModelConverter1.ViewModelToModelID(id);
                 foreach (var review in review_Container.GetAllReviews(item.ItemID))
                 {
                     Review_ViewModel reviewViewModel = new Review_ViewModel
@@ -59,23 +59,32 @@ namespace WebShopAsp.net_MVC_.Controllers
             }
             else
             {
-                return RedirectToAction("Login", "Login");
+                return RedirectToAction("Login", "Login", HttpContext.Session.GetInt32("User"));
             }
             }
-            return RedirectToAction("GetAllUserItems", "User", HttpContext.Session.GetInt32("User"));
-        }
-
-        public IActionResult GoToReviewItems(Review_ViewModel review_ViewModel, Item_ViewModel item_ViewModel)
-        {
             if (HttpContext.Session.GetInt32("User") > 0)
             {
-                review_ViewModel.ItemID = item_ViewModel.ItemID;
                 return View("ItemReviews", review_ViewModel);
             }
-            else
+            return RedirectToAction("Login", "Login");
+        }
+
+        public IActionResult GoToReviewItems(int id)
+        {
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("Login", "Login");
-            }
+                if (HttpContext.Session.GetInt32("User") > 0)
+                {
+                    Review_ViewModel review = new Review_ViewModel();
+                    review.ItemID = id;
+                    return View("ItemReviews", review);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "UserItems");
+                }
+              
+            }  return RedirectToAction("Login", "Login");
         }
     }
 }

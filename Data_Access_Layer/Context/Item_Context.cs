@@ -136,7 +136,7 @@ namespace Data_Access_Layer.Context
             throw new NotImplementedException();
         }
 
-        public Item_DTO AddItemToUser(Item_DTO item, User_DTO user)
+        public Item_DTO AddItemToUser(Item_DTO item, User_DTO user, int amount)
         {
             ConOpen();
             SqlTransaction transaction;
@@ -150,14 +150,14 @@ namespace Data_Access_Layer.Context
                 cmd.CommandText = sql;
                 cmd.Parameters.AddWithValue("@UserID", user.User_ID);
                 cmd.Parameters.AddWithValue("@ItemID", item.ItemID);
-                cmd.Parameters.AddWithValue("@AmountOwned", item.Amount);
+                cmd.Parameters.AddWithValue("@AmountOwned", amount);
                 cmd.Parameters.AddWithValue("@OwnedItem", item.ItemName);
                 cmd.ExecuteNonQuery();
 
                 var sql2 = "UPDATE [dbo].[Items] SET Amount=Amount - @amount WHERE ItemID=@idItem";// "INSERT U.UserID, I.ItemID FROM [User] as U, Items as I, UserItems as UI Where U.UserID = @UI.UserID AND I.ItemID = UI.ItemID";
                                                                                                    //   if ("Amount=Amount - @amount">= 0) { 
                 cmd.CommandText = sql2;
-                cmd.Parameters.AddWithValue("@amount", item.Amount);
+                cmd.Parameters.AddWithValue("@amount", amount);
                 cmd.Parameters.AddWithValue("@idItem", item.ItemID);
                 cmd.ExecuteNonQuery();
 
@@ -234,7 +234,7 @@ namespace Data_Access_Layer.Context
 
         }
 
-        public Item_DTO DoubleItems(Item_DTO item, User_DTO user)
+        public Item_DTO DoubleItems(Item_DTO item, User_DTO user, int Amount)
         {
             ConOpen();
             SqlTransaction transaction;
@@ -248,14 +248,14 @@ namespace Data_Access_Layer.Context
                 cmd.CommandText = sql;
                 cmd.Parameters.AddWithValue("@UserID", user.User_ID);
                 cmd.Parameters.AddWithValue("@ItemID", item.ItemID);
-                cmd.Parameters.AddWithValue("@AmountOwned", item.Amount);
+                cmd.Parameters.AddWithValue("@AmountOwned", Amount);
                 cmd.Parameters.AddWithValue("@OwnedItem", item.ItemName);
                 cmd.ExecuteNonQuery();
 
                 var sql2 = "UPDATE [dbo].[Items] SET Amount=Amount - @amount WHERE ItemID=@idItem";// "INSERT U.UserID, I.ItemID FROM [User] as U, Items as I, UserItems as UI Where U.UserID = @UI.UserID AND I.ItemID = UI.ItemID";
                                                                                                    //   if ("Amount=Amount - @amount">= 0) { 
                 cmd.CommandText = sql2;
-                cmd.Parameters.AddWithValue("@amount", item.Amount);
+                cmd.Parameters.AddWithValue("@amount", Amount);
                 cmd.Parameters.AddWithValue("@idItem", item.ItemID);
                 cmd.ExecuteNonQuery();
 
@@ -303,11 +303,10 @@ namespace Data_Access_Layer.Context
             return false;
         }
 
-        public Item_DTO GetItemAmountByID(Item_DTO item)
+        public Item_DTO GetItemData(Item_DTO item)
         {
             try
             {
-                int amount = item.Amount;
                 ConOpen();
                 var sql = "SELECT * FROM Items WHERE ItemID = @ItemID";
                 SqlCommand cmd = new SqlCommand(sql, this.Con);
@@ -322,7 +321,6 @@ namespace Data_Access_Layer.Context
                         ItemID = rdr.GetInt32("ItemID"),
                         Price = rdr.GetInt32("Price"),
                         ItemName = rdr.GetString("ItemName"),
-                        Amount = amount,
                         TotalItems = rdr.GetInt32("Amount")
                     };
                 }

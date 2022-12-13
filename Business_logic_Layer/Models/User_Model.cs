@@ -14,6 +14,7 @@
             Username = username;
             Password = password;
         }
+
         public User_Model(int user_ID, int isadmin)
         {
             User_ID = user_ID;

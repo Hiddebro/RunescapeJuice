@@ -25,5 +25,15 @@ namespace Business_logic_Layer.Converters
             return dto;
         }
 
+        public Item_DTO ModelToDTOId(int itemid)
+        {
+            Item_DTO dto = new Item_DTO()
+            {
+                ItemID = itemid
+
+            };
+            return dto;
+        }
+
     }
 }

@@ -13,7 +13,6 @@
 
 body {
     background-color: #FFFFFF;
-    
 }
 
 .wrapper {
@@ -44,13 +43,12 @@ body {
         }
 
             .wrapper .sidebar ul li a {
-;
+                ;
                 display: block;
             }
 
                 .wrapper .sidebar ul li a .fas {
                     width: 25px;
-
                 }
 
             .wrapper .sidebar ul li:hover {
@@ -60,9 +58,10 @@ body {
                 .wrapper .sidebar ul li:hover a {
                     color: #75CDD2;
                 }
-                .wrapper .sidebar ul li:hover a .fas{
-                    color: #75CDD2;
-                }
+
+                    .wrapper .sidebar ul li:hover a .fas {
+                        color: #75CDD2;
+                    }
 
     .wrapper .main_content {
         width: 100%;
@@ -85,9 +84,10 @@ body {
             .wrapper .main_content .info div {
                 margin-bottom: 20px;
             }
-        .header{
-            display:block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 40%;          
-        }
+
+.header {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
