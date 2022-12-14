@@ -27,15 +27,15 @@
          @foreach (Item_ViewModel item_ViewModel in Model) {
       //@Html.BeginForm("DeleteItem","Item") <div class="card" style="width: 18rem;">
  
- <div class="card-body2">
-   <h5 class="card-title">@Html.DisplayFor(modelItem =>item_ViewModel.ItemName)</h5>
-  
- 
- <ul class="list-group list-group-flush">
+ <div class="card-body2"> 
+     <ul class="list-group list-group-flush">
+
+   <div class="card-body">@Html.DisplayFor(modelItem =>item_ViewModel.ItemName)</div>
    <li class="list-group-item">Price @Html.DisplayFor(modelItem =>item_ViewModel.Price)</li>
    <li class="list-group-item">Avalible @Html.DisplayFor(modelItem =>item_ViewModel.Amount)</li>
-   <li input class="card-link"type="hidden" id="ItemID" name="ItemID" value= @Html.DisplayFor(modelItem =>item_ViewModel.ItemID)> </li>
- </ul>
+  
+ </ul> 
+
  <div class = "card-body">
    <form id="frm1" asp-controller="User" asp-action="BuyItem" method="post">
        

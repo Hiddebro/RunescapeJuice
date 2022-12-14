@@ -22,6 +22,8 @@ namespace WebShopAsp.net_MVC_.Controllers
         {
             if (HttpContext.Session.GetInt32("User") > 0)
             {
+
+                 int amount = review_Container.GetAllLikes(id);
                 List<Review_ViewModel> reviews = new List<Review_ViewModel>();
                 Item_Model item = viewModelConverter1.ViewModelToModelID(id);
                 foreach (var review in review_Container.GetAllReviews(item.ItemID))
@@ -32,6 +34,7 @@ namespace WebShopAsp.net_MVC_.Controllers
                         Review = review.Review,
                         ItemID = review.ItemID,
                         ReviewID = review.ReviewID
+                        
                     };
                     reviews.Add(reviewViewModel);
 

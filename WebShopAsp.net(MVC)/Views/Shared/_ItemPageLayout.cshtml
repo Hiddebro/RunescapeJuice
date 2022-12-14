@@ -3,13 +3,12 @@
 *@
 @{
 }
-  
+
 <!DOCTYPE html>
 <html lang="en">
     <style>
-       
 
-     
+
  .flex-container {
   display: flex;
   flex-wrap: wrap;
@@ -20,13 +19,14 @@
 .card-body2{
      margin: 50px;
      border-style: solid;
-     border-radius: 10px;
+     border-radius: 20px;
      font-size: 25px;
      margin-left: 30px;
      margin-right: 30px;
      justify-content: left;
      text-align:left;
-     
+     background-color: white;
+
 }
 
 
@@ -45,9 +45,8 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
 </head>
 
-<body>
+<body class="body2">
     <div class="main_content">@RenderBody()</div>
-   
     @RenderSection("Scripts", required: false)
 </body>
 </html>

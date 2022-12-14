@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "oR4RUHtU0s8Ub3Sbgsz+TaLE1V42d8HM0bcfamGZgDQ=",
+  "Hash": "9OV4915zCZTTSn/t6Q6f4Un5wlfTZQSC8yNDhGN+TNY=",
   "Source": "WebShopAsp.net(MVC)",
   "BasePath": "_content/WebShopAsp.net(MVC)",
   "Mode": "Default",
@@ -765,6 +765,23 @@
       "OriginalItemSpec": "C:\\Users\\HOIDE\\.nuget\\packages\\bootstrap\\5.2.1\\contentFiles\\any\\any\\wwwroot\\js\\bootstrap.min.js.map"
     },
     {
+      "Identity": "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\RunescapeJuice\\WebShopAsp.net(MVC)\\wwwroot\\css\\BackgroundMain.JPG",
+      "SourceId": "WebShopAsp.net(MVC)",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\RunescapeJuice\\WebShopAsp.net(MVC)\\wwwroot\\",
+      "BasePath": "_content/WebShopAsp.net(MVC)",
+      "RelativePath": "css/BackgroundMain.JPG",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\BackgroundMain.JPG"
+    },
+    {
       "Identity": "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\RunescapeJuice\\WebShopAsp.net(MVC)\\wwwroot\\css\\site.css",
       "SourceId": "WebShopAsp.net(MVC)",
       "SourceType": "Discovered",
@@ -780,23 +797,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
-    },
-    {
-      "Identity": "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\RunescapeJuice\\WebShopAsp.net(MVC)\\wwwroot\\css\\StyleSheet.css",
-      "SourceId": "WebShopAsp.net(MVC)",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\RunescapeJuice\\WebShopAsp.net(MVC)\\wwwroot\\",
-      "BasePath": "_content/WebShopAsp.net(MVC)",
-      "RelativePath": "css/StyleSheet.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\StyleSheet.css"
     },
     {
       "Identity": "C:\\Users\\HOIDE\\Desktop\\semester 2 hidde\\RunescapeJuice\\WebShopAsp.net(MVC)\\wwwroot\\favicon.ico",

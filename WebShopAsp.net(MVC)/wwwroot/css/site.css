@@ -16,7 +16,13 @@ html {
 body {
     margin-bottom: 60px;
     background-color: #264b82;
+
 }
 
 
+.body2 {
+
+    background-size: cover;
+    background-image: url(/css/BackgroundMain.JPG)
+}
 

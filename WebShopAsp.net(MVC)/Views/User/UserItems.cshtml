@@ -17,7 +17,7 @@
             </div>
             <form asp-controller="Login" asp-action="LogOut" method="post" class="form-signin">
            <input class="btn btn-dark" type="submit" value="LogOut" />
-          </form>s
+          </form>
         </header>
          <div class="flex-container">
  @foreach (Item_ViewModel item_ViewModel in Model) {
@@ -25,9 +25,11 @@
   
   <div class="card-body2" >
   <ul class="list-group list-group-flush">
-      <li class="list-group-item">Item: @Html.DisplayFor(modelItem =>item_ViewModel.ItemName)</li>
+      <div class="card-body">Item: @Html.DisplayFor(modelItem =>item_ViewModel.ItemName)</div>
     <li class="list-group-item">Amount owned: @Html.DisplayFor(modelItem =>item_ViewModel.Amount)</li>
-      <li>  <form asp-controller="User" asp-action="SellItem" method="post">
+    </ul>
+     <div class = "card-body">
+        <form asp-controller="User" asp-action="SellItem" method="post">
            <input asp-for="@item_ViewModel.ItemID" type="hidden" class="form-control text-center" required />
            <input asp-for="@item_ViewModel.Amount" type="hidden" class="form-control text-center" required />
                  <input class="btn btn-dark" type="submit" value="Sell All Items" />
@@ -38,7 +40,7 @@
              </a> 
              </form>
       </div>
-       
+       </div>
 
   
    

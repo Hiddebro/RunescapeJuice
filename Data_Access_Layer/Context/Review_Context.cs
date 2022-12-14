@@ -82,6 +82,52 @@ namespace Data_Access_Layer.Context
             }
             return true;
         }
+
+        public int GetAllLikes(int itemid)
+        {
+            List<Review_DTO> list = new List<Review_DTO>();
+            try
+            {  Review_DTO review = new Review_DTO();
+                ConOpen();
+                var sql = "SELECT * FROM Reviews WHERE ItemID = @ItemID";
+                SqlCommand cmd = new SqlCommand(sql, this.Con);
+                cmd.Parameters.AddWithValue("@ItemID", itemid);
+                SqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+
+                    review = new Review_DTO();
+                    {
+                        review.ReviewID = rdr.GetInt32("ReviewID");
+                    };
+                    list.Add(review);
+                    
+                
+                }
+                
+                ConClose();
+                ConOpen();
+                var sql2 = "SELECT * FROM ReviewLikes WHERE ReviewID = @ReviewID";
+                SqlCommand cmd2 = new SqlCommand(sql2, this.Con);
+                cmd2.Parameters.AddWithValue("@ReviewID", review.ReviewID);
+                SqlDataReader rdr2 = cmd2.ExecuteReader();
+                while (rdr2.Read())
+                {
+                    review = new Review_DTO();
+                    {
+                        review.Like = rdr2.GetInt32("Vote");
+                    };
+                    list.Add(review);
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            ConClose();
+            return list.Count;
+        }
     }
 }
 
