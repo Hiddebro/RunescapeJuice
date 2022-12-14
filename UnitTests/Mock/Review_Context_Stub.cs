@@ -37,5 +37,10 @@ namespace Data_Access_Layer.Context
 
             return reviews;
         }
+
+        public bool AddLike(int reviewid, int userid)
+        {
+            return true;
+        }
     }
 }

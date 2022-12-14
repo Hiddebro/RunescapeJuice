@@ -59,7 +59,7 @@ namespace WebShopAsp.net_MVC_.Controllers
             }
             else
             {
-                return RedirectToAction("Login", "Login", HttpContext.Session.GetInt32("User"));
+                return RedirectToAction("Login", "Login");
             }
             }
             if (HttpContext.Session.GetInt32("User") > 0)
@@ -85,6 +85,32 @@ namespace WebShopAsp.net_MVC_.Controllers
                 }
               
             }  return RedirectToAction("Login", "Login");
+        }
+
+        public IActionResult AddLike(int id)
+        {
+            if (ModelState.IsValid)
+            {
+                if (HttpContext.Session.GetInt32("User") > 0)
+                {
+                    int userid = (int)HttpContext.Session.GetInt32("User");
+                   if(review_Container.AddLike(id, userid) == true)
+                    {
+                        return RedirectToAction("Index", "Reviews", id);
+                    }
+                    else 
+                    {
+                        return RedirectToAction("Index", "Reviews", id);
+                    }
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("Login", "Login", HttpContext.Session.GetInt32("User"));
+                }
+            }
+         
+            return RedirectToAction("Login", "Login");
         }
     }
 }

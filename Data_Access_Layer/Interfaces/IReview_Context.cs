@@ -11,5 +11,7 @@ namespace Data_Access_Layer.Interfaces
     {
         public Review_DTO AddReview(Review_DTO review_DTO);
         public List<Review_DTO> GetAllReviews(int itemid);
+
+        public bool AddLike(int reviewid, int userid);
     }
 }

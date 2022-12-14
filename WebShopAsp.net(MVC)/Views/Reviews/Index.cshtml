@@ -26,9 +26,12 @@
   <div class="card-body2">
   <ul class="list-group list-group-flush">
       <li class="list-group-item">Item review: @Html.DisplayFor(modelItem =>review_ViewModel.Review)</li>
-     
+      <li class="list-group-item" hidden>Item review: @Html.DisplayFor(modelItem =>review_ViewModel.ItemID)</li>
     <li class="list-group-item"> Item score : @Html.DisplayFor(modelItem =>review_ViewModel.Score)</li>
-
+      <form asp-controller="Reviews" asp-action="AddLike" method="post" class="form-signin">
+               <input asp-for="@review_ViewModel.ItemID" type="hidden" id="id" name="id"/>
+            <input class="btn btn-dark" type="submit" value="Add review"/>
+            </form>
   </ul>
   
    

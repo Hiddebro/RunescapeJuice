@@ -61,6 +61,26 @@ namespace Data_Access_Layer.Context
             ConClose();
             return list;
         }
+
+        public bool AddLike(int reviewid, int userid)
+        {
+            try
+            {
+                int like = 1;
+                ConOpen();
+                var sql = "INSERT INTO [dbo].[ReviewLike] ([UserID] , [ReviewID] , [Vote]) VALUES (@UserID , @ReviewID , @Vote)";
+                SqlCommand cmd = new SqlCommand(sql, this.Con);
+                cmd.Parameters.AddWithValue("@UserID", userid);
+                cmd.Parameters.AddWithValue("@ReviewID", reviewid);
+                cmd.Parameters.AddWithValue("@Vote", like);
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }
 

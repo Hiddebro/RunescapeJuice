@@ -21,6 +21,14 @@ namespace Business_logic_Layer.Container
             return converterR.DtoToModel(Review_Context.AddReview(dto));
         }
 
+        public bool AddLike(int reviewid, int userid)
+        {
+            if (Review_Context.AddLike(reviewid, userid) == true)
+            {
+            return true;
+            }
+            return false;
+        }
         public List<Review_Model> GetAllReviews(int itemid)
         {
             Review_Model review;
