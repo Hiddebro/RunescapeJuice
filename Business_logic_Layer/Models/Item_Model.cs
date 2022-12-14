@@ -22,9 +22,10 @@
             ItemID = itemID;
             ItemName = itemName;
             Price = price;
-            TotalItems= totalItems;
+            Amount = totalItems;
         }
 
+        
         public Item_Model(int itemID)
         {
             ItemID = itemID;
