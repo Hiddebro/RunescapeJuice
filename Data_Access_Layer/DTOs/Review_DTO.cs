@@ -12,6 +12,7 @@ namespace Data_Access_Layer.DTOs
         public int ItemID { get; set; }
         public string Review { get; set; }
         public int Score { get; set; }
+        public int ReviewID { get; set; }
         public int Like { get; set; }
 
         public Review_DTO()

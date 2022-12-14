@@ -30,7 +30,8 @@ namespace WebShopAsp.net_MVC_.Controllers
                     {
                         Score = review.Score,
                         Review = review.Review,
-                        ItemID = review.ItemID
+                        ItemID = review.ItemID,
+                        ReviewID = review.ReviewID
                     };
                     reviews.Add(reviewViewModel);
 
@@ -96,11 +97,11 @@ namespace WebShopAsp.net_MVC_.Controllers
                     int userid = (int)HttpContext.Session.GetInt32("User");
                    if(review_Container.AddLike(id, userid) == true)
                     {
-                        return RedirectToAction("Index", "Reviews", id);
+                        return RedirectToAction("Index", "User");
                     }
                     else 
                     {
-                        return RedirectToAction("Index", "Reviews", id);
+                        return RedirectToAction("Index", "User");
                     }
                     return View();
                 }

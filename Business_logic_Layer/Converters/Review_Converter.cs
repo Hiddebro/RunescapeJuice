@@ -7,7 +7,7 @@ namespace Business_logic_Layer.Converters
     {
         public Review_Model DtoToModel(Review_DTO dto)
         {
-            Review_Model review_Model = new Review_Model(dto.ItemID, dto.Review, dto.Score);
+            Review_Model review_Model = new Review_Model(dto.ItemID, dto.Review, dto.Score, dto.ReviewID);
             return review_Model;
         }
 

@@ -49,6 +49,7 @@ namespace Data_Access_Layer.Context
                         review.ItemID = rdr.GetInt32("ItemID");
                         review.Review = rdr.GetString("Review");
                         review.Score = rdr.GetInt32("Score");
+                        review.ReviewID = rdr.GetInt32("ReviewID");
                     };
                     list.Add(review);
 
@@ -68,7 +69,7 @@ namespace Data_Access_Layer.Context
             {
                 int like = 1;
                 ConOpen();
-                var sql = "INSERT INTO [dbo].[ReviewLike] ([UserID] , [ReviewID] , [Vote]) VALUES (@UserID , @ReviewID , @Vote)";
+                var sql = "INSERT INTO [dbo].[ReviewLikes] ([UserID] , [ReviewID] , [Vote]) VALUES (@UserID , @ReviewID , @Vote)";
                 SqlCommand cmd = new SqlCommand(sql, this.Con);
                 cmd.Parameters.AddWithValue("@UserID", userid);
                 cmd.Parameters.AddWithValue("@ReviewID", reviewid);

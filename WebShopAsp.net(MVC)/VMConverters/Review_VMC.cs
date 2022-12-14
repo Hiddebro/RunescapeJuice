@@ -26,7 +26,7 @@ namespace WebShopAsp.net_MVC_.VMConverters
 
         public Review_Model ViewModelToModel(Review_ViewModel vm)
         {
-            Review_Model review_Model = new Review_Model(vm.ItemID,vm.Review,vm.Score);
+            Review_Model review_Model = new Review_Model(vm.ItemID,vm.Review,vm.Score, vm.ReviewID);
             return review_Model;
         }
     }

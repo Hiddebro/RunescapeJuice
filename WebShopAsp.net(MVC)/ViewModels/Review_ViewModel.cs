@@ -13,5 +13,7 @@ namespace WebShopAsp.net_MVC_.ViewModels
         [Range(1, 10, ErrorMessage ="Score is tussen de 1 en 10")]
         public int Score { get; set; }
 
+        public int ReviewID { get; set; }
+
     }
 }

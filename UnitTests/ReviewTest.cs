@@ -30,7 +30,7 @@ namespace UnitTests
         public void AddReviewTrue()
         {
             //Arrange
-            Review_Model model = new Review_Model(1, "mooi", 5);
+            Review_Model model = new Review_Model(1, "mooi", 5,1);
             //Act
             Review_Model model2 = container.AddReview(model);
             //Assert
