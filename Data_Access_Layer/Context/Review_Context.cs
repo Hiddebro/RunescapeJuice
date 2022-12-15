@@ -67,9 +67,10 @@ namespace Data_Access_Layer.Context
         {
             try
             {
+               
                 int like = 1;
                 ConOpen();
-                var sql = "IF NOT EXISTS(SELECT * FROM [ReviewLikes] WHERE UserID = @UserID) INSERT INTO [dbo].[ReviewLikes] ([UserID] , [ReviewID] , [Vote]) VALUES (@UserID , @ReviewID , @Vote)";
+                var sql = "IF NOT EXISTS(SELECT * FROM [dbo].[ReviewLikes] WHERE UserID = @UserID AND ReviewID = @ReviewID) INSERT INTO [dbo].[ReviewLikes] ([UserID] , [ReviewID] , [Vote]) VALUES (@UserID , @ReviewID , @Vote)";
                 SqlCommand cmd = new SqlCommand(sql, this.Con);
                 cmd.Parameters.AddWithValue("@UserID", userid);
                 cmd.Parameters.AddWithValue("@ReviewID", reviewid);

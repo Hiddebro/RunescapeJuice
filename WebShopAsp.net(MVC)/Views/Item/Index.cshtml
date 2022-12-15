@@ -1,0 +1,56 @@
+﻿@model List<Item_ViewModel>
+@using WebShopAsp.net_MVC_.ViewModels
+
+@{
+    Layout = "_Layout";
+}
+
+    
+
+<header class ="align-content-center">
+
+</header>
+<form asp-controller="Admin" asp-action="Index" method="post">
+        <input class="btn btn-dark" type="submit" value="Back" />
+       
+        </form>
+<table class="table">
+   
+    <tr>
+        <th>
+            Item Name
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            Amount
+        </th>
+    </tr>
+   
+
+    @foreach (Item_ViewModel item_ViewModel in Model) {
+       //@Html.BeginForm("DeleteItem","Item") 
+       <tr>
+            <td>
+                @Html.DisplayFor(modelItem =>item_ViewModel.ItemName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem =>item_ViewModel.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem =>item_ViewModel.Amount)
+            </td>
+             <td>
+              <form asp-controller="Item" asp-action="DeleteItem" method="post">
+                  <input asp-for="@item_ViewModel.ItemID" type="hidden" id="ItemID" name="ItemID" />
+                    <input class="btn btn-dark" type="submit" value="Delete" />
+                   
+                  </form>
+            </td>
+        </tr>
+    }
+    
+     </tr>
+   
+</table>

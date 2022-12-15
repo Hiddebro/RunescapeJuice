@@ -137,7 +137,7 @@ namespace Data_Access_Layer.Context
             cmd.Transaction = transaction;
             try
             {
-                var sql = "INSERT INTO [dbo].[UserItems]([UserID],[ItemID],[AmountOwned],[OwnedItem]) VALUES(@UserID, @ItemID, @AmountOwned, @OwnedItem)";// "INSERT U.UserID, I.ItemID FROM [User] as U, Items as I, UserItems as UI Where U.UserID = @UI.UserID AND I.ItemID = UI.ItemID";
+                var sql = "INSERT INTO [dbo].[UserItems]([UserID],[ItemID],[AmountOwned],[OwnedItem]) VALUES(@UserID, @ItemID, @AmountOwned, @OwnedItem)";
                 cmd.CommandText = sql;
                 cmd.Parameters.AddWithValue("@UserID", user.User_ID);
                 cmd.Parameters.AddWithValue("@ItemID", item.ItemID);
@@ -145,8 +145,8 @@ namespace Data_Access_Layer.Context
                 cmd.Parameters.AddWithValue("@OwnedItem", item.ItemName);
                 cmd.ExecuteNonQuery();
 
-                var sql2 = "UPDATE [dbo].[Items] SET Amount=Amount - @amount WHERE ItemID=@idItem";// "INSERT U.UserID, I.ItemID FROM [User] as U, Items as I, UserItems as UI Where U.UserID = @UI.UserID AND I.ItemID = UI.ItemID";
-                                                                                                   //   if ("Amount=Amount - @amount">= 0) { 
+                var sql2 = "UPDATE [dbo].[Items] SET Amount=Amount - @amount WHERE ItemID=@idItem";
+                                                                                                   
                 cmd.CommandText = sql2;
                 cmd.Parameters.AddWithValue("@amount", amount);
                 cmd.Parameters.AddWithValue("@idItem", item.ItemID);
