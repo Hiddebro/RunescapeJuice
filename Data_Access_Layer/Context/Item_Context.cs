@@ -71,15 +71,6 @@ namespace Data_Access_Layer.Context
             cmd.Transaction = transaction;
             try
             {
-                var sql2 = "DELETE FROM [Reviews] WHERE ItemID = @IDItem";
-                cmd.CommandText = sql2;
-                cmd.Parameters.AddWithValue("@IDItem", id);
-                cmd.ExecuteNonQuery();
-
-                var sql3 = "DELETE FROM [UserItems] WHERE ItemID = @item";
-                cmd.CommandText = sql3;
-                cmd.Parameters.AddWithValue("@item", id);
-                cmd.ExecuteNonQuery();
 
                 var sql = "DELETE FROM [Items] WHERE ItemID = @ItemID";
                 cmd.CommandText = sql;
