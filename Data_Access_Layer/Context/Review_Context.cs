@@ -69,7 +69,7 @@ namespace Data_Access_Layer.Context
             {
                 int like = 1;
                 ConOpen();
-                var sql = "INSERT INTO [dbo].[ReviewLikes] ([UserID] , [ReviewID] , [Vote]) VALUES (@UserID , @ReviewID , @Vote)";
+                var sql = "IF NOT EXISTS(SELECT * FROM [ReviewLikes] WHERE UserID = @UserID) INSERT INTO [dbo].[ReviewLikes] ([UserID] , [ReviewID] , [Vote]) VALUES (@UserID , @ReviewID , @Vote)";
                 SqlCommand cmd = new SqlCommand(sql, this.Con);
                 cmd.Parameters.AddWithValue("@UserID", userid);
                 cmd.Parameters.AddWithValue("@ReviewID", reviewid);
@@ -83,39 +83,23 @@ namespace Data_Access_Layer.Context
             return true;
         }
 
-        public int GetAllLikes(int itemid)
+        public List<Review_DTO> GetAllLikes(int itemid)
         {
             List<Review_DTO> list = new List<Review_DTO>();
             try
-            {  Review_DTO review = new Review_DTO();
+            {
+                Review_DTO review = new Review_DTO();
                 ConOpen();
-                var sql = "SELECT * FROM Reviews WHERE ItemID = @ItemID";
+                var sql = "SELECT * FROM ReviewLikes WHERE ReviewID = @ReviewID";
                 SqlCommand cmd = new SqlCommand(sql, this.Con);
-                cmd.Parameters.AddWithValue("@ItemID", itemid);
+                cmd.Parameters.AddWithValue("@ReviewID", itemid);
                 SqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
-
                     review = new Review_DTO();
                     {
-                        review.ReviewID = rdr.GetInt32("ReviewID");
-                    };
-                    list.Add(review);
-                    
-                
-                }
-                
-                ConClose();
-                ConOpen();
-                var sql2 = "SELECT * FROM ReviewLikes WHERE ReviewID = @ReviewID";
-                SqlCommand cmd2 = new SqlCommand(sql2, this.Con);
-                cmd2.Parameters.AddWithValue("@ReviewID", review.ReviewID);
-                SqlDataReader rdr2 = cmd2.ExecuteReader();
-                while (rdr2.Read())
-                {
-                    review = new Review_DTO();
-                    {
-                        review.Like = rdr2.GetInt32("Vote");
+                        review.Like = rdr.GetInt32("Vote");
+                        review.UserID = rdr.GetInt32("UserID");
                     };
                     list.Add(review);
 
@@ -126,7 +110,7 @@ namespace Data_Access_Layer.Context
 
             }
             ConClose();
-            return list.Count;
+            return list;
         }
     }
 }

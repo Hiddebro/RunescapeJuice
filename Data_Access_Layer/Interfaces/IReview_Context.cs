@@ -14,6 +14,6 @@ namespace Data_Access_Layer.Interfaces
 
         public bool AddLike(int reviewid, int userid);
 
-        public int GetAllLikes(int reviewid);
+        public List<Review_DTO> GetAllLikes(int reviewid);
     }
 }

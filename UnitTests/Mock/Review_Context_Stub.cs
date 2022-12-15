@@ -43,10 +43,10 @@ namespace Data_Access_Layer.Context
             return true;
         }
 
-        public int GetAllLikes(int reviewid)
+        public List<Review_DTO> GetAllLikes(int reviewid)
         {
-            int count = 0;
-            return count;
+
+            return null;    
         }
     }
 }

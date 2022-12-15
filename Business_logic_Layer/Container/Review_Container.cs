@@ -42,7 +42,7 @@ namespace Business_logic_Layer.Container
             return reviews;
         }
 
-        public int GetAllLikes(int itemid)
+        public List<Review_DTO> GetAllLikes(int itemid)
         {
             return Review_Context.GetAllLikes(itemid);
         }

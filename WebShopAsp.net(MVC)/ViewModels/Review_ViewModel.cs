@@ -15,7 +15,9 @@ namespace WebShopAsp.net_MVC_.ViewModels
 
         public int ReviewID { get; set; }
 
-        public int Vote { get; set; }
+        public int Like { get; set; }
+
+        public int UserID { get; set; }
 
     }
 }

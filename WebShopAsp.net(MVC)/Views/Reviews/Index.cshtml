@@ -30,8 +30,13 @@
     <li class="list-group-item"> Item score : @Html.DisplayFor(modelItem =>review_ViewModel.Score)</li>
       <form asp-controller="Reviews" asp-action="AddLike" method="post" class="form-signin">
                <input asp-for="@review_ViewModel.ReviewID" type="hidden" id="id" name="id"/>
-            <input class="btn btn-dark" type="submit" value="Add review"/>
-            </form>
+            <input class="btn btn-dark" type="submit" value="Add Like"/>
+            </form>   
+            <form asp-controller="Reviews" asp-action="ReviewLikes" method="post" class="form-signin"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+               <input asp-for="@review_ViewModel.ReviewID" type="hidden" id="id" name="id"/>
+                <input class="btn btn-dark" type="submit" value="Check who liked"/>
+            </form>   
+       
   </ul>
   
    
@@ -39,3 +44,37 @@
 
       
     }
+
+  @*<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+      </div>
+      <div class="modal-body">
+     @foreach (Review_ViewModel review_ViewModel in Model) {
+       //@Html.BeginForm("DeleteItem","Item") <div class="card" style="width: 18rem;">
+  
+  <div class="card-body2">
+  <ul class="list-group list-group-flush">
+      <li class="list-group-item">The userid that liked: @Html.DisplayFor(modelItem =>review_ViewModel.UserID)</li>
+      <li class="list-group-item">Liked item : YES </li>
+  </ul>
+  </div>
+
+      
+    }
+      </div>
+      <div class="modal-footer">
+             <form asp-controller="User" asp-action="Index" method="post">
+        <input class="card-link" type="submit" value="Back" />
+        
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+*@   
