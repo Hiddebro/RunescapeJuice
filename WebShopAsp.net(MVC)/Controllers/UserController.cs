@@ -45,32 +45,36 @@ namespace WebShopAsp.net_MVC_.Controllers
         }
         public IActionResult BuyItem(Item_ViewModel item_ViewModel)
         {
-            if (HttpContext.Session.GetInt32("User") > 0)
+            if (item_ViewModel.Amount > 0)
             {
-
-                Item_Model item = viewModelConverter1.ViewModelToModelA(item_ViewModel);
-                int User_ID = Convert.ToInt32(HttpContext.Session.GetInt32("User"));
-                User_Model user = new User_Model(User_ID);
-                item = item_Container.GetItemData(item.ItemID);
-
-                if (item.TotalItems >= item_ViewModel.Amount)
+                if (HttpContext.Session.GetInt32("User") > 0)
                 {
-                    if (item_Container.CheckIfOwned(item.ItemID, user.User_ID) == true)
+
+                    Item_Model item = viewModelConverter1.ViewModelToModelA(item_ViewModel);
+                    int User_ID = Convert.ToInt32(HttpContext.Session.GetInt32("User"));
+                    User_Model user = new User_Model(User_ID);
+                    item = item_Container.GetItemData(item.ItemID);
+
+                    if (item.TotalItems >= item_ViewModel.Amount)
                     {
-                        item_Container.DoubleItems(item, user, item_ViewModel.Amount);
-                    }
-                    else
-                    {
-                        item_Container.AddItemToUser(item, user, item_ViewModel.Amount);
+                        if (item_Container.CheckIfOwned(item.ItemID, user.User_ID) == true)
+                        {
+                            item_Container.DoubleItems(item, user, item_ViewModel.Amount);
+                        }
+                        else
+                        {
+                            item_Container.AddItemToUser(item, user, item_ViewModel.Amount);
+                        }
+                        return RedirectToAction("Index", "User");
                     }
                     return RedirectToAction("Index", "User");
                 }
-                return RedirectToAction("Index", "User");
             }
             else
             {
-                return RedirectToAction("Login", "Login");
+                return RedirectToAction("Index", "User");
             }
+            return RedirectToAction("Login", "Login");
         }
 
         public IActionResult GetAllUserItems(Login_ViewModel login_ViewModel)

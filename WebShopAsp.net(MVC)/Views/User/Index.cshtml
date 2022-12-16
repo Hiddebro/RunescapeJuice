@@ -39,7 +39,7 @@
  <div class = "card-body">
    <form id="frm1" asp-controller="User" asp-action="BuyItem" method="post">
        
-       <input asp-for="@item_ViewModel.Amount" value="" placeholder="Amount" class="form-control text-center" required />
+       <input asp-for="@item_ViewModel.Amount" value="" min="0" max="10000000000" placeholder="Amount" class="form-control text-center" required />
        <input asp-for="@item_ViewModel.ItemName" type="hidden" class="form-control text-center" required />
        <input asp-for="@item_ViewModel.ItemID" type="hidden" class="form-control text-center" required />
           <input class="btn btn-dark" type="submit" value=" Buy Item" />

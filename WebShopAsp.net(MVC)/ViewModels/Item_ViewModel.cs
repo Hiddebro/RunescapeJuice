@@ -1,4 +1,6 @@
-﻿namespace WebShopAsp.net_MVC_.ViewModels
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace WebShopAsp.net_MVC_.ViewModels
 {
     public class Item_ViewModel
     {
