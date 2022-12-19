@@ -79,9 +79,10 @@ namespace UnitTests
         {
             //Arrange
             Review_Model review = new Review_Model(1);
+            Review_Model review2 = new Review_Model(1,1);
             User_Model user = new User_Model(1);
             //Act
-            container.AddLike(review.ReviewID, user.User_ID);
+            container.AddLike(review2.ReviewID,review2.UserID);
             List<Review_Model> TestResult = container.GetAllLikes(review.ReviewID);
             //Assert
             Assert.AreEqual(4, TestResult.Count());

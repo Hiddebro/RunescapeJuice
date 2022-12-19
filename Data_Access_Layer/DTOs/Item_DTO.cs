@@ -16,15 +16,6 @@ namespace Data_Access_Layer.DTOs
         public int TotalItems { get; set; }
 
 
-        public Item_DTO(int itemID, string itemName, int price, int amount, int totalItems)
-        {
-            ItemID = itemID;
-            ItemName = itemName;
-            Price = price;
-            Amount = amount;
-            TotalItems = totalItems;
-        }
-
         public Item_DTO()
         {
 

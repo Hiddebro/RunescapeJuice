@@ -14,16 +14,6 @@ namespace Data_Access_Layer.DTOs
         public string Password { get; set; }
         public string Email { get; init; }
 
-        public User_DTO(string username, string password)
-        {
-            Username = username;
-            Password = password;
-        }
-
-        public User_DTO(int user_ID)
-        {
-            User_ID = user_ID;
-        }
         public User_DTO()
         {
 
