@@ -30,12 +30,12 @@ namespace UnitTests
             //Arrange
             Item_Model item = new Item_Model(5, "SGS", 100000, 50);
             //Act
-            Item_Model itema = container.AddItem(item);
+            Item_Model TestResult = container.AddItem(item);
             //Assert
-            Assert.AreEqual(itema.ItemID, 5);
-            Assert.AreEqual(itema.ItemName, "SGS");
-            Assert.AreEqual(itema.Price, 100000);
-            Assert.AreEqual(itema.Amount, 50);
+            Assert.AreEqual(TestResult.ItemID, 5);
+            Assert.AreEqual(TestResult.ItemName, "SGS");
+            Assert.AreEqual(TestResult.Price, 100000);
+            Assert.AreEqual(TestResult.Amount, 50);
         }
 
 
@@ -83,10 +83,9 @@ namespace UnitTests
             User_Model user = new User_Model(1, 0);
             Item_Model item = new Item_Model(7, "SGS", 100000, 50, 100);
             Item_Model item2 = new Item_Model(8, "BGS", 1000, 20, 100);
-            int amount = 10;
             //Act
-            container.AddItemToUser(item, user, amount);
-            container.AddItemToUser(item2, user, amount);
+            container.AddItemToUser(item, user, item.Amount);
+            container.AddItemToUser(item2, user, item2.Amount);
             List<Item_Model> TestResultList = container.GetAllUserItems(user);
             //Assert
             Assert.AreEqual(6, TestResultList.Count());
@@ -97,7 +96,7 @@ namespace UnitTests
         {
             //Arrange
             User_Model user = new User_Model(1, 0);
-            Item_Model item = new Item_Model(7, "BGS", 100000, 50, 100);
+            Item_Model item = new Item_Model(7, "BGS", 100000, 50);
             int amount = 7;
             //Act
             Item_Model TestResult = container.DoubleItems(item, user, amount);
@@ -110,7 +109,7 @@ namespace UnitTests
         {
             //Arrange
             User_Model user = new User_Model(1, 0);
-            Item_Model item = new Item_Model(7, "SGS", 100000, 50, 100);
+            Item_Model item = new Item_Model(7, "SGS", 100000, 50);
             int amount = 7;
             //Act
             Item_Model TestResult = container.DoubleItems(item, user, amount);
@@ -135,7 +134,7 @@ namespace UnitTests
         {
             //Arrange
             User_Model user = new User_Model(1);
-            Item_Model item = new Item_Model(1, "SGS", 100000, 50, 100);
+            Item_Model item = new Item_Model(5, "SGS", 100000, 50);
             //Act
             bool TestResultBool = container.CheckIfOwned(item.ItemID, user.User_ID);
             //Assert
@@ -147,11 +146,29 @@ namespace UnitTests
         {
             //Arrange
             User_Model user = new User_Model(1);
-            Item_Model item = new Item_Model(7, "BGS", 100000, 50, 100);
+            Item_Model item = new Item_Model(7, "BGS", 100000, 50);
             //Act
             bool TestResultBool = container.CheckIfOwned(item.ItemID, user.User_ID);
             //Assert
             Assert.IsFalse(TestResultBool);
         }
+
+        [TestMethod]
+        public void CheckItemDataID1()
+        {
+            //Arrange
+            Item_Model itemtest = new Item_Model(6, "ZGS", 10, 50);
+            Item_Model item = new Item_Model(6);
+            //Act
+            Item_Model TestResult = container.GetItemData(item.ItemID);
+            //Assert
+            Assert.AreEqual(itemtest.ItemID, TestResult.ItemID);
+            Assert.AreEqual(itemtest.ItemName, TestResult.ItemName);
+            Assert.AreEqual(itemtest.Amount, TestResult.Amount);
+            Assert.AreEqual(itemtest.Price, TestResult.Price);
+        }
+
+     
     }
 }
+

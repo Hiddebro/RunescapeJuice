@@ -19,7 +19,7 @@ namespace WebShopAsp.net_MVC_.VMConverters
         }
         public User_Model ViewModelToModel(Login_ViewModel vm)
         {
-            User_Model user_Model = new User_Model(vm.Username, vm.Password, vm.User_ID, vm.IsAdmin);
+            User_Model user_Model = new User_Model(vm.User_ID, vm.IsAdmin, vm.Username, vm.Password);
             return user_Model;
         }
 

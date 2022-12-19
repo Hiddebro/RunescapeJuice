@@ -7,7 +7,6 @@
         public int Price { get; set; }
         public int Amount { get; set; }
         public int TotalItems { get; set; }
-        public int UserID { get; set; }
 
         public Item_Model(int itemID, string itemName, int price, int amount, int totalItems)
         {
@@ -18,12 +17,12 @@
             TotalItems = totalItems;
         }
 
-        public Item_Model(int itemID, string itemName, int price, int totalItems)
+        public Item_Model(int itemID, string itemName, int price, int amount)
         {
             ItemID = itemID;
             ItemName = itemName;
             Price = price;
-            Amount = totalItems;
+            Amount = amount;
         }
 
         

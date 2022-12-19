@@ -84,7 +84,7 @@ namespace Data_Access_Layer.Context
             return true;
         }
 
-        public List<Review_DTO> GetAllLikes(int itemid)
+        public List<Review_DTO> GetAllLikes(int reviewid)
         {
             List<Review_DTO> list = new List<Review_DTO>();
             try
@@ -93,7 +93,7 @@ namespace Data_Access_Layer.Context
                 ConOpen();
                 var sql = "SELECT * FROM ReviewLikes WHERE ReviewID = @ReviewID";
                 SqlCommand cmd = new SqlCommand(sql, this.Con);
-                cmd.Parameters.AddWithValue("@ReviewID", itemid);
+                cmd.Parameters.AddWithValue("@ReviewID", reviewid);
                 SqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {

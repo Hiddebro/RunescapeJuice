@@ -8,12 +8,7 @@
         public string Password { get; set; }
         public string Email { get; set; }
 
-        public User_Model(int isadmin, string username, string password)
-        {
-            IsAdmin = isadmin;
-            Username = username;
-            Password = password;
-        }
+   
 
         public User_Model(int user_ID, int isadmin)
         {
@@ -36,13 +31,6 @@
             Username = username;
             Password = password;
         }
-        public User_Model(string username, string password, int user_ID, int isAdmin)
-        {
-            Username = username;
-            Password = password;
-            User_ID = user_ID;
-            IsAdmin = isAdmin;
-        }
-
+      
     }
 }

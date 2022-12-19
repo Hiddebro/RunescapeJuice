@@ -75,12 +75,12 @@ namespace Business_logic_Layer.Container
             return items;
         }
 
-   
+
         public Item_Model GetItemData(int itemid)
         {
             Item_DTO item = converterI.ModelToDTOId(itemid);
             item = item_Context.GetItemData(item);
-            return converterI.DtoToModel(item); 
+            return converterI.DtoToModel(item);
         }
 
 

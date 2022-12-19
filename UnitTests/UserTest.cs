@@ -23,26 +23,25 @@ namespace UnitTests
             //Arrange
             User_Model user = new User_Model(1, 1, "Henkaa", "Boos");
             //Act
-            User_Model usera = container.AddUser(user);
+            User_Model TestResult = container.AddUser(user);
             //Assert
-            Assert.AreEqual(usera.User_ID, 1);
-            Assert.AreEqual(usera.IsAdmin, 1);
-            Assert.AreEqual(usera.Username, "Henkaa");
-            Assert.AreEqual(usera.Password, "Boos");
+            Assert.AreEqual(TestResult.User_ID, 1);
+            Assert.AreEqual(TestResult.IsAdmin, 1);
+            Assert.AreEqual(TestResult.Username, "Henkaa");
+            Assert.AreEqual(TestResult.Password, "Boos");
 
-
-            //user get
         }
 
         [TestMethod]
         public void AddUserFalse()
         {
             //Arrange
-            User_Model user = new User_Model(1, "Henk", "Boos");
+            User_Model user = new User_Model(0,4,"Henk", "Boos");
             //Act
-            container.AddUser(user);
+            User_Model TestResult = container.AddUser(user);
             //Assert
-            Assert.IsFalse(User_Context_Stub.tryaddperson);
+            Assert.AreNotEqual(TestResult.IsAdmin, 1);
+            Assert.AreNotEqual(TestResult.User_ID, 1);
 
         }
 
@@ -51,24 +50,24 @@ namespace UnitTests
         public void GetByNameTrue()
         {
             //Arrange
-            User_Model c = new User_Model("Henk", "Boos");
+            User_Model user = new User_Model("Henk", "Boos");
             //Act
-            User_Model user = container.GetByName(c);
+            User_Model TestResult = container.GetByName(user);
             //Assert
-            Assert.AreEqual(user.User_ID, 1);
-            Assert.AreEqual(user.IsAdmin, 1);
+            Assert.AreEqual(TestResult.User_ID, 1);
+            Assert.AreEqual(TestResult.IsAdmin, 1);
         }
 
         [TestMethod]
         public void GetByNameFalse()
         {
             //Arrange
-            User_Model d = new User_Model("Henk", "Boos");
+            User_Model user = new User_Model("Henk", "Boos");
             //Act
-            User_Model user = container.GetByName(d);
+            User_Model TestResult = container.GetByName(user);
             //Assert
-            Assert.AreNotEqual(user.User_ID, 0);
-            Assert.AreNotEqual(user.IsAdmin, 0);
+            Assert.AreNotEqual(TestResult.User_ID, 0);
+            Assert.AreNotEqual(TestResult.IsAdmin, 0);
         }
     }
 }

@@ -16,7 +16,6 @@ namespace UnitTests
         public IReview_Context review_Context;
         public Review_Container container;
 
-        public List<Review_Model> TestResult { get; private set; }
 
         [TestInitialize]
         public void Setup()
@@ -32,11 +31,12 @@ namespace UnitTests
             //Arrange
             Review_Model model = new Review_Model(1, "mooi", 5,1);
             //Act
-            Review_Model model2 = container.AddReview(model);
+            Review_Model TestResult = container.AddReview(model);
             //Assert
-            Assert.AreEqual(model2.Review, "mooi");
-            Assert.AreEqual(model2.ItemID, 1);
-            Assert.AreEqual(model2.Score, 5);
+            Assert.AreEqual(TestResult.Review, "mooi");
+            Assert.AreEqual(TestResult.ItemID, 1);
+            Assert.AreEqual(TestResult.Score, 5);
+            Assert.AreEqual(TestResult.ReviewID, 1);
 
         }
 
@@ -46,9 +46,45 @@ namespace UnitTests
             //Arrange
 
             //Act
-            TestResult = container.GetAllReviews(1);
+            List<Review_Model> TestResult = container.GetAllReviews(1);
             //Assert
             Assert.AreEqual(2, TestResult.Count());
+        }
+
+        [TestMethod]
+        public void AddReviewLike()
+        {
+            //Arrange
+            Review_Model review = new Review_Model(1);
+            User_Model user = new User_Model(1);
+            //Act
+            bool TestResult = container.AddLike(review.ReviewID, user.User_ID);
+            //Assert
+            Assert.IsTrue(TestResult);
+        }
+
+        [TestMethod]
+        public void GetallLikesTrue()
+        {
+            //Arrange
+            Review_Model review = new Review_Model(1);
+            //Act
+            List<Review_Model> TestResult = container.GetAllLikes(review.ReviewID);
+            //Assert
+            Assert.AreEqual(3, TestResult.Count());
+        }
+
+        [TestMethod]
+        public void GetallLikes()
+        {
+            //Arrange
+            Review_Model review = new Review_Model(1);
+            User_Model user = new User_Model(1);
+            //Act
+            container.AddLike(review.ReviewID, user.User_ID);
+            List<Review_Model> TestResult = container.GetAllLikes(review.ReviewID);
+            //Assert
+            Assert.AreEqual(4, TestResult.Count());
         }
     }
 }

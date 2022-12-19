@@ -42,9 +42,17 @@ namespace Business_logic_Layer.Container
             return reviews;
         }
 
-        public List<Review_DTO> GetAllLikes(int itemid)
+        public List<Review_Model> GetAllLikes(int reviewid)
         {
-            return Review_Context.GetAllLikes(itemid);
+            Review_Model review;
+            List<Review_Model> reviews = new List<Review_Model>();
+            List<Review_DTO> DTOs = Review_Context.GetAllLikes(reviewid);
+            foreach (var dto in DTOs)
+            {
+                review = converterR.DtoToModelLikes(dto);
+                reviews.Add(review);
+            }
+            return reviews;
         }
     }
 }

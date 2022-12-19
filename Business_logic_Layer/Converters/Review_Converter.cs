@@ -11,13 +11,19 @@ namespace Business_logic_Layer.Converters
             return review_Model;
         }
 
+        public Review_Model DtoToModelLikes(Review_DTO dto)
+        {
+            Review_Model review_Model = new Review_Model(dto.Like, dto.UserID);
+            return review_Model;
+        }
         public Review_DTO ModelToDTO(Review_Model model)
         {
             Review_DTO dto = new Review_DTO()
             {
                 ItemID = model.ItemID,
                 Score = model.Score,
-                Review = model.Review
+                Review = model.Review,
+                ReviewID = model.ReviewID
             };
             return dto;
         }

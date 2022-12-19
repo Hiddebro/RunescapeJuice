@@ -40,13 +40,32 @@ namespace Data_Access_Layer.Context
 
         public bool AddLike(int reviewid, int userid)
         {
+            Review_DTO reviewLike4 = new Review_DTO();
+            reviewLike4.Like = 1;
+            reviewLike4.UserID = 2;
+            reviews.Add(reviewLike4);
             return true;
         }
 
         public List<Review_DTO> GetAllLikes(int reviewid)
         {
 
-            return null;    
+            Review_DTO reviewLike = new Review_DTO();
+            reviewLike.Like = 1;
+            reviewLike.UserID = 1;
+            reviews.Add(reviewLike);
+
+            Review_DTO reviewLike2 = new Review_DTO();
+            reviewLike2.Like = 1;
+            reviewLike2.UserID = 2;
+            reviews.Add(reviewLike2);
+
+            Review_DTO reviewLike3 = new Review_DTO();
+            reviewLike3.Like = 1;
+            reviewLike3.UserID = 2;
+            reviews.Add(reviewLike3);
+
+            return reviews;
         }
     }
 }

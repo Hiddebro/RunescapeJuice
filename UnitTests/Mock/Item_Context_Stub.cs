@@ -23,24 +23,24 @@ namespace Data_Access_Layer.Context
             items.Add(item);
 
             Item_DTO item1 = new Item_DTO();
-            item.ItemID = 2;
-            item.ItemName = "SGS";
-            item.Amount = 500;
-            item.Price = 1000000;
+            item1.ItemID = 2;
+            item1.ItemName = "SGS";
+            item1.Amount = 500;
+            item1.Price = 1000000;
             items.Add(item1);
 
             Item_DTO item2 = new Item_DTO();
-            item.ItemID = 3;
-            item.ItemName = "SGS";
-            item.Amount = 5000;
-            item.Price = 10000000;
+            item2.ItemID = 3;
+            item2.ItemName = "SGS";
+            item2.Amount = 5000;
+            item2.Price = 10000000;
             items.Add(item2);
 
             Item_DTO item3 = new Item_DTO();
-            item.ItemID = 4;
-            item.ItemName = "SGS";
-            item.Amount = 50;
-            item.Price = 100000;
+            item3.ItemID = 4;
+            item3.ItemName = "SGS";
+            item3.Amount = 50;
+            item3.Price = 100000;
             items.Add(item3);
         }
 
@@ -95,12 +95,12 @@ namespace Data_Access_Layer.Context
 
         public bool CheckIfOwned(int item, int user)
         {
-            Item_DTO item1 = new Item_DTO();
-            item1.ItemID = 1;
-            item1.ItemName = "SGS";
-            item1.Amount = 50;
-            item1.Price = 100000;
-            if (item1.ItemID == item)
+            Item_DTO item5 = new Item_DTO();
+            item5.ItemID = 5;
+            item5.ItemName = "SGS";
+            item5.Amount = 50;
+            item5.Price = 100000;
+            if (item5.ItemID == item)
             {
                 return true;
             }
@@ -113,7 +113,12 @@ namespace Data_Access_Layer.Context
 
         public Item_DTO GetItemData(Item_DTO item)
         {
-            return null;
+            Item_DTO item6 = new Item_DTO();
+            item6.ItemID = 6;
+            item6.ItemName = "ZGS";
+            item6.Amount = 50;
+            item6.Price = 10;
+            return item6;
         }
     }
 }
