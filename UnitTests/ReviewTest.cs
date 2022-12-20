@@ -20,7 +20,6 @@ namespace UnitTests
         [TestInitialize]
         public void Setup()
         {
-
             review_Context = new Review_Context_Stub();
             container = new Review_Container(review_Context);
         }
@@ -80,7 +79,6 @@ namespace UnitTests
             //Arrange
             Review_Model review = new Review_Model(1);
             Review_Model review2 = new Review_Model(1,1);
-            User_Model user = new User_Model(1);
             //Act
             container.AddLike(review2.ReviewID,review2.UserID);
             List<Review_Model> TestResult = container.GetAllLikes(review.ReviewID);
