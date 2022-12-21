@@ -21,7 +21,6 @@ namespace WebShopAsp.net_MVC_.Controllers
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             app.UseSession();
-            //removed for brevity
         }
 
 

@@ -43,6 +43,20 @@ namespace WebShopAsp.net_MVC_.Controllers
                 return RedirectToAction("Login", "Login");
             }
         }
+
+        public IActionResult GoToAdmin(Login_ViewModel login_ViewModel)
+        {
+            if (HttpContext.Session.GetInt32("Admin") > 0)
+            {
+                return View("Admin",login_ViewModel);
+            }
+            else
+            {
+                HttpContext.Session.Clear();
+                return RedirectToAction("Login", "Login");
+            }
+        }
+
         public IActionResult BuyItem(Item_ViewModel item_ViewModel)
         {
             if (item_ViewModel.Amount > 0)

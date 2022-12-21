@@ -7,17 +7,15 @@ namespace WebShopAsp.net_MVC_.ViewModels
     {
         public int User_ID { get; set; }
 
-        [BindProperty]
         [Required]
         [StringLength(15, MinimumLength = 3, ErrorMessage = "Username is tussen de 3 en de 15 characters")]
-        public string Username { get; set; }
 
-        [BindProperty]
+        public string Username { get; set; }
         [Required]
         [StringLength(15, MinimumLength = 3 , ErrorMessage = "Password is tussen de 3 en de 15 characters")]
         public string Password { get; set; }
         public int IsAdmin { get; set; }
-        // public List<Login_ViewModel> allacounts { get; set; } = new List<Login_ViewModel>();
+        public string? Email { get; set; }   
 
     }
 }

@@ -99,11 +99,13 @@ namespace WebShopAsp.net_MVC_.Controllers
                     int userid = (int)HttpContext.Session.GetInt32("User");
                    if(review_Container.AddLike(id, userid) == true)
                     {
-                        return RedirectToAction("Index", "User");
+                        
+                  
+                        return RedirectToAction("Index", "Reviews", id);
                     }
                     else 
                     {
-                        return RedirectToAction("Index", "User");
+                        return RedirectToAction("Index", "Reviews", id);
                     }
                     return View();
                 }

@@ -14,9 +14,11 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<Item_Container>();
 builder.Services.AddScoped<User_Container>();
 builder.Services.AddScoped<Review_Container>();
+builder.Services.AddScoped<Email_Container>();
 builder.Services.AddScoped<IItem_Context, Item_Context>();
 builder.Services.AddScoped<IUser_Context, User_Context>();
 builder.Services.AddScoped<IReview_Context, Review_Context>();
+builder.Services.AddScoped<IEmail_Context, Email_Context>();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {

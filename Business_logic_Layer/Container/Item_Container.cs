@@ -100,36 +100,6 @@ namespace Business_logic_Layer.Container
         }
 
        
-        public void SendEmail()
-        {       string outlookAddress = "Hitjebro@outlook.com";
-                string outlookPassword = "HenkHenk1234";
-                string email= "m.bastiaansen@student.fontys.nl";
-
-
-        for(int i = 0; i < 10; i++) { 
-            MailMessage message = new MailMessage();
-            SmtpClient smtp = new SmtpClient();
-                        
-            message.From = new MailAddress(outlookAddress);
-            message.To.Add(new MailAddress("502584@student.fontys.nl"));
-            message.Subject = "RS GOLD - Koop NU";
-            message.IsBodyHtml = true;
-            message.Body =
-                $"<div><h3>Koop nu je RS GOLD</h3></div>" +
-                $"<div><p>Koop nu gratis rs money koop koop</p> </div>";
-
-            smtp.Port = 587;
-            smtp.Host = "smtp.office365.com";
-            smtp.EnableSsl = true;
-            smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new NetworkCredential(outlookAddress, outlookPassword); // CREDENTIALS
-            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-
-            try
-            {
-                smtp.Send(message);
-            }
-            catch { };
-        }}
+     
     }
 }

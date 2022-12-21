@@ -13,13 +13,20 @@ namespace WebShopAsp.net_MVC_.VMConverters
                 Username = model.Username,
                 Password = model.Password,
                 User_ID = model.User_ID,
-                IsAdmin = model.IsAdmin
+                IsAdmin = model.IsAdmin,
+                Email = model.Email
             };
             return vm;
         }
         public User_Model ViewModelToModel(Login_ViewModel vm)
         {
             User_Model user_Model = new User_Model(vm.User_ID, vm.IsAdmin, vm.Username, vm.Password);
+            return user_Model;
+        }
+
+        public User_Model ViewModelToModelEmail(Login_ViewModel vm)
+        {
+            User_Model user_Model = new User_Model(vm.User_ID, vm.IsAdmin, vm.Username, vm.Password, vm.Email);
             return user_Model;
         }
 

@@ -23,6 +23,18 @@ namespace Business_logic_Layer.Converters
             return dto;
         }
 
+        public User_DTO ModelToDTOEmail(User_Model model)
+        {
+            User_DTO dto = new User_DTO()
+            {
+                Username = model.Username,
+                Password = model.Password,
+                User_ID = model.User_ID,
+                IsAdmin = model.IsAdmin,
+                Email = model.Email
+            };
+            return dto;
+        }
     }
 }
 

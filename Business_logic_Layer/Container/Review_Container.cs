@@ -21,7 +21,7 @@ namespace Business_logic_Layer.Container
             return converterR.DtoToModel(Review_Context.AddReview(dto));
         }
 
-        public bool AddLike(int reviewid, int userid)
+        public bool AddLike(int reviewid, int userid)   // models mee geven
         {
             if (Review_Context.AddLike(reviewid, userid) == true)
             {

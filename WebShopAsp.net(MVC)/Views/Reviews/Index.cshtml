@@ -19,7 +19,7 @@
            <input class="btn btn-dark" type="submit" value="LogOut" />
           </form>
         </header>
-
+            @if (ViewBag.Message != null) { <script> $(document).ready(function () { alert('@ViewBag.Message');}); </script> }
         @foreach (Review_ViewModel review_ViewModel in Model) {
        //@Html.BeginForm("DeleteItem","Item") <div class="card" style="width: 18rem;">
   
@@ -30,7 +30,7 @@
     <li class="list-group-item"> Item score : @Html.DisplayFor(modelItem =>review_ViewModel.Score)</li>
       <form asp-controller="Reviews" asp-action="AddLike" method="post" class="form-signin">
                <input asp-for="@review_ViewModel.ReviewID" type="hidden" id="id" name="id"/>
-            <input class="btn btn-dark" type="submit" value="Add Like"/>
+            <input class="btn btn-dark" type="submit" value="Add Like" data-bs-toggle="modal" data-bs-target="#exampleModal"/>
             </form>   
             <form asp-controller="Reviews" asp-action="ReviewLikes" method="post" class="form-signin"  data-bs-toggle="modal" data-bs-target="#exampleModal">
                <input asp-for="@review_ViewModel.ReviewID" type="hidden" id="id" name="id"/>
@@ -39,13 +39,13 @@
        
   </ul>
   
-   
+
   </div>
 
       
     }
 
-  @*<!-- Button trigger modal -->
+  <!-- Button trigger modal -->
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -77,4 +77,3 @@
     </div>
   </div>
 </div>
-*@   

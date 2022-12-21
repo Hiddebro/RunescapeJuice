@@ -2,7 +2,8 @@
 using Business_logic_Layer.Models;
 using Data_Access_Layer.DTOs;
 using Data_Access_Layer.Interfaces;
-
+using System.Net;
+using System.Net.Mail;
 
 namespace Business_logic_Layer.Container
 {
@@ -18,10 +19,10 @@ namespace Business_logic_Layer.Container
             this.user_Context = context;
         }
 
-
+ 
         public User_Model AddUser(User_Model user_Model)
         {
-            User_DTO dto = converterU.ModelToDTO(user_Model);
+            User_DTO dto = converterU.ModelToDTOEmail(user_Model);
             return converterU.DtoToModel(user_Context.AddUser(dto));
         }
 

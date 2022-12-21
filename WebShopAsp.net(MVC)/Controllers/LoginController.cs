@@ -18,11 +18,16 @@ namespace WebShopAsp.net_MVC_.Controllers
 
         private readonly User_VMC viewModelConverter = new User_VMC();
         private readonly User_Container user_Container;
+  
 
-        public LoginController(User_Container container)
+        public LoginController(User_Container user_container)
         {
-            this.user_Container = container;
+            this.user_Container = user_container;
         }
+
+  
+
+
 
 
 
@@ -41,7 +46,7 @@ namespace WebShopAsp.net_MVC_.Controllers
                 else if (login_ViewModel.User_ID != 0 & login_ViewModel.IsAdmin == 1)
                 {
                     HttpContext.Session.SetInt32("Admin", login_ViewModel.User_ID);
-                    return RedirectToAction("Index", "Admin", login_ViewModel.User_ID);
+                    return RedirectToAction("GoToAdmin", "User", login_ViewModel.User_ID);
                 }
             }
             else
@@ -57,9 +62,10 @@ namespace WebShopAsp.net_MVC_.Controllers
         {
             if (ModelState.IsValid)
             {
-                User_Model user = viewModelConverter.ViewModelToModel(vm);
+                User_Model user = viewModelConverter.ViewModelToModelEmail(vm);
+                string email = vm.Email;
                 user_Container.AddUser(user);
-                return View("Login");
+                return RedirectToAction("SendEmail", "Email", vm);
             }
             else
             {

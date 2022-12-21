@@ -31,6 +31,16 @@
             Username = username;
             Password = password;
         }
-      
+
+        public User_Model(int user_ID, int isAdmin, string username, string password, string email)
+        {
+            User_ID = user_ID;
+            IsAdmin = isAdmin;
+            Username = username;
+            Password = password;
+            Email = email;
+        }
+
+
     }
 }

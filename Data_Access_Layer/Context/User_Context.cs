@@ -53,10 +53,11 @@ namespace Data_Access_Layer.Context
             {
                 {
                     ConOpen();
-                    var sql = "IF NOT EXISTS(SELECT * FROM [USER] WHERE Username = @Username) INSERT INTO [User](Username, Password,IsAdmin) VALUES (@Username, @Password, @IsAdmin)";
+                    var sql = "IF NOT EXISTS(SELECT * FROM [USER] WHERE Username = @Username) INSERT INTO [User](Username, Password,IsAdmin, Email) VALUES (@Username, @Password, @IsAdmin, @Email)";
                     SqlCommand cmd = new SqlCommand(sql, this.Con);
                     cmd.Parameters.AddWithValue("@Username", user.Username);
                     cmd.Parameters.AddWithValue("@Password", user.Password);
+                    cmd.Parameters.AddWithValue("@Email", user.Email);
                     cmd.Parameters.AddWithValue("@IsAdmin", user.IsAdmin);
                     Console.WriteLine("Succesful Registerd");
                     var Com = cmd.ExecuteNonQuery();
