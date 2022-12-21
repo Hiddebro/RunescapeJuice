@@ -36,18 +36,20 @@
    <div class="card-body">@Html.DisplayFor(modelItem =>item_ViewModel.ItemName)</div>
    <li class="list-group-item">Price @Html.DisplayFor(modelItem =>item_ViewModel.Price)</li>
    <li class="list-group-item">Avalible @Html.DisplayFor(modelItem =>item_ViewModel.Amount)</li>
+     <li class="list-group-item">    <span asp-validation-for="@item_ViewModel.Foutmelding" class="form-control text-center"></span></li>
   
  </ul> 
 
  <div class = "card-body">
    <form id="frm1" asp-controller="User" asp-action="BuyItem" method="post">
        
-       <input asp-for="@item_ViewModel.Amount" value="" min="0" max="10000000000" placeholder="Amount" class="form-control text-center" required />
+       <input asp-for="@item_ViewModel.Amount" value="" min="0" max="100000" placeholder="Amount" class="form-control text-center" required />
+     
        <input asp-for="@item_ViewModel.ItemName" type="hidden" class="form-control text-center" required />
        <input asp-for="@item_ViewModel.ItemID" type="hidden" class="form-control text-center" required />
           <input class="btn btn-dark" type="submit" value=" Buy Item" />
           <a asp-controller="Reviews" asp-action="Index" asp-route-id="@item_ViewModel.ItemID"> <input class="btn btn-dark" value="Item Reviews" type="button"/></a>
-       
+    
         
       
   </form>

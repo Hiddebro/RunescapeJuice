@@ -17,6 +17,7 @@ namespace WebShopAsp.net_MVC_.ViewModels
         public int IsAdmin { get; set; }
         public string? Email { get; set; }   
 
+
     }
 }
 

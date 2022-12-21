@@ -20,9 +20,9 @@ namespace WebShopAsp.net_MVC_.Controllers
             this.item_Container = container;
         }
 
-        public IActionResult Index(Login_ViewModel login_ViewModel)
+        public IActionResult Index()
         {
-            if (HttpContext.Session.GetInt32("User") > 0 & login_ViewModel.IsAdmin == 0)
+            if (HttpContext.Session.GetInt32("User") > 0)
             {
                 List<Item_ViewModel> items = new List<Item_ViewModel>();
                 foreach (var item in item_Container.GetAllItems())
@@ -79,9 +79,11 @@ namespace WebShopAsp.net_MVC_.Controllers
                         {
                             item_Container.AddItemToUser(item, user, item_ViewModel.Amount);
                         }
+                       
                         return RedirectToAction("Index", "User");
                     }
-                    return RedirectToAction("Index", "User");
+                    ModelState.AddModelError(nameof(item_ViewModel.Foutmelding), "Your Amount is to high Click any where to go back to the page");
+                    return View(item_ViewModel);
                 }
             }
             else
