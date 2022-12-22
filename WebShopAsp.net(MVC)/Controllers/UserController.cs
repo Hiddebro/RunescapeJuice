@@ -83,7 +83,7 @@ namespace WebShopAsp.net_MVC_.Controllers
                         return RedirectToAction("Index", "User");
                     }
                     ModelState.AddModelError(nameof(item_ViewModel.Foutmelding), "Your Amount is to high Click any where to go back to the page");
-                    return View(item_ViewModel);
+                    return View(item_ViewModel);//private methode voor model returnen zorgt voor de zelfde view met foutmelding
                 }
             }
             else

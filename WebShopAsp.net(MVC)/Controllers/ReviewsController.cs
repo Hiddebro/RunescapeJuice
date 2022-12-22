@@ -97,7 +97,7 @@ namespace WebShopAsp.net_MVC_.Controllers
                 if (HttpContext.Session.GetInt32("User") > 0)
                 {
                     int userid = (int)HttpContext.Session.GetInt32("User");
-                   if(review_Container.AddLike(id, userid) == true)
+                   if(review_Container.AddLike(id, userid) == true) 
                     {
                         
                   

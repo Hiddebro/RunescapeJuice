@@ -18,11 +18,13 @@ namespace WebShopAsp.net_MVC_.Controllers
 
         private readonly User_VMC viewModelConverter = new User_VMC();
         private readonly User_Container user_Container;
-  
+        private readonly Email_Container email_Container;
 
-        public LoginController(User_Container user_container)
+
+        public LoginController(User_Container user_container, Email_Container email_Container)
         {
             this.user_Container = user_container;
+            this.email_Container = email_Container;
         }
 
   
@@ -65,6 +67,7 @@ namespace WebShopAsp.net_MVC_.Controllers
                 User_Model user = viewModelConverter.ViewModelToModelEmail(vm);
                 string email = vm.Email;
                 user_Container.AddUser(user);
+               
                 return RedirectToAction("SendEmail", "Email", vm);
             }
             else
