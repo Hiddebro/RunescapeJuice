@@ -58,16 +58,16 @@ namespace WebShopAsp.net_MVC_.Controllers
         }
 
         public IActionResult BuyItem(Item_ViewModel item_ViewModel)
-        {
+        {// amount los trekken van item model ???
             if (item_ViewModel.Amount > 0)
             {
                 if (HttpContext.Session.GetInt32("User") > 0)
                 {
 
-                    Item_Model item = viewModelConverter1.ViewModelToModelA(item_ViewModel);
+                    //Item_Model item = viewModelConverter1.ViewModelToModelA(item_ViewModel);
                     int User_ID = Convert.ToInt32(HttpContext.Session.GetInt32("User"));
                     User_Model user = new User_Model(User_ID);
-                    item = item_Container.GetItemData(item.ItemID);
+                    Item_Model item = item_Container.GetItemData(item_ViewModel.ItemID);
 
                     if (item.TotalItems >= item_ViewModel.Amount)
                     {
