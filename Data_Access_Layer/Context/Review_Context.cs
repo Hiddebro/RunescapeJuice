@@ -57,7 +57,7 @@ namespace Data_Access_Layer.Context
             }
             catch (Exception ex)
             {
-
+          
             }
             ConClose();
             return list;

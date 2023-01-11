@@ -35,7 +35,7 @@ namespace Data_Access_Layer.Context
 
             catch (Exception ex)
             {
-                throw ex;
+                Console.WriteLine(ex.ToString());
             }
 
         }
@@ -56,7 +56,7 @@ namespace Data_Access_Layer.Context
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.ToString());
             }
             throw new NotImplementedException();
         }
@@ -83,6 +83,7 @@ namespace Data_Access_Layer.Context
 
             catch (Exception ex)
             {
+                Console.WriteLine(ex.ToString());
                 transaction.Rollback();
             }
         }
@@ -118,13 +119,14 @@ namespace Data_Access_Layer.Context
 
             catch (Exception ex)
             {
-
+                return null;
+                Console.WriteLine(ex.ToString());
             }
             finally
             {
                 ConClose();
             }
-            throw new NotImplementedException();
+            
         }
 
         public Item_DTO AddItemToUser(Item_DTO item, User_DTO user, int amount)
@@ -157,6 +159,7 @@ namespace Data_Access_Layer.Context
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.ToString());
                 transaction.Rollback();
             }
             return item;
@@ -186,7 +189,7 @@ namespace Data_Access_Layer.Context
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.ToString());
             }
             ConClose();
             return list;
@@ -220,7 +223,7 @@ namespace Data_Access_Layer.Context
 
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.ToString());
             }
 
         }
@@ -255,6 +258,7 @@ namespace Data_Access_Layer.Context
 
             catch (Exception ex)
             {
+                Console.WriteLine(ex.ToString());
                 transaction.Rollback();
             }
             ConClose();
@@ -288,7 +292,7 @@ namespace Data_Access_Layer.Context
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.ToString());
             }
             ConClose();
             return false;
@@ -323,13 +327,14 @@ namespace Data_Access_Layer.Context
 
             catch (Exception ex)
             {
-
+                return null;
+                Console.WriteLine(ex.ToString());
             }
             finally
             {
                 ConClose();
             }
-            throw new NotImplementedException();
+       
         }
     }
 }
