@@ -76,30 +76,7 @@ namespace Data_Access_Layer.Context
             }
         }
 
-        public bool CheckActorr(User_DTO user)
-        {
-            try
-            {
-                ConOpen();
-                var sql = "SELECT * FROM [User] WHERE UserID = @User_ID";
-                SqlCommand cmd = new SqlCommand(sql, this.Con);
-                cmd.Parameters.AddWithValue("@User_ID", user.User_ID);
-                cmd.Parameters.AddWithValue("@IsAdmin", user.IsAdmin);
-                SqlDataAdapter sda = new SqlDataAdapter(cmd);
-                cmd.ExecuteNonQuery();
-                if (user.IsAdmin == 1)
-                {
-                    ConClose();
-                    return true;
-                }
-            }
-            catch (Exception ex)
-            {
 
-            }
-            ConClose();
-            return false;
-        }
     }
 }
 
