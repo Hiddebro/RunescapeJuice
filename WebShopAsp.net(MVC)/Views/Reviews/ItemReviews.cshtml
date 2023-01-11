@@ -44,11 +44,13 @@
                 <input asp-for="Review" placeholder="Review" value="" class="form-control text-center" required />
                  <span asp-validation-for="@Model.Review" class= "text-danger"></span>
            </div>
-       
+         <input asp-for="Melding" placeholder="" value="@Model.Melding" class="form-control text-center" readonly/>
+                 
        </div>
 
        <div class="form-signin">
            <input class="btn btn-dark" type="submit" value="Add review" />
+             
            <br />
            </div>
 

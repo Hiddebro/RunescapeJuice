@@ -19,7 +19,7 @@
       </div>
       <div class="modal-footer">
              <form asp-controller="User" asp-action="Index" method="post">
-        <input class="card-link" type="submit" value="Back" />
+        <input class="card-link" type="submit" value="Back to Item Shop" />
         
         </form>
       </div>
@@ -27,38 +27,4 @@
   </div>
 </div>
 
-    <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-      </div>
-      <div class="modal-body">
-     @foreach (Review_ViewModel review_ViewModel in Model) {
-       //@Html.BeginForm("DeleteItem","Item") <div class="card" style="width: 18rem;">
-  
-  <div class="card-body2">
-  <ul class="list-group list-group-flush">
-      <li class="list-group-item">The userid that liked: @Html.DisplayFor(modelItem =>review_ViewModel.UserID)</li>
-      <li class="list-group-item">Liked item : YES </li>
-  </ul>
-  </div>
-
-      
-    }
-      </div>
-      <div class="modal-footer">
-             <form asp-controller="User" asp-action="Index" method="post">
-        <input class="card-link" type="submit" value="Back" />
-        
-        </form>
-      </div>
-    </div>
-  </div>
-</div>

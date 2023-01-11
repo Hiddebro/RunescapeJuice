@@ -67,6 +67,7 @@ namespace WebShopAsp.net_MVC_.Controllers
             }
             if (HttpContext.Session.GetInt32("User") > 0)
             {
+                review_ViewModel.Melding = "Review had been added"; 
                 return View("ItemReviews", review_ViewModel);
             }
             return RedirectToAction("Login", "Login");
@@ -96,16 +97,21 @@ namespace WebShopAsp.net_MVC_.Controllers
             {
                 if (HttpContext.Session.GetInt32("User") > 0)
                 {
+                   
                     int userid = (int)HttpContext.Session.GetInt32("User");
-                   if(review_Container.AddLike(id, userid) == true) 
+                    Review_ViewModel review = new Review_ViewModel();
+                    review.ItemID = id;
+                    
+                   if(review_Container.AddLike(review.ItemID, userid) == true) 
                     {
+
+                        ModelState.AddModelError(nameof(review.Foutmelding), "You have already liked this review Click anywhere to go back to the page");
+                        return View(review);
                         
-                  
-                        return RedirectToAction("Index", "Reviews", id);
                     }
                     else 
                     {
-                        return RedirectToAction("Index", "Reviews", id);
+                       return RedirectToAction("Index", "User");
                     }
                     return View();
                 }
