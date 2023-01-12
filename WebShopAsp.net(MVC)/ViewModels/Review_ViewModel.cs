@@ -19,8 +19,8 @@ namespace WebShopAsp.net_MVC_.ViewModels
 
         public int UserID { get; set; }
 
-        public string Foutmelding { get; set; }
-        public string Melding { get; set; }
+        public string? Foutmelding { get; set; }
+        public string? Melding { get; set; }
 
     }
 }

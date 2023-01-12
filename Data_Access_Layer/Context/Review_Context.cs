@@ -68,20 +68,41 @@ namespace Data_Access_Layer.Context
             try
             {
                
-                int like = 1;
+                int like = 0;
                 ConOpen();
+               
+                var sql2 = "SELECT * FROM [dbo].[ReviewLikes]  WHERE UserID = @UserID AND ReviewID = @ReviewID"; 
+                
+                SqlCommand cmd2 = new SqlCommand(sql2, this.Con);
+               cmd2.Parameters.AddWithValue("@UserID", userid);
+                cmd2.Parameters.AddWithValue("@ReviewID", reviewid);
+                
+                SqlDataReader rdr = cmd2.ExecuteReader();
+                while (rdr.Read())
+                {
+                    {
+                        like = rdr.GetInt32("Vote");
+                    };
+                }
+                if (like == 1)
+                {
+                    ConClose();
+                    return true;
+                }
+                ConClose();
+                ConOpen();like = 1;
                 var sql = "IF NOT EXISTS(SELECT * FROM [dbo].[ReviewLikes] WHERE UserID = @UserID AND ReviewID = @ReviewID) INSERT INTO [dbo].[ReviewLikes] ([UserID] , [ReviewID] , [Vote]) VALUES (@UserID , @ReviewID , @Vote)";
                 SqlCommand cmd = new SqlCommand(sql, this.Con);
                 cmd.Parameters.AddWithValue("@UserID", userid);
                 cmd.Parameters.AddWithValue("@ReviewID", reviewid);
                 cmd.Parameters.AddWithValue("@Vote", like);
                 cmd.ExecuteNonQuery();
-            }
-            catch
+            } catch(Exception)
+           
             {
                 return false;
             }
-            return true;
+            return false;
         }
 
         public List<Review_DTO> GetAllLikes(int reviewid)

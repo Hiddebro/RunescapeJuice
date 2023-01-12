@@ -56,7 +56,9 @@ namespace WebShopAsp.net_MVC_.Controllers
             {
                 Review_Model review = viewModelConverter3.ViewModelToModel(review_ViewModel);
                 review_Container.AddReview(review);
-                return RedirectToAction("GetAllUserItems", "User");
+                    review_ViewModel.Melding = "Review had been added";
+                    return View("ItemReviews", review_ViewModel);
+                   
             }
             else
             {
@@ -65,7 +67,7 @@ namespace WebShopAsp.net_MVC_.Controllers
             }
             if (HttpContext.Session.GetInt32("User") > 0)
             {
-                review_ViewModel.Melding = "Review had been added"; 
+                review_ViewModel.Melding = "Review has not been added";
                 return View("ItemReviews", review_ViewModel);
             }
             return RedirectToAction("Login", "Login");
@@ -109,7 +111,8 @@ namespace WebShopAsp.net_MVC_.Controllers
                     }
                     else 
                     {
-                       return RedirectToAction("Index", "User");
+                        ModelState.AddModelError(nameof(review.Foutmelding), "Like has been added");
+                        return View(review);
                     }
                     return View();
                 }
