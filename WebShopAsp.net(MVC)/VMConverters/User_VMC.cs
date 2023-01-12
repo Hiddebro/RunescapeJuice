@@ -4,7 +4,7 @@ using WebShopAsp.net_MVC_.ViewModels;
 
 namespace WebShopAsp.net_MVC_.VMConverters
 {
-    public class User_VMC : IViewModel_Converter<User_Model, Login_ViewModel>
+    public class User_VMC 
     {
         public Login_ViewModel ModelToViewModel(User_Model model)
         {

@@ -47,9 +47,7 @@ namespace WebShopAsp.net_MVC_.Controllers
             }
         }
 
-        //  public IActionResult GetAllReviews(Review_ViewModel review_ViewModel, Item_ViewModel item_ViewModel)
-        //   {
-        // //  }
+      
 
         public IActionResult ReviewItem(Review_ViewModel review_ViewModel)
         {

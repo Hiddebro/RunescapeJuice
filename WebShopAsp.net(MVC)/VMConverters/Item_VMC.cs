@@ -4,7 +4,7 @@ using WebShopAsp.net_MVC_.ViewModels;
 
 namespace WebShopAsp.net_MVC_.VMConverters
 {
-    public class Item_VMC : IViewModel_Converter<Item_Model, Item_ViewModel>
+    public class Item_VMC 
     {
 
         public Item_ViewModel ModelToViewModel(Item_Model model)
@@ -30,7 +30,7 @@ namespace WebShopAsp.net_MVC_.VMConverters
             return item_Model;
         }
 
-        public Item_Model ViewModelToModelA(Item_ViewModel vm)
+        public Item_Model ViewModelToModelAll(Item_ViewModel vm)
         {
             Item_Model item_Model = new Item_Model(vm.ItemID, vm.ItemName, vm.Price, vm.Amount, vm.TotalItems);
             return item_Model;

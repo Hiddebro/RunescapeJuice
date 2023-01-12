@@ -27,11 +27,6 @@ namespace WebShopAsp.net_MVC_.Controllers
             this.email_Container = email_Container;
         }
 
-  
-
-
-
-
 
         public IActionResult Login(Login_ViewModel login_ViewModel)
         {
