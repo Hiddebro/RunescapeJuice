@@ -18,28 +18,28 @@ namespace Data_Access_Layer.Context
             Item_DTO item = new Item_DTO();
             item.ItemID = 1;
             item.ItemName = "SGS";
-            item.Amount = 50;
+            item.TotalItems = 50;
             item.Price = 100000;
             items.Add(item);
 
             Item_DTO item1 = new Item_DTO();
             item1.ItemID = 2;
             item1.ItemName = "SGS";
-            item1.Amount = 500;
+            item1.TotalItems = 500;
             item1.Price = 1000000;
             items.Add(item1);
 
             Item_DTO item2 = new Item_DTO();
             item2.ItemID = 3;
             item2.ItemName = "SGS";
-            item2.Amount = 5000;
+            item2.TotalItems = 5000;
             item2.Price = 10000000;
             items.Add(item2);
 
             Item_DTO item3 = new Item_DTO();
             item3.ItemID = 4;
             item3.ItemName = "SGS";
-            item3.Amount = 50;
+            item3.TotalItems = 50;
             item3.Price = 100000;
             items.Add(item3);
         }
@@ -58,7 +58,7 @@ namespace Data_Access_Layer.Context
             GetAllItems().RemoveAt(id);
         }
 
-        public Item_DTO AddItemToUser(Item_DTO item, User_DTO user, int amount)
+        public Item_DTO AddItemToUser(Item_DTO item, User_DTO user, int TotalItems)
         {
             items.Add(item);
             return item;
@@ -68,17 +68,17 @@ namespace Data_Access_Layer.Context
             return items;
         }
 
-        public void SellItem(int id, int userID, int amount)
+        public void SellItem(int id, int userID, int TotalItems)
         {
             GetAllItems().RemoveAt(id);
         }
 
-        public Item_DTO DoubleItems(Item_DTO item, User_DTO user, int Amount)
+        public Item_DTO DoubleItems(Item_DTO item, User_DTO user, int TotalItems)
         {
             Item_DTO item1 = new Item_DTO();
             item1.ItemID = 1;
             item1.ItemName = "SGS";
-            item1.Amount = 50;
+            item1.TotalItems = 50;
             item1.Price = 100000;
 
             if (item1.ItemName == item.ItemName)
@@ -98,7 +98,7 @@ namespace Data_Access_Layer.Context
             Item_DTO item5 = new Item_DTO();
             item5.ItemID = 5;
             item5.ItemName = "SGS";
-            item5.Amount = 50;
+            item5.TotalItems = 50;
             item5.Price = 100000;
             if (item5.ItemID == item)
             {
@@ -116,7 +116,7 @@ namespace Data_Access_Layer.Context
             Item_DTO item6 = new Item_DTO();
             item6.ItemID = 6;
             item6.ItemName = "ZGS";
-            item6.Amount = 50;
+            item6.TotalItems = 50;
             item6.Price = 10;
             return item6;
         }

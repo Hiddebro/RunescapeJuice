@@ -58,7 +58,7 @@ namespace WebShopAsp.net_MVC_.Controllers
         }
 
         public IActionResult BuyItem(Item_ViewModel item_ViewModel)
-        {// amount los trekken van item model ???
+        {// amount los trekken van total
             if (item_ViewModel.Amount > 0)
             {
                 if (HttpContext.Session.GetInt32("User") > 0)

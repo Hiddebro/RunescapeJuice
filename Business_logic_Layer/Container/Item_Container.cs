@@ -25,7 +25,7 @@ namespace Business_logic_Layer.Container
 
         public Item_Model AddItemToUser(Item_Model item_Model, User_Model user_Model, int amount)
         {
-            if (item_Model.TotalItems - amount >= 0)
+            if (item_Model.TotalItems - item_Model.Amount >= 0)
             {
                 Item_DTO item = converterI.ModelToDTO(item_Model);
                 User_DTO user = converterU.ModelToDTO(user_Model);
@@ -37,7 +37,7 @@ namespace Business_logic_Layer.Container
 
         public Item_Model DoubleItems(Item_Model item_Model, User_Model user_Model, int Amount)
         {
-            if (item_Model.TotalItems - Amount >= 0)
+            if (item_Model.TotalItems - item_Model.Amount >= 0)
             {
                 Item_DTO item = converterI.ModelToDTO(item_Model);
                 User_DTO user = converterU.ModelToDTO(user_Model);
