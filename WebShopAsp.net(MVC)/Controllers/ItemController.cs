@@ -54,7 +54,7 @@ namespace WebShopAsp.net_MVC_.Controllers
             {
                 Item_Model item = viewModelConverter.ViewModelToModel(vm);
                 item_Container.AddItem(item);
-                return RedirectToAction("Index", "Admin");
+                return RedirectToAction("GoToAdmin", "User");
             }
             return View();
         }

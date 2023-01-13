@@ -31,6 +31,7 @@
               <div class="form-group">
                    <div class="InputBackgroundBox">
                              <input asp-for="Email" placeholder="Email;" class="form-control text-center" required />
+                             <span asp-validation-for="@Model.Email" class= "text-danger"></span>
                    </div>
                 </div>
                  <div class="form-signin">

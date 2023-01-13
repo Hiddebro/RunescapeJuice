@@ -25,10 +25,12 @@
             <div class="InputBackgroundBox">
                 <input asp-for="Password" type="password" placeholder="Password" class="form-control text-center"/>
                  <span asp-validation-for="@Model.Password" class= "text-danger"></span>
+                 
             </div>
             @*<span asp-validation-for="Password" class="text-danger"></span>*@
         </div>
-
+          <input asp-for="Email"   class="form-control text-center" hidden value="emailemailemailemailemailemail"/>
+<span asp-validation-for="@Model.Email" class= "text-danger" hidden></span>
         <div class="form-signin">
             <input class="btn btn-dark" type="submit" value="Login" />
             <br />

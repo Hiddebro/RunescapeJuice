@@ -15,6 +15,8 @@ namespace WebShopAsp.net_MVC_.ViewModels
         [StringLength(15, MinimumLength = 3 , ErrorMessage = "Password is tussen de 3 en de 15 characters")]
         public string Password { get; set; }
         public int IsAdmin { get; set; }
+        [Required]
+        [StringLength(200, MinimumLength = 10, ErrorMessage = "Username is tussen de 3 en de 15 characters")]
         public string? Email { get; set; }   
 
 
