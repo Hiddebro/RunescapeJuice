@@ -70,7 +70,11 @@ namespace Data_Access_Layer.Context
 
         public void SellItem(int id, int userID, int TotalItems)
         {
-            GetAllItems().RemoveAt(id);
+            if(id >= 1)
+            {
+                GetAllItems().RemoveAt(id);
+            }
+            
         }
 
         public Item_DTO DoubleItems(Item_DTO item, User_DTO user, int TotalItems)
@@ -113,12 +117,17 @@ namespace Data_Access_Layer.Context
 
         public Item_DTO GetItemData(Item_DTO item)
         {
+            if(item.ItemID == 6) {
             Item_DTO item6 = new Item_DTO();
             item6.ItemID = 6;
             item6.ItemName = "ZGS";
             item6.TotalItems = 50;
             item6.Price = 10;
             return item6;
+        }
+          
+            return item;
+        
         }
     }
 }

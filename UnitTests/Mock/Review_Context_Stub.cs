@@ -17,13 +17,26 @@ namespace Data_Access_Layer.Context
         {
 
         }
-        public Review_DTO AddReview(Review_DTO review)
+        public Review_DTO? AddReview(Review_DTO review)
         {
-            return review;
+            Review_DTO review2 = new Review_DTO();
+            review2.Review = "lelijk";
+            review2.ReviewID = 1;
+            review2.Score = 5;
+            review2.ItemID = 1;
+            reviews.Add(review2);
+            if (review.ItemID == review2.ItemID)
+            {
+                
+                 return review2;
+            }
+             return review;
         }
         public List<Review_DTO> GetAllReviews(int itemid)
         {
-            Review_DTO review = new Review_DTO();
+            if (itemid == 1)
+            {
+                Review_DTO review = new Review_DTO();
             review.Review = "mooi";
             review.Score = 5;
             review.ItemID = 1;
@@ -34,7 +47,8 @@ namespace Data_Access_Layer.Context
             review2.Score = 1;
             review2.ItemID = 1;
             reviews.Add(review2);
-
+            return reviews;
+        }
             return reviews;
         }
 
@@ -49,7 +63,7 @@ namespace Data_Access_Layer.Context
 
         public List<Review_DTO> GetAllLikes(int reviewid)
         {
-
+            
             Review_DTO reviewLike = new Review_DTO();
             reviewLike.Like = 1;
             reviewLike.UserID = 1;
@@ -65,6 +79,7 @@ namespace Data_Access_Layer.Context
             reviewLike3.UserID = 2;
             reviews.Add(reviewLike3);
 
+            
             return reviews;
         }
     }

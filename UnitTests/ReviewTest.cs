@@ -28,15 +28,32 @@ namespace UnitTests
         public void AddReviewTrue()
         {
             //Arrange
-            Review_Model model = new Review_Model(1, "mooi", 5,1);
+            Review_Model model = new Review_Model(3, "mooi", 5,3);
             //Act
             Review_Model TestResult = container.AddReview(model);
             //Assert
             Assert.AreEqual(TestResult.Review, "mooi");
+            Assert.AreEqual(TestResult.ItemID, 3);
+            Assert.AreEqual(TestResult.Score, 5);
+            Assert.AreEqual(TestResult.ReviewID, 3);
+
+        }
+
+        [TestMethod]
+        public void AddReviewFalse()
+        {
+            //Arrange
+            Review_Model model = new Review_Model(1, "mooi", 5, 1);
+       
+
+            //Act
+            Review_Model TestResult = container.AddReview(model);
+
+            //Assert
+            Assert.AreNotEqual(TestResult.Review, "mooi");
             Assert.AreEqual(TestResult.ItemID, 1);
             Assert.AreEqual(TestResult.Score, 5);
             Assert.AreEqual(TestResult.ReviewID, 1);
-
         }
 
         [TestMethod]
@@ -48,6 +65,17 @@ namespace UnitTests
             List<Review_Model> TestResult = container.GetAllReviews(1);
             //Assert
             Assert.AreEqual(2, TestResult.Count());
+        }
+
+        [TestMethod]
+        public void GetallReviewsFalse()
+        {
+            //Arrange
+
+            //Act
+            List<Review_Model> TestResult = container.GetAllReviews(0);
+            //Assert
+            Assert.AreEqual(0, TestResult.Count());
         }
 
         [TestMethod]

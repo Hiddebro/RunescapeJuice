@@ -53,6 +53,19 @@ namespace UnitTests
         }
 
         [TestMethod]
+        public void DeleteItemFalse()
+        {
+            //Arrange
+
+            //Act  
+            container.DeleteItem(1);
+            List<Item_Model> TestResultList = container.GetAllItems();
+            //Assert
+            Assert.AreEqual(3, TestResultList.Count);
+        }
+
+
+        [TestMethod]
         public void GetAllItemsTrue()
         {
             //Arrange
@@ -130,6 +143,18 @@ namespace UnitTests
         }
 
         [TestMethod]
+        public void SellItemFalse()
+        {
+            //Arrange
+            User_Model user = new User_Model(1, 0);
+            //Act
+            container.SellItem(0, 1, 50);
+            List<Item_Model> TestResultList = container.GetAllUserItems(user);
+            //Assert
+            Assert.AreEqual(4, TestResultList.Count);
+        }
+
+        [TestMethod]
         public void CheckIfOwnedTrue()
         {
             //Arrange
@@ -153,22 +178,36 @@ namespace UnitTests
             Assert.IsFalse(TestResultBool);
         }
 
+
         [TestMethod]
-        public void CheckItemDataID1()
+        public void GetItemData_True()
         {
             //Arrange
-            Item_Model itemtest = new Item_Model(6, "ZGS", 10, 50);
             Item_Model item = new Item_Model(6);
             //Act
             Item_Model TestResult = container.GetItemData(item.ItemID);
             //Assert
-            Assert.AreEqual(itemtest.ItemID, TestResult.ItemID);
-            Assert.AreEqual(itemtest.ItemName, TestResult.ItemName);
-            Assert.AreEqual(itemtest.Amount, TestResult.Amount);
-            Assert.AreEqual(itemtest.Price, TestResult.Price);
+            Assert.AreEqual(6, TestResult.ItemID);
+            Assert.AreEqual("ZGS", TestResult.ItemName);
+            Assert.AreEqual(50, TestResult.TotalItems);
+            Assert.AreEqual(10, TestResult.Price);
         }
 
-     
+        [TestMethod]
+        public void GetItemData_NoItem()
+        {
+            //Arrange
+            Item_Model item = new Item_Model(9);
+            //Act
+            Item_Model TestResult = container.GetItemData(item.ItemID);
+            //Assert
+            Assert.AreEqual(9, TestResult.ItemID);
+            Assert.AreEqual(null, TestResult.ItemName);
+        }
+
+
+
+
     }
 }
 
